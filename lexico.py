@@ -31,15 +31,19 @@ tokens = (
     'RCOR',
     'LBRACE',
     'RBRACE',
-    'DDOT'
+    'DDOT',
     'MAYORQUE',
     'MENORQUE',
     'IGUAL',
+    'QUOTE',
+    'COMA',
     'ID'
  ) + tuple(reserved.values())
 
 
 t_MINUS   = r'-'
+t_COMA    = r','
+t_QUOTE   = r'\''
 t_PLUS    = r'\+'
 t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
