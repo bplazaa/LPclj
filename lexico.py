@@ -15,7 +15,14 @@ reserved = {
     'false' : 'FALSE',
     'or' : 'OR',
     'while': 'WHILE',
-    'do': 'DO'
+    'do': 'DO',
+    'str': 'STR',
+    'count': 'COUNT',
+    'pop': 'POP',
+    'get': 'GET',
+    'conj': 'CONJ',
+    'nth': 'NTH',
+    'defn': 'DEFN'
 }
 
 tokens = (
