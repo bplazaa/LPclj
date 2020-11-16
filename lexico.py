@@ -61,7 +61,7 @@ def t_ID(t):
     return t
 
 def t_STRING(t):
-    r'^"[a-zA-Z_0-9\s]*"$'
+    r'"[a-zA-Z_0-9\s]*"'
     t.value = str(t.value)    
     return t
 

@@ -10,6 +10,7 @@
 (def x (not true))
 (def digits [1 2 3])
 (if (< 50 100) "yes" "no")
+(for [x1 digits x2 digits] (* x1 x2))
 
 
 
