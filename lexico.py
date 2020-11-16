@@ -45,6 +45,7 @@ tokens = (
     'DDOT',
     'MAYORQUE',
     'MENORQUE',
+    'NUMERAL',
     'IGUAL',
     'QUOTE',
     'COMA',
@@ -68,6 +69,7 @@ t_IGUAL = r'='
 t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 t_DDOT = r':'
+t_NUMERAL = r'#'
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)    

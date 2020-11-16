@@ -15,6 +15,15 @@
 (read)
 (if (< 50 100) "yes" "no")
 (for [x1 digits x2 digits] (* x1 x2))
+(while ( < x 5 )
+      (do
+         (println x))
+(conj '(1 2 3) 4 5)
+(nth '(1 2,3) 0)
+(get #{3 2 1} 2)
+(str "Hello" "World" "Again")
+(count "Hello")
+
 
 
 
