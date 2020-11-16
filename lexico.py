@@ -12,7 +12,10 @@ reserved = {
     'and' : 'AND',
     'not' : 'NOT',
     'true' : 'TRUE',
-    'false' : 'FALSE'
+    'false' : 'FALSE',
+    'or' : 'OR',
+    'while': 'WHILE',
+    'do': 'DO'
 }
 
 tokens = (
@@ -26,6 +29,9 @@ tokens = (
     'RPAREN',
     'LCOR',
     'RCOR',
+    'LBRACE',
+    'RBRACE',
+    'DDOT'
     'MAYORQUE',
     'MENORQUE',
     'IGUAL',
@@ -44,7 +50,9 @@ t_RCOR  = r'\]'
 t_MAYORQUE = r'>'
 t_MENORQUE = r'<'
 t_IGUAL = r'='
-
+t_LBRACE = r'\{'
+t_RBRACE = r'\}'
+t_DDOT = r':'
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)    
