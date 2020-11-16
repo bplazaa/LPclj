@@ -11,8 +11,11 @@
 (def digits [1 2 3])
 (def lista '(9 8 7 6))
 (def mapa {a: 1, b: 2})
+(printf "Hola mundo" 3)
+(read)
 (if (< 50 100) "yes" "no")
 (for [x1 digits x2 digits] (* x1 x2))
+
 
 
 

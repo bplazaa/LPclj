@@ -22,7 +22,11 @@ reserved = {
     'get': 'GET',
     'conj': 'CONJ',
     'nth': 'NTH',
-    'defn': 'DEFN'
+    'defn': 'DEFN',
+    'printf': 'PRINTF',
+    'print': 'PRINT',
+    'read-line': 'READLINE',
+    'read': 'READ'
 }
 
 tokens = (
