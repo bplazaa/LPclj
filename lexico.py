@@ -99,6 +99,7 @@ def t_error(t):
 lexer = lex.lex()
  
 
+'''
 archivo = open("codigo.txt", 'r',  encoding="utf-8")
 
 contenido = archivo.read()
@@ -114,3 +115,4 @@ while True:
     if not tok: 
         break      # No more input
     print(tok)
+'''
