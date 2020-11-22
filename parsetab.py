@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND COMA CONJ COUNT DDOT DEF DEFN DIVIDE DO FALSE FOR GET ID IF IGUAL LBRACE LCOR LPAREN MAYORQUE MENORQUE MINUS NOT NTH NUMBER NUMERAL OR PLUS POP PRINT PRINTF QUOTE RBRACE RCOR READ READLINE RPAREN STR STRING THEN TIMES TRUE WHILEexpression : PLUS term termexpression : expression MINUS termexpression : termoperadoresMat : PLUS\n                    | MINUS\n                    | TIMES\n                    | DIVIDEterm : term TIMES factorterm : term DIVIDE factorvalor : NUMBER\n             | IDterm : factorfactor : NUMBERfactor : LPAREN expression RPAREN'
+_lr_signature = 'AND COMA CONJ COUNT DDOT DEF DEFN DIVIDE DO FALSE FOR GET ID IF IGUAL LBRACE LCOR LPAREN MAYORQUE MENORQUE MINUS NOT NTH NUMBER NUMERAL OR PLUS POP PRINT PRINTF QUOTE RBRACE RCOR READ READLINE RPAREN STR STRING THEN TIMES TRUE WHILEexpression : PLUS factor factorexpression : MINUS factor factorexpression : termoperadoresMat : PLUS\n                    | MINUS\n                    | TIMES\n                    | DIVIDEterm : TIMES factor factorterm : DIVIDE factor factorvalor : NUMBER\n             | IDterm : factorfactor : NUMBERfactor : LPAREN expression RPAREN'
     
-_lr_action_items = {'PLUS':([0,6,],[2,2,]),'NUMBER':([0,2,4,5,6,7,8,9,10,14,15,16,],[5,5,-12,-13,5,5,5,5,5,-8,-9,-14,]),'LPAREN':([0,2,4,5,6,7,8,9,10,14,15,16,],[6,6,-12,-13,6,6,6,6,6,-8,-9,-14,]),'$end':([1,3,4,5,12,13,14,15,16,],[0,-3,-12,-13,-2,-1,-8,-9,-14,]),'MINUS':([1,3,4,5,11,12,13,14,15,16,],[7,-3,-12,-13,7,-2,-1,-8,-9,-14,]),'RPAREN':([3,4,5,11,12,13,14,15,16,],[-3,-12,-13,16,-2,-1,-8,-9,-14,]),'TIMES':([3,4,5,8,12,13,14,15,16,],[9,-12,-13,9,9,9,-8,-9,-14,]),'DIVIDE':([3,4,5,8,12,13,14,15,16,],[10,-12,-13,10,10,10,-8,-9,-14,]),}
+_lr_action_items = {'PLUS':([0,9,],[2,2,]),'MINUS':([0,9,],[4,4,]),'TIMES':([0,9,],[6,6,]),'DIVIDE':([0,9,],[7,7,]),'NUMBER':([0,2,4,6,7,8,9,10,11,12,13,19,],[8,8,8,8,8,-13,8,8,8,8,8,-14,]),'LPAREN':([0,2,4,6,7,8,9,10,11,12,13,19,],[9,9,9,9,9,-13,9,9,9,9,9,-14,]),'$end':([1,3,5,8,15,16,17,18,19,],[0,-12,-3,-13,-1,-2,-8,-9,-14,]),'RPAREN':([3,5,8,14,15,16,17,18,19,],[-12,-3,-13,19,-1,-2,-8,-9,-14,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,6,],[1,11,]),'term':([0,2,6,7,8,],[3,8,3,12,13,]),'factor':([0,2,6,7,8,9,10,],[4,4,4,4,4,14,15,]),}
+_lr_goto_items = {'expression':([0,9,],[1,14,]),'factor':([0,2,4,6,7,9,10,11,12,13,],[3,10,11,12,13,3,15,16,17,18,]),'term':([0,9,],[5,5,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,18 +27,18 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
-  ('expression -> PLUS term term','expression',3,'p_expression_suma','sintactico.py',9),
-  ('expression -> expression MINUS term','expression',3,'p_expression_resta','sintactico.py',15),
-  ('expression -> term','expression',1,'p_expression_term','sintactico.py',21),
-  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',25),
-  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',26),
-  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',27),
-  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',28),
-  ('term -> term TIMES factor','term',3,'p_term_producto','sintactico.py',31),
-  ('term -> term DIVIDE factor','term',3,'p_term_divi','sintactico.py',35),
-  ('valor -> NUMBER','valor',1,'p_valor','sintactico.py',39),
-  ('valor -> ID','valor',1,'p_valor','sintactico.py',40),
-  ('term -> factor','term',1,'p_term_factor','sintactico.py',43),
-  ('factor -> NUMBER','factor',1,'p_factor_num','sintactico.py',47),
-  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',51),
+  ('expression -> PLUS factor factor','expression',3,'p_expression_suma','sintactico.py',9),
+  ('expression -> MINUS factor factor','expression',3,'p_expression_resta','sintactico.py',12),
+  ('expression -> term','expression',1,'p_expression_term','sintactico.py',15),
+  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',18),
+  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',19),
+  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',20),
+  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',21),
+  ('term -> TIMES factor factor','term',3,'p_term_producto','sintactico.py',24),
+  ('term -> DIVIDE factor factor','term',3,'p_term_divi','sintactico.py',27),
+  ('valor -> NUMBER','valor',1,'p_valor','sintactico.py',30),
+  ('valor -> ID','valor',1,'p_valor','sintactico.py',31),
+  ('term -> factor','term',1,'p_term_factor','sintactico.py',34),
+  ('factor -> NUMBER','factor',1,'p_factor_num','sintactico.py',37),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',40),
 ]
