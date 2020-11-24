@@ -1,0 +1,5 @@
+( println "Repetir n veces una frase")
+(def palabra "Hola mundo")
+(def numero 1)
+(def limite 6)
+(while (< numero limite) (do (printf "Hola mundo ") (println numero) (def numero (+ numero 1))))
