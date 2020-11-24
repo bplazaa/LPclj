@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND COMA CONJ COUNT DDOT DEF DEFN DIVIDE DO FALSE FOR GET ID IF IGUAL LBRACE LCOR LPAREN MAYORQUE MENORQUE MINUS NOT NTH NUMBER NUMERAL OR PLUS POP PRINT PRINTF QUOTE RBRACE RCOR READ READLINE RPAREN STR STRING THEN TIMES TRUE WHILEexpression : PLUS factor factorexpression : MINUS factor factorexpression : termoperadoresMat : PLUS\n                    | MINUS\n                    | TIMES\n                    | DIVIDEterm : TIMES factor factorterm : DIVIDE factor factorvalor : NUMBER\n             | IDterm : factorfactor : NUMBERfactor : LPAREN expression RPAREN'
+_lr_signature = 'AND COMA COMMENT CONJ COUNT DDOT DEF DEFN DIVIDE DO FALSE FOR GET ID IF IGUAL LBRACE LCOR LPAREN MAYORQUE MENORQUE MINUS MOD NOT NTH NUMBER NUMERAL OR PLUS POP PRINT PRINTF PRINTLN QUOTE RBRACE RCOR READ READLINE RPAREN STR STRING THEN TIMES TRUE WHILEgeneral : LPAREN expression RPAREN\n            |    LPAREN comparacion RPAREN\n            |    LPAREN sentenciaif RPAREN\n            |    LPAREN asignacion RPAREN\n            |    LPAREN imprimir RPAREN\n            |    sentenciadoexpression : operadoresMat factor factor comparacion : operadoresComp factor factor operadoresMat : PLUS\n                    | MINUS\n                    | TIMES\n                    | DIVIDE\n                    | MODoperadoresComp : MAYORQUE\n                    | MENORQUE\n                    | IGUALoperadoresPrint : PRINT\n                    | PRINTLNfactor : NUMBER\n            |   IDfactor : LPAREN expression RPARENasignacion : DEF ID factor\n                |   DEF ID STRINGimprimir : operadoresPrint factor\n                |   operadoresPrint STRINGsentenciado : LPAREN DO general RPARENsentenciaif : IF LPAREN comparacion RPAREN general\n                |    IF LPAREN comparacion RPAREN sentenciado sentenciado'
     
-_lr_action_items = {'PLUS':([0,9,],[2,2,]),'MINUS':([0,9,],[4,4,]),'TIMES':([0,9,],[6,6,]),'DIVIDE':([0,9,],[7,7,]),'NUMBER':([0,2,4,6,7,8,9,10,11,12,13,19,],[8,8,8,8,8,-13,8,8,8,8,8,-14,]),'LPAREN':([0,2,4,6,7,8,9,10,11,12,13,19,],[9,9,9,9,9,-13,9,9,9,9,9,-14,]),'$end':([1,3,5,8,15,16,17,18,19,],[0,-12,-3,-13,-1,-2,-8,-9,-14,]),'RPAREN':([3,5,8,14,15,16,17,18,19,],[-12,-3,-13,19,-1,-2,-8,-9,-14,]),}
+_lr_action_items = {'LPAREN':([0,9,10,11,12,14,15,16,17,18,19,20,21,22,23,24,31,32,33,35,37,40,47,48,50,],[2,2,34,34,36,34,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,34,-19,-20,34,34,-26,-21,2,51,]),'$end':([1,3,25,26,27,28,29,40,],[0,-6,-1,-2,-3,-4,-5,-26,]),'DO':([2,51,],[9,9,]),'IF':([2,],[12,]),'DEF':([2,],[13,]),'PLUS':([2,34,],[15,15,]),'MINUS':([2,34,],[16,16,]),'TIMES':([2,34,],[17,17,]),'DIVIDE':([2,34,],[18,18,]),'MOD':([2,34,],[19,19,]),'MAYORQUE':([2,36,],[20,20,]),'MENORQUE':([2,36,],[21,21,]),'IGUAL':([2,36,],[22,22,]),'PRINT':([2,],[23,]),'PRINTLN':([2,],[24,]),'RPAREN':([3,4,5,6,7,8,25,26,27,28,29,30,32,33,38,39,40,41,42,43,44,45,46,47,49,50,52,],[-6,25,26,27,28,29,-1,-2,-3,-4,-5,40,-19,-20,-24,-25,-26,-7,47,-8,48,-22,-23,-21,-27,-6,-28,]),'NUMBER':([10,11,14,15,16,17,18,19,20,21,22,23,24,31,32,33,35,37,47,],[32,32,32,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,32,-19,-20,32,32,-21,]),'ID':([10,11,13,14,15,16,17,18,19,20,21,22,23,24,31,32,33,35,37,47,],[33,33,37,33,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,33,-19,-20,33,33,-21,]),'STRING':([14,23,24,37,],[39,-17,-18,46,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,9,],[1,14,]),'factor':([0,2,4,6,7,9,10,11,12,13,],[3,10,11,12,13,3,15,16,17,18,]),'term':([0,9,],[5,5,]),}
+_lr_goto_items = {'general':([0,9,48,],[1,30,49,]),'sentenciado':([0,9,48,50,],[3,3,50,52,]),'expression':([2,34,],[4,42,]),'comparacion':([2,36,],[5,44,]),'sentenciaif':([2,],[6,]),'asignacion':([2,],[7,]),'imprimir':([2,],[8,]),'operadoresMat':([2,34,],[10,10,]),'operadoresComp':([2,36,],[11,11,]),'operadoresPrint':([2,],[14,]),'factor':([10,11,14,31,35,37,],[31,35,38,41,43,45,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,19 +26,33 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> expression","S'",1,None,None,None),
-  ('expression -> PLUS factor factor','expression',3,'p_expression_suma','sintactico.py',9),
-  ('expression -> MINUS factor factor','expression',3,'p_expression_resta','sintactico.py',12),
-  ('expression -> term','expression',1,'p_expression_term','sintactico.py',15),
-  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',18),
-  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',19),
-  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',20),
-  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',21),
-  ('term -> TIMES factor factor','term',3,'p_term_producto','sintactico.py',24),
-  ('term -> DIVIDE factor factor','term',3,'p_term_divi','sintactico.py',27),
-  ('valor -> NUMBER','valor',1,'p_valor','sintactico.py',30),
-  ('valor -> ID','valor',1,'p_valor','sintactico.py',31),
-  ('term -> factor','term',1,'p_term_factor','sintactico.py',34),
-  ('factor -> NUMBER','factor',1,'p_factor_num','sintactico.py',37),
-  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',40),
+  ("S' -> general","S'",1,None,None,None),
+  ('general -> LPAREN expression RPAREN','general',3,'p_expression_general','sintactico.py',9),
+  ('general -> LPAREN comparacion RPAREN','general',3,'p_expression_general','sintactico.py',10),
+  ('general -> LPAREN sentenciaif RPAREN','general',3,'p_expression_general','sintactico.py',11),
+  ('general -> LPAREN asignacion RPAREN','general',3,'p_expression_general','sintactico.py',12),
+  ('general -> LPAREN imprimir RPAREN','general',3,'p_expression_general','sintactico.py',13),
+  ('general -> sentenciado','general',1,'p_expression_general','sintactico.py',14),
+  ('expression -> operadoresMat factor factor','expression',3,'p_expression_mat','sintactico.py',17),
+  ('comparacion -> operadoresComp factor factor','comparacion',3,'p_comparacion','sintactico.py',20),
+  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',23),
+  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',24),
+  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',25),
+  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',26),
+  ('operadoresMat -> MOD','operadoresMat',1,'p_operadoresMat','sintactico.py',27),
+  ('operadoresComp -> MAYORQUE','operadoresComp',1,'p_operadoresComp','sintactico.py',30),
+  ('operadoresComp -> MENORQUE','operadoresComp',1,'p_operadoresComp','sintactico.py',31),
+  ('operadoresComp -> IGUAL','operadoresComp',1,'p_operadoresComp','sintactico.py',32),
+  ('operadoresPrint -> PRINT','operadoresPrint',1,'p_operadoresPrint','sintactico.py',35),
+  ('operadoresPrint -> PRINTLN','operadoresPrint',1,'p_operadoresPrint','sintactico.py',36),
+  ('factor -> NUMBER','factor',1,'p_factor_num','sintactico.py',40),
+  ('factor -> ID','factor',1,'p_factor_num','sintactico.py',41),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',44),
+  ('asignacion -> DEF ID factor','asignacion',3,'p_asignacion','sintactico.py',47),
+  ('asignacion -> DEF ID STRING','asignacion',3,'p_asignacion','sintactico.py',48),
+  ('imprimir -> operadoresPrint factor','imprimir',2,'p_imprimir','sintactico.py',51),
+  ('imprimir -> operadoresPrint STRING','imprimir',2,'p_imprimir','sintactico.py',52),
+  ('sentenciado -> LPAREN DO general RPAREN','sentenciado',4,'p_sentenciado','sintactico.py',55),
+  ('sentenciaif -> IF LPAREN comparacion RPAREN general','sentenciaif',5,'p_sentenciaif','sintactico.py',58),
+  ('sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado','sentenciaif',6,'p_sentenciaif','sintactico.py',59),
 ]

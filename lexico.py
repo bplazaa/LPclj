@@ -25,8 +25,11 @@ reserved = {
     'defn': 'DEFN',
     'printf': 'PRINTF',
     'print': 'PRINT',
+    'println' : 'PRINTLN',
     'read-line': 'READLINE',
-    'read': 'READ'
+    'read': 'READ',
+    'mod' : 'MOD',
+    'comment' : 'COMMENT'
 }
 
 tokens = (
