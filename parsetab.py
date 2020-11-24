@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND COMA COMMENT CONJ COUNT DDOT DEF DEFN DIVIDE DO FALSE FOR GET ID IF IGUAL LBRACE LCOR LPAREN MAYORQUE MENORQUE MINUS MOD NOT NTH NUMBER NUMERAL OR PLUS POP PRINT PRINTF PRINTLN QUOTE RBRACE RCOR READ READLINE RPAREN STR STRING THEN TIMES TRUE WHILEgeneral : LPAREN expression RPAREN\n            |    LPAREN comparacion RPAREN\n            |    LPAREN sentenciaif RPAREN\n            |    LPAREN asignacion RPAREN\n            |    LPAREN imprimir RPAREN\n            |    sentenciadoexpression : operadoresMat factor factor comparacion : operadoresComp factor factor operadoresMat : PLUS\n                    | MINUS\n                    | TIMES\n                    | DIVIDE\n                    | MODoperadoresComp : MAYORQUE\n                    | MENORQUE\n                    | IGUALoperadoresPrint : PRINT\n                    | PRINTLNfactor : NUMBER\n            |   IDfactor : LPAREN expression RPARENasignacion : DEF ID factor\n                |   DEF ID STRINGimprimir : operadoresPrint factor\n                |   operadoresPrint STRINGsentenciado : LPAREN DO general RPARENsentenciaif : IF LPAREN comparacion RPAREN general\n                |    IF LPAREN comparacion RPAREN sentenciado sentenciado'
+_lr_signature = 'AND COMA COMMENT CONJ COUNT DDOT DEF DEFN DIVIDE DO FALSE FOR GET ID IF IGUAL LBRACE LCOR LPAREN MAYORQUE MENORQUE MINUS MOD NOT NTH NUMBER NUMERAL OR PLUS POP PRINT PRINTF PRINTLN QUOTE RBRACE RCOR READ READLINE RPAREN STR STRING THEN TIMES TRUE WHILEgeneral : LPAREN expression RPAREN\n            |    LPAREN comparacion RPAREN\n            |    LPAREN sentenciaif RPAREN\n            |    LPAREN asignacion RPAREN\n            |    LPAREN imprimir RPAREN\n            |    sentenciado\n            |   readexpression : operadoresMat factor factor comparacion : operadoresComp factor factor operadoresMat : PLUS\n                    | MINUS\n                    | TIMES\n                    | DIVIDE\n                    | MODoperadoresComp : MAYORQUE\n                    | MENORQUE\n                    | IGUAL\n                    | OR\n                    | AND\n                    | NOToperadoresPrint : PRINT\n                    | PRINTLNread : LPAREN READ RPARENfactor : NUMBER\n            |   ID\n            |   booleanosfactor : LPAREN expression RPARENasignacion : DEF ID factor\n                |   DEF ID STRING\n                |   DEF ID booleanos\n                |   DEF ID structbooleanos : TRUE\n                |   FALSEimprimir : operadoresPrint factor\n                |   operadoresPrint STRING\n                | PRINTF valorlsentenciado : LPAREN DO general RPARENsentenciaif : IF LPAREN comparacion RPAREN general\n                |    IF LPAREN comparacion RPAREN sentenciado sentenciado\n      struct : lista\n            |   vector\n            |   mapalista : QUOTE LPAREN valorl RPARENvector : LCOR valorl RCORmapa : LBRACE repetirclave RBRACEclavevalor : ID DDOT valor repetirclave : clavevalor\n                    | clavevalor COMA repetirclavevalor : NUMBER\n                    |   ID\n                    |   STRING\n                    |   booleanosvalorl : NUMBER\n                |   ID\n                |   STRING\n                |   booleanos\n                | valorl valorl'
     
-_lr_action_items = {'LPAREN':([0,9,10,11,12,14,15,16,17,18,19,20,21,22,23,24,31,32,33,35,37,40,47,48,50,],[2,2,34,34,36,34,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,34,-19,-20,34,34,-26,-21,2,51,]),'$end':([1,3,25,26,27,28,29,40,],[0,-6,-1,-2,-3,-4,-5,-26,]),'DO':([2,51,],[9,9,]),'IF':([2,],[12,]),'DEF':([2,],[13,]),'PLUS':([2,34,],[15,15,]),'MINUS':([2,34,],[16,16,]),'TIMES':([2,34,],[17,17,]),'DIVIDE':([2,34,],[18,18,]),'MOD':([2,34,],[19,19,]),'MAYORQUE':([2,36,],[20,20,]),'MENORQUE':([2,36,],[21,21,]),'IGUAL':([2,36,],[22,22,]),'PRINT':([2,],[23,]),'PRINTLN':([2,],[24,]),'RPAREN':([3,4,5,6,7,8,25,26,27,28,29,30,32,33,38,39,40,41,42,43,44,45,46,47,49,50,52,],[-6,25,26,27,28,29,-1,-2,-3,-4,-5,40,-19,-20,-24,-25,-26,-7,47,-8,48,-22,-23,-21,-27,-6,-28,]),'NUMBER':([10,11,14,15,16,17,18,19,20,21,22,23,24,31,32,33,35,37,47,],[32,32,32,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,32,-19,-20,32,32,-21,]),'ID':([10,11,13,14,15,16,17,18,19,20,21,22,23,24,31,32,33,35,37,47,],[33,33,37,33,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,33,-19,-20,33,33,-21,]),'STRING':([14,23,24,37,],[39,-17,-18,46,]),}
+_lr_action_items = {'LPAREN':([0,10,12,13,14,16,18,19,20,21,22,23,24,25,26,27,28,29,30,38,39,40,41,43,44,45,47,55,67,71,72,79,],[2,2,42,42,46,42,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,42,-24,-25,-26,-32,-33,42,42,-37,73,-27,2,85,]),'$end':([1,3,4,31,32,33,34,35,37,55,],[0,-6,-7,-1,-2,-3,-4,-5,-23,-37,]),'DO':([2,85,],[10,10,]),'READ':([2,],[11,]),'IF':([2,],[14,]),'DEF':([2,],[15,]),'PRINTF':([2,],[17,]),'PLUS':([2,42,],[18,18,]),'MINUS':([2,42,],[19,19,]),'TIMES':([2,42,],[20,20,]),'DIVIDE':([2,42,],[21,21,]),'MOD':([2,42,],[22,22,]),'MAYORQUE':([2,46,],[23,23,]),'MENORQUE':([2,46,],[24,24,]),'IGUAL':([2,46,],[25,25,]),'OR':([2,46,],[26,26,]),'AND':([2,46,],[27,27,]),'NOT':([2,46,],[28,28,]),'PRINT':([2,],[29,]),'PRINTLN':([2,],[30,]),'RPAREN':([3,4,5,6,7,8,9,11,31,32,33,34,35,36,37,39,40,41,43,44,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,70,71,78,79,80,81,82,86,87,],[-6,-7,31,32,33,34,35,37,-1,-2,-3,-4,-5,55,-23,-24,-25,-26,-32,-33,-34,-35,-36,-53,-54,-55,-56,-37,-8,71,-9,72,-28,-29,-26,-31,-40,-41,-42,-57,-27,-38,-6,87,-44,-45,-39,-43,]),'NUMBER':([12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,38,39,40,41,43,44,45,47,50,51,52,53,54,68,70,71,73,74,80,84,],[39,39,39,51,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,39,-24,-25,-26,-32,-33,39,39,51,-53,-54,-55,-56,51,51,-27,51,51,51,91,]),'ID':([12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,38,39,40,41,43,44,45,47,50,51,52,53,54,68,69,70,71,73,74,80,83,84,],[40,40,47,40,52,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,40,-24,-25,-26,-32,-33,40,40,52,-53,-54,-55,-56,52,77,52,-27,52,52,52,77,89,]),'TRUE':([12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,38,39,40,41,43,44,45,47,50,51,52,53,54,68,70,71,73,74,80,84,],[43,43,43,43,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,43,-24,-25,-26,-32,-33,43,43,43,-53,-54,-55,-56,43,43,-27,43,43,43,43,]),'FALSE':([12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,38,39,40,41,43,44,45,47,50,51,52,53,54,68,70,71,73,74,80,84,],[44,44,44,44,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,44,-24,-25,-26,-32,-33,44,44,44,-53,-54,-55,-56,44,44,-27,44,44,44,44,]),'STRING':([16,17,29,30,43,44,47,50,51,52,53,54,68,70,73,74,80,84,],[49,53,-21,-22,-32,-33,61,53,-53,-54,-55,-56,53,53,53,53,53,92,]),'RCOR':([43,44,51,52,53,54,70,74,],[-32,-33,-53,-54,-55,-56,-57,81,]),'COMA':([43,44,76,89,90,91,92,93,],[-32,-33,83,-50,-46,-49,-51,-52,]),'RBRACE':([43,44,75,76,88,89,90,91,92,93,],[-32,-33,82,-47,-48,-50,-46,-49,-51,-52,]),'QUOTE':([47,],[67,]),'LCOR':([47,],[68,]),'LBRACE':([47,],[69,]),'DDOT':([77,],[84,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'general':([0,9,48,],[1,30,49,]),'sentenciado':([0,9,48,50,],[3,3,50,52,]),'expression':([2,34,],[4,42,]),'comparacion':([2,36,],[5,44,]),'sentenciaif':([2,],[6,]),'asignacion':([2,],[7,]),'imprimir':([2,],[8,]),'operadoresMat':([2,34,],[10,10,]),'operadoresComp':([2,36,],[11,11,]),'operadoresPrint':([2,],[14,]),'factor':([10,11,14,31,35,37,],[31,35,38,41,43,45,]),}
+_lr_goto_items = {'general':([0,10,72,],[1,36,78,]),'sentenciado':([0,10,72,79,],[3,3,79,86,]),'read':([0,10,72,],[4,4,4,]),'expression':([2,42,],[5,57,]),'comparacion':([2,46,],[6,59,]),'sentenciaif':([2,],[7,]),'asignacion':([2,],[8,]),'imprimir':([2,],[9,]),'operadoresMat':([2,42,],[12,12,]),'operadoresComp':([2,46,],[13,13,]),'operadoresPrint':([2,],[16,]),'factor':([12,13,16,38,45,47,],[38,45,48,56,58,60,]),'booleanos':([12,13,16,17,38,45,47,50,68,70,73,74,80,84,],[41,41,41,54,41,41,62,54,54,54,54,54,54,93,]),'valorl':([17,50,68,70,73,74,80,],[50,70,74,70,80,70,70,]),'struct':([47,],[63,]),'lista':([47,],[64,]),'vector':([47,],[65,]),'mapa':([47,],[66,]),'repetirclave':([69,83,],[75,88,]),'clavevalor':([69,83,],[76,76,]),'valor':([84,],[90,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -33,26 +33,55 @@ _lr_productions = [
   ('general -> LPAREN asignacion RPAREN','general',3,'p_expression_general','sintactico.py',12),
   ('general -> LPAREN imprimir RPAREN','general',3,'p_expression_general','sintactico.py',13),
   ('general -> sentenciado','general',1,'p_expression_general','sintactico.py',14),
-  ('expression -> operadoresMat factor factor','expression',3,'p_expression_mat','sintactico.py',17),
-  ('comparacion -> operadoresComp factor factor','comparacion',3,'p_comparacion','sintactico.py',20),
-  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',23),
-  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',24),
-  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',25),
-  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',26),
-  ('operadoresMat -> MOD','operadoresMat',1,'p_operadoresMat','sintactico.py',27),
-  ('operadoresComp -> MAYORQUE','operadoresComp',1,'p_operadoresComp','sintactico.py',30),
-  ('operadoresComp -> MENORQUE','operadoresComp',1,'p_operadoresComp','sintactico.py',31),
-  ('operadoresComp -> IGUAL','operadoresComp',1,'p_operadoresComp','sintactico.py',32),
-  ('operadoresPrint -> PRINT','operadoresPrint',1,'p_operadoresPrint','sintactico.py',35),
-  ('operadoresPrint -> PRINTLN','operadoresPrint',1,'p_operadoresPrint','sintactico.py',36),
-  ('factor -> NUMBER','factor',1,'p_factor_num','sintactico.py',40),
-  ('factor -> ID','factor',1,'p_factor_num','sintactico.py',41),
-  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',44),
-  ('asignacion -> DEF ID factor','asignacion',3,'p_asignacion','sintactico.py',47),
-  ('asignacion -> DEF ID STRING','asignacion',3,'p_asignacion','sintactico.py',48),
-  ('imprimir -> operadoresPrint factor','imprimir',2,'p_imprimir','sintactico.py',51),
-  ('imprimir -> operadoresPrint STRING','imprimir',2,'p_imprimir','sintactico.py',52),
-  ('sentenciado -> LPAREN DO general RPAREN','sentenciado',4,'p_sentenciado','sintactico.py',55),
-  ('sentenciaif -> IF LPAREN comparacion RPAREN general','sentenciaif',5,'p_sentenciaif','sintactico.py',58),
-  ('sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado','sentenciaif',6,'p_sentenciaif','sintactico.py',59),
+  ('general -> read','general',1,'p_expression_general','sintactico.py',15),
+  ('expression -> operadoresMat factor factor','expression',3,'p_expression_mat','sintactico.py',18),
+  ('comparacion -> operadoresComp factor factor','comparacion',3,'p_comparacion','sintactico.py',21),
+  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',24),
+  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',25),
+  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',26),
+  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',27),
+  ('operadoresMat -> MOD','operadoresMat',1,'p_operadoresMat','sintactico.py',28),
+  ('operadoresComp -> MAYORQUE','operadoresComp',1,'p_operadoresComp','sintactico.py',31),
+  ('operadoresComp -> MENORQUE','operadoresComp',1,'p_operadoresComp','sintactico.py',32),
+  ('operadoresComp -> IGUAL','operadoresComp',1,'p_operadoresComp','sintactico.py',33),
+  ('operadoresComp -> OR','operadoresComp',1,'p_operadoresComp','sintactico.py',34),
+  ('operadoresComp -> AND','operadoresComp',1,'p_operadoresComp','sintactico.py',35),
+  ('operadoresComp -> NOT','operadoresComp',1,'p_operadoresComp','sintactico.py',36),
+  ('operadoresPrint -> PRINT','operadoresPrint',1,'p_operadoresPrint','sintactico.py',39),
+  ('operadoresPrint -> PRINTLN','operadoresPrint',1,'p_operadoresPrint','sintactico.py',40),
+  ('read -> LPAREN READ RPAREN','read',3,'p_read','sintactico.py',43),
+  ('factor -> NUMBER','factor',1,'p_factor_num','sintactico.py',46),
+  ('factor -> ID','factor',1,'p_factor_num','sintactico.py',47),
+  ('factor -> booleanos','factor',1,'p_factor_num','sintactico.py',48),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',51),
+  ('asignacion -> DEF ID factor','asignacion',3,'p_asignacion','sintactico.py',54),
+  ('asignacion -> DEF ID STRING','asignacion',3,'p_asignacion','sintactico.py',55),
+  ('asignacion -> DEF ID booleanos','asignacion',3,'p_asignacion','sintactico.py',56),
+  ('asignacion -> DEF ID struct','asignacion',3,'p_asignacion','sintactico.py',57),
+  ('booleanos -> TRUE','booleanos',1,'p_booleanos','sintactico.py',61),
+  ('booleanos -> FALSE','booleanos',1,'p_booleanos','sintactico.py',62),
+  ('imprimir -> operadoresPrint factor','imprimir',2,'p_imprimir','sintactico.py',65),
+  ('imprimir -> operadoresPrint STRING','imprimir',2,'p_imprimir','sintactico.py',66),
+  ('imprimir -> PRINTF valorl','imprimir',2,'p_imprimir','sintactico.py',67),
+  ('sentenciado -> LPAREN DO general RPAREN','sentenciado',4,'p_sentenciado','sintactico.py',70),
+  ('sentenciaif -> IF LPAREN comparacion RPAREN general','sentenciaif',5,'p_sentenciaif','sintactico.py',73),
+  ('sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado','sentenciaif',6,'p_sentenciaif','sintactico.py',74),
+  ('struct -> lista','struct',1,'p_struct','sintactico.py',78),
+  ('struct -> vector','struct',1,'p_struct','sintactico.py',79),
+  ('struct -> mapa','struct',1,'p_struct','sintactico.py',80),
+  ('lista -> QUOTE LPAREN valorl RPAREN','lista',4,'p_lista','sintactico.py',83),
+  ('vector -> LCOR valorl RCOR','vector',3,'p_vector','sintactico.py',86),
+  ('mapa -> LBRACE repetirclave RBRACE','mapa',3,'p_mapa','sintactico.py',89),
+  ('clavevalor -> ID DDOT valor','clavevalor',3,'p_clavevalor','sintactico.py',92),
+  ('repetirclave -> clavevalor','repetirclave',1,'p_repetirclave','sintactico.py',94),
+  ('repetirclave -> clavevalor COMA repetirclave','repetirclave',3,'p_repetirclave','sintactico.py',95),
+  ('valor -> NUMBER','valor',1,'p_valor','sintactico.py',97),
+  ('valor -> ID','valor',1,'p_valor','sintactico.py',98),
+  ('valor -> STRING','valor',1,'p_valor','sintactico.py',99),
+  ('valor -> booleanos','valor',1,'p_valor','sintactico.py',100),
+  ('valorl -> NUMBER','valorl',1,'p_valorl','sintactico.py',103),
+  ('valorl -> ID','valorl',1,'p_valorl','sintactico.py',104),
+  ('valorl -> STRING','valorl',1,'p_valorl','sintactico.py',105),
+  ('valorl -> booleanos','valorl',1,'p_valorl','sintactico.py',106),
+  ('valorl -> valorl valorl','valorl',2,'p_valorl','sintactico.py',107),
 ]

@@ -2,32 +2,18 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    AND
-    COMA
     COMMENT
     CONJ
     COUNT
-    DDOT
     DEFN
-    FALSE
     FOR
     GET
-    LBRACE
-    LCOR
-    NOT
     NTH
     NUMERAL
-    OR
     POP
-    PRINTF
-    QUOTE
-    RBRACE
-    RCOR
-    READ
     READLINE
     STR
     THEN
-    TRUE
     WHILE
 
 Grammar
@@ -39,91 +25,130 @@ Rule 3     general -> LPAREN sentenciaif RPAREN
 Rule 4     general -> LPAREN asignacion RPAREN
 Rule 5     general -> LPAREN imprimir RPAREN
 Rule 6     general -> sentenciado
-Rule 7     expression -> operadoresMat factor factor
-Rule 8     comparacion -> operadoresComp factor factor
-Rule 9     operadoresMat -> PLUS
-Rule 10    operadoresMat -> MINUS
-Rule 11    operadoresMat -> TIMES
-Rule 12    operadoresMat -> DIVIDE
-Rule 13    operadoresMat -> MOD
-Rule 14    operadoresComp -> MAYORQUE
-Rule 15    operadoresComp -> MENORQUE
-Rule 16    operadoresComp -> IGUAL
-Rule 17    operadoresPrint -> PRINT
-Rule 18    operadoresPrint -> PRINTLN
-Rule 19    factor -> NUMBER
-Rule 20    factor -> ID
-Rule 21    factor -> LPAREN expression RPAREN
-Rule 22    asignacion -> DEF ID factor
-Rule 23    asignacion -> DEF ID STRING
-Rule 24    imprimir -> operadoresPrint factor
-Rule 25    imprimir -> operadoresPrint STRING
-Rule 26    sentenciado -> LPAREN DO general RPAREN
-Rule 27    sentenciaif -> IF LPAREN comparacion RPAREN general
-Rule 28    sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado
+Rule 7     general -> read
+Rule 8     expression -> operadoresMat factor factor
+Rule 9     comparacion -> operadoresComp factor factor
+Rule 10    operadoresMat -> PLUS
+Rule 11    operadoresMat -> MINUS
+Rule 12    operadoresMat -> TIMES
+Rule 13    operadoresMat -> DIVIDE
+Rule 14    operadoresMat -> MOD
+Rule 15    operadoresComp -> MAYORQUE
+Rule 16    operadoresComp -> MENORQUE
+Rule 17    operadoresComp -> IGUAL
+Rule 18    operadoresComp -> OR
+Rule 19    operadoresComp -> AND
+Rule 20    operadoresComp -> NOT
+Rule 21    operadoresPrint -> PRINT
+Rule 22    operadoresPrint -> PRINTLN
+Rule 23    read -> LPAREN READ RPAREN
+Rule 24    factor -> NUMBER
+Rule 25    factor -> ID
+Rule 26    factor -> booleanos
+Rule 27    factor -> LPAREN expression RPAREN
+Rule 28    asignacion -> DEF ID factor
+Rule 29    asignacion -> DEF ID STRING
+Rule 30    asignacion -> DEF ID booleanos
+Rule 31    asignacion -> DEF ID struct
+Rule 32    booleanos -> TRUE
+Rule 33    booleanos -> FALSE
+Rule 34    imprimir -> operadoresPrint factor
+Rule 35    imprimir -> operadoresPrint STRING
+Rule 36    imprimir -> PRINTF valorl
+Rule 37    sentenciado -> LPAREN DO general RPAREN
+Rule 38    sentenciaif -> IF LPAREN comparacion RPAREN general
+Rule 39    sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado
+Rule 40    struct -> lista
+Rule 41    struct -> vector
+Rule 42    struct -> mapa
+Rule 43    lista -> QUOTE LPAREN valorl RPAREN
+Rule 44    vector -> LCOR valorl RCOR
+Rule 45    mapa -> LBRACE repetirclave RBRACE
+Rule 46    clavevalor -> ID DDOT valor
+Rule 47    repetirclave -> clavevalor
+Rule 48    repetirclave -> clavevalor COMA repetirclave
+Rule 49    valor -> NUMBER
+Rule 50    valor -> ID
+Rule 51    valor -> STRING
+Rule 52    valor -> booleanos
+Rule 53    valorl -> NUMBER
+Rule 54    valorl -> ID
+Rule 55    valorl -> STRING
+Rule 56    valorl -> booleanos
+Rule 57    valorl -> valorl valorl
 
 Terminals, with rules where they appear
 
-AND                  : 
-COMA                 : 
+AND                  : 19
+COMA                 : 48
 COMMENT              : 
 CONJ                 : 
 COUNT                : 
-DDOT                 : 
-DEF                  : 22 23
+DDOT                 : 46
+DEF                  : 28 29 30 31
 DEFN                 : 
-DIVIDE               : 12
-DO                   : 26
-FALSE                : 
+DIVIDE               : 13
+DO                   : 37
+FALSE                : 33
 FOR                  : 
 GET                  : 
-ID                   : 20 22 23
-IF                   : 27 28
-IGUAL                : 16
-LBRACE               : 
-LCOR                 : 
-LPAREN               : 1 2 3 4 5 21 26 27 28
-MAYORQUE             : 14
-MENORQUE             : 15
-MINUS                : 10
-MOD                  : 13
-NOT                  : 
+ID                   : 25 28 29 30 31 46 50 54
+IF                   : 38 39
+IGUAL                : 17
+LBRACE               : 45
+LCOR                 : 44
+LPAREN               : 1 2 3 4 5 23 27 37 38 39 43
+MAYORQUE             : 15
+MENORQUE             : 16
+MINUS                : 11
+MOD                  : 14
+NOT                  : 20
 NTH                  : 
-NUMBER               : 19
+NUMBER               : 24 49 53
 NUMERAL              : 
-OR                   : 
-PLUS                 : 9
+OR                   : 18
+PLUS                 : 10
 POP                  : 
-PRINT                : 17
-PRINTF               : 
-PRINTLN              : 18
-QUOTE                : 
-RBRACE               : 
-RCOR                 : 
-READ                 : 
+PRINT                : 21
+PRINTF               : 36
+PRINTLN              : 22
+QUOTE                : 43
+RBRACE               : 45
+RCOR                 : 44
+READ                 : 23
 READLINE             : 
-RPAREN               : 1 2 3 4 5 21 26 27 28
+RPAREN               : 1 2 3 4 5 23 27 37 38 39 43
 STR                  : 
-STRING               : 23 25
+STRING               : 29 35 51 55
 THEN                 : 
-TIMES                : 11
-TRUE                 : 
+TIMES                : 12
+TRUE                 : 32
 WHILE                : 
 error                : 
 
 Nonterminals, with rules where they appear
 
 asignacion           : 4
-comparacion          : 2 27 28
-expression           : 1 21
-factor               : 7 7 8 8 22 24
-general              : 26 27 0
+booleanos            : 26 30 52 56
+clavevalor           : 47 48
+comparacion          : 2 38 39
+expression           : 1 27
+factor               : 8 8 9 9 28 34
+general              : 37 38 0
 imprimir             : 5
-operadoresComp       : 8
-operadoresMat        : 7
-operadoresPrint      : 24 25
-sentenciado          : 6 28 28
+lista                : 40
+mapa                 : 42
+operadoresComp       : 9
+operadoresMat        : 8
+operadoresPrint      : 34 35
+read                 : 7
+repetirclave         : 45 48
+sentenciado          : 6 39 39
 sentenciaif          : 3
+struct               : 31
+valor                : 46
+valorl               : 36 43 44 57 57
+vector               : 41
 
 Parsing method: LALR
 
@@ -136,12 +161,15 @@ state 0
     (4) general -> . LPAREN asignacion RPAREN
     (5) general -> . LPAREN imprimir RPAREN
     (6) general -> . sentenciado
-    (26) sentenciado -> . LPAREN DO general RPAREN
+    (7) general -> . read
+    (37) sentenciado -> . LPAREN DO general RPAREN
+    (23) read -> . LPAREN READ RPAREN
 
     LPAREN          shift and go to state 2
 
     general                        shift and go to state 1
     sentenciado                    shift and go to state 3
+    read                           shift and go to state 4
 
 state 1
 
@@ -156,48 +184,60 @@ state 2
     (3) general -> LPAREN . sentenciaif RPAREN
     (4) general -> LPAREN . asignacion RPAREN
     (5) general -> LPAREN . imprimir RPAREN
-    (26) sentenciado -> LPAREN . DO general RPAREN
-    (7) expression -> . operadoresMat factor factor
-    (8) comparacion -> . operadoresComp factor factor
-    (27) sentenciaif -> . IF LPAREN comparacion RPAREN general
-    (28) sentenciaif -> . IF LPAREN comparacion RPAREN sentenciado sentenciado
-    (22) asignacion -> . DEF ID factor
-    (23) asignacion -> . DEF ID STRING
-    (24) imprimir -> . operadoresPrint factor
-    (25) imprimir -> . operadoresPrint STRING
-    (9) operadoresMat -> . PLUS
-    (10) operadoresMat -> . MINUS
-    (11) operadoresMat -> . TIMES
-    (12) operadoresMat -> . DIVIDE
-    (13) operadoresMat -> . MOD
-    (14) operadoresComp -> . MAYORQUE
-    (15) operadoresComp -> . MENORQUE
-    (16) operadoresComp -> . IGUAL
-    (17) operadoresPrint -> . PRINT
-    (18) operadoresPrint -> . PRINTLN
+    (37) sentenciado -> LPAREN . DO general RPAREN
+    (23) read -> LPAREN . READ RPAREN
+    (8) expression -> . operadoresMat factor factor
+    (9) comparacion -> . operadoresComp factor factor
+    (38) sentenciaif -> . IF LPAREN comparacion RPAREN general
+    (39) sentenciaif -> . IF LPAREN comparacion RPAREN sentenciado sentenciado
+    (28) asignacion -> . DEF ID factor
+    (29) asignacion -> . DEF ID STRING
+    (30) asignacion -> . DEF ID booleanos
+    (31) asignacion -> . DEF ID struct
+    (34) imprimir -> . operadoresPrint factor
+    (35) imprimir -> . operadoresPrint STRING
+    (36) imprimir -> . PRINTF valorl
+    (10) operadoresMat -> . PLUS
+    (11) operadoresMat -> . MINUS
+    (12) operadoresMat -> . TIMES
+    (13) operadoresMat -> . DIVIDE
+    (14) operadoresMat -> . MOD
+    (15) operadoresComp -> . MAYORQUE
+    (16) operadoresComp -> . MENORQUE
+    (17) operadoresComp -> . IGUAL
+    (18) operadoresComp -> . OR
+    (19) operadoresComp -> . AND
+    (20) operadoresComp -> . NOT
+    (21) operadoresPrint -> . PRINT
+    (22) operadoresPrint -> . PRINTLN
 
-    DO              shift and go to state 9
-    IF              shift and go to state 12
-    DEF             shift and go to state 13
-    PLUS            shift and go to state 15
-    MINUS           shift and go to state 16
-    TIMES           shift and go to state 17
-    DIVIDE          shift and go to state 18
-    MOD             shift and go to state 19
-    MAYORQUE        shift and go to state 20
-    MENORQUE        shift and go to state 21
-    IGUAL           shift and go to state 22
-    PRINT           shift and go to state 23
-    PRINTLN         shift and go to state 24
+    DO              shift and go to state 10
+    READ            shift and go to state 11
+    IF              shift and go to state 14
+    DEF             shift and go to state 15
+    PRINTF          shift and go to state 17
+    PLUS            shift and go to state 18
+    MINUS           shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    MOD             shift and go to state 22
+    MAYORQUE        shift and go to state 23
+    MENORQUE        shift and go to state 24
+    IGUAL           shift and go to state 25
+    OR              shift and go to state 26
+    AND             shift and go to state 27
+    NOT             shift and go to state 28
+    PRINT           shift and go to state 29
+    PRINTLN         shift and go to state 30
 
-    expression                     shift and go to state 4
-    comparacion                    shift and go to state 5
-    sentenciaif                    shift and go to state 6
-    asignacion                     shift and go to state 7
-    imprimir                       shift and go to state 8
-    operadoresMat                  shift and go to state 10
-    operadoresComp                 shift and go to state 11
-    operadoresPrint                shift and go to state 14
+    expression                     shift and go to state 5
+    comparacion                    shift and go to state 6
+    sentenciaif                    shift and go to state 7
+    asignacion                     shift and go to state 8
+    imprimir                       shift and go to state 9
+    operadoresMat                  shift and go to state 12
+    operadoresComp                 shift and go to state 13
+    operadoresPrint                shift and go to state 16
 
 state 3
 
@@ -209,205 +249,316 @@ state 3
 
 state 4
 
-    (1) general -> LPAREN expression . RPAREN
+    (7) general -> read .
 
-    RPAREN          shift and go to state 25
+    $end            reduce using rule 7 (general -> read .)
+    RPAREN          reduce using rule 7 (general -> read .)
 
 
 state 5
 
-    (2) general -> LPAREN comparacion . RPAREN
+    (1) general -> LPAREN expression . RPAREN
 
-    RPAREN          shift and go to state 26
+    RPAREN          shift and go to state 31
 
 
 state 6
 
-    (3) general -> LPAREN sentenciaif . RPAREN
+    (2) general -> LPAREN comparacion . RPAREN
 
-    RPAREN          shift and go to state 27
+    RPAREN          shift and go to state 32
 
 
 state 7
 
-    (4) general -> LPAREN asignacion . RPAREN
+    (3) general -> LPAREN sentenciaif . RPAREN
 
-    RPAREN          shift and go to state 28
+    RPAREN          shift and go to state 33
 
 
 state 8
 
-    (5) general -> LPAREN imprimir . RPAREN
+    (4) general -> LPAREN asignacion . RPAREN
 
-    RPAREN          shift and go to state 29
+    RPAREN          shift and go to state 34
 
 
 state 9
 
-    (26) sentenciado -> LPAREN DO . general RPAREN
+    (5) general -> LPAREN imprimir . RPAREN
+
+    RPAREN          shift and go to state 35
+
+
+state 10
+
+    (37) sentenciado -> LPAREN DO . general RPAREN
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN asignacion RPAREN
     (5) general -> . LPAREN imprimir RPAREN
     (6) general -> . sentenciado
-    (26) sentenciado -> . LPAREN DO general RPAREN
+    (7) general -> . read
+    (37) sentenciado -> . LPAREN DO general RPAREN
+    (23) read -> . LPAREN READ RPAREN
 
     LPAREN          shift and go to state 2
 
-    general                        shift and go to state 30
+    general                        shift and go to state 36
     sentenciado                    shift and go to state 3
-
-state 10
-
-    (7) expression -> operadoresMat . factor factor
-    (19) factor -> . NUMBER
-    (20) factor -> . ID
-    (21) factor -> . LPAREN expression RPAREN
-
-    NUMBER          shift and go to state 32
-    ID              shift and go to state 33
-    LPAREN          shift and go to state 34
-
-    factor                         shift and go to state 31
+    read                           shift and go to state 4
 
 state 11
 
-    (8) comparacion -> operadoresComp . factor factor
-    (19) factor -> . NUMBER
-    (20) factor -> . ID
-    (21) factor -> . LPAREN expression RPAREN
+    (23) read -> LPAREN READ . RPAREN
 
-    NUMBER          shift and go to state 32
-    ID              shift and go to state 33
-    LPAREN          shift and go to state 34
+    RPAREN          shift and go to state 37
 
-    factor                         shift and go to state 35
 
 state 12
 
-    (27) sentenciaif -> IF . LPAREN comparacion RPAREN general
-    (28) sentenciaif -> IF . LPAREN comparacion RPAREN sentenciado sentenciado
+    (8) expression -> operadoresMat . factor factor
+    (24) factor -> . NUMBER
+    (25) factor -> . ID
+    (26) factor -> . booleanos
+    (27) factor -> . LPAREN expression RPAREN
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    LPAREN          shift and go to state 36
+    NUMBER          shift and go to state 39
+    ID              shift and go to state 40
+    LPAREN          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
 
+    factor                         shift and go to state 38
+    booleanos                      shift and go to state 41
 
 state 13
 
-    (22) asignacion -> DEF . ID factor
-    (23) asignacion -> DEF . ID STRING
+    (9) comparacion -> operadoresComp . factor factor
+    (24) factor -> . NUMBER
+    (25) factor -> . ID
+    (26) factor -> . booleanos
+    (27) factor -> . LPAREN expression RPAREN
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    ID              shift and go to state 37
+    NUMBER          shift and go to state 39
+    ID              shift and go to state 40
+    LPAREN          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
 
+    factor                         shift and go to state 45
+    booleanos                      shift and go to state 41
 
 state 14
 
-    (24) imprimir -> operadoresPrint . factor
-    (25) imprimir -> operadoresPrint . STRING
-    (19) factor -> . NUMBER
-    (20) factor -> . ID
-    (21) factor -> . LPAREN expression RPAREN
+    (38) sentenciaif -> IF . LPAREN comparacion RPAREN general
+    (39) sentenciaif -> IF . LPAREN comparacion RPAREN sentenciado sentenciado
 
-    STRING          shift and go to state 39
-    NUMBER          shift and go to state 32
-    ID              shift and go to state 33
-    LPAREN          shift and go to state 34
+    LPAREN          shift and go to state 46
 
-    factor                         shift and go to state 38
 
 state 15
 
-    (9) operadoresMat -> PLUS .
+    (28) asignacion -> DEF . ID factor
+    (29) asignacion -> DEF . ID STRING
+    (30) asignacion -> DEF . ID booleanos
+    (31) asignacion -> DEF . ID struct
 
-    NUMBER          reduce using rule 9 (operadoresMat -> PLUS .)
-    ID              reduce using rule 9 (operadoresMat -> PLUS .)
-    LPAREN          reduce using rule 9 (operadoresMat -> PLUS .)
+    ID              shift and go to state 47
 
 
 state 16
 
-    (10) operadoresMat -> MINUS .
+    (34) imprimir -> operadoresPrint . factor
+    (35) imprimir -> operadoresPrint . STRING
+    (24) factor -> . NUMBER
+    (25) factor -> . ID
+    (26) factor -> . booleanos
+    (27) factor -> . LPAREN expression RPAREN
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    NUMBER          reduce using rule 10 (operadoresMat -> MINUS .)
-    ID              reduce using rule 10 (operadoresMat -> MINUS .)
-    LPAREN          reduce using rule 10 (operadoresMat -> MINUS .)
+    STRING          shift and go to state 49
+    NUMBER          shift and go to state 39
+    ID              shift and go to state 40
+    LPAREN          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
 
+    factor                         shift and go to state 48
+    booleanos                      shift and go to state 41
 
 state 17
 
-    (11) operadoresMat -> TIMES .
+    (36) imprimir -> PRINTF . valorl
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    NUMBER          reduce using rule 11 (operadoresMat -> TIMES .)
-    ID              reduce using rule 11 (operadoresMat -> TIMES .)
-    LPAREN          reduce using rule 11 (operadoresMat -> TIMES .)
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
 
+    valorl                         shift and go to state 50
+    booleanos                      shift and go to state 54
 
 state 18
 
-    (12) operadoresMat -> DIVIDE .
+    (10) operadoresMat -> PLUS .
 
-    NUMBER          reduce using rule 12 (operadoresMat -> DIVIDE .)
-    ID              reduce using rule 12 (operadoresMat -> DIVIDE .)
-    LPAREN          reduce using rule 12 (operadoresMat -> DIVIDE .)
+    NUMBER          reduce using rule 10 (operadoresMat -> PLUS .)
+    ID              reduce using rule 10 (operadoresMat -> PLUS .)
+    LPAREN          reduce using rule 10 (operadoresMat -> PLUS .)
+    TRUE            reduce using rule 10 (operadoresMat -> PLUS .)
+    FALSE           reduce using rule 10 (operadoresMat -> PLUS .)
 
 
 state 19
 
-    (13) operadoresMat -> MOD .
+    (11) operadoresMat -> MINUS .
 
-    NUMBER          reduce using rule 13 (operadoresMat -> MOD .)
-    ID              reduce using rule 13 (operadoresMat -> MOD .)
-    LPAREN          reduce using rule 13 (operadoresMat -> MOD .)
+    NUMBER          reduce using rule 11 (operadoresMat -> MINUS .)
+    ID              reduce using rule 11 (operadoresMat -> MINUS .)
+    LPAREN          reduce using rule 11 (operadoresMat -> MINUS .)
+    TRUE            reduce using rule 11 (operadoresMat -> MINUS .)
+    FALSE           reduce using rule 11 (operadoresMat -> MINUS .)
 
 
 state 20
 
-    (14) operadoresComp -> MAYORQUE .
+    (12) operadoresMat -> TIMES .
 
-    NUMBER          reduce using rule 14 (operadoresComp -> MAYORQUE .)
-    ID              reduce using rule 14 (operadoresComp -> MAYORQUE .)
-    LPAREN          reduce using rule 14 (operadoresComp -> MAYORQUE .)
+    NUMBER          reduce using rule 12 (operadoresMat -> TIMES .)
+    ID              reduce using rule 12 (operadoresMat -> TIMES .)
+    LPAREN          reduce using rule 12 (operadoresMat -> TIMES .)
+    TRUE            reduce using rule 12 (operadoresMat -> TIMES .)
+    FALSE           reduce using rule 12 (operadoresMat -> TIMES .)
 
 
 state 21
 
-    (15) operadoresComp -> MENORQUE .
+    (13) operadoresMat -> DIVIDE .
 
-    NUMBER          reduce using rule 15 (operadoresComp -> MENORQUE .)
-    ID              reduce using rule 15 (operadoresComp -> MENORQUE .)
-    LPAREN          reduce using rule 15 (operadoresComp -> MENORQUE .)
+    NUMBER          reduce using rule 13 (operadoresMat -> DIVIDE .)
+    ID              reduce using rule 13 (operadoresMat -> DIVIDE .)
+    LPAREN          reduce using rule 13 (operadoresMat -> DIVIDE .)
+    TRUE            reduce using rule 13 (operadoresMat -> DIVIDE .)
+    FALSE           reduce using rule 13 (operadoresMat -> DIVIDE .)
 
 
 state 22
 
-    (16) operadoresComp -> IGUAL .
+    (14) operadoresMat -> MOD .
 
-    NUMBER          reduce using rule 16 (operadoresComp -> IGUAL .)
-    ID              reduce using rule 16 (operadoresComp -> IGUAL .)
-    LPAREN          reduce using rule 16 (operadoresComp -> IGUAL .)
+    NUMBER          reduce using rule 14 (operadoresMat -> MOD .)
+    ID              reduce using rule 14 (operadoresMat -> MOD .)
+    LPAREN          reduce using rule 14 (operadoresMat -> MOD .)
+    TRUE            reduce using rule 14 (operadoresMat -> MOD .)
+    FALSE           reduce using rule 14 (operadoresMat -> MOD .)
 
 
 state 23
 
-    (17) operadoresPrint -> PRINT .
+    (15) operadoresComp -> MAYORQUE .
 
-    STRING          reduce using rule 17 (operadoresPrint -> PRINT .)
-    NUMBER          reduce using rule 17 (operadoresPrint -> PRINT .)
-    ID              reduce using rule 17 (operadoresPrint -> PRINT .)
-    LPAREN          reduce using rule 17 (operadoresPrint -> PRINT .)
+    NUMBER          reduce using rule 15 (operadoresComp -> MAYORQUE .)
+    ID              reduce using rule 15 (operadoresComp -> MAYORQUE .)
+    LPAREN          reduce using rule 15 (operadoresComp -> MAYORQUE .)
+    TRUE            reduce using rule 15 (operadoresComp -> MAYORQUE .)
+    FALSE           reduce using rule 15 (operadoresComp -> MAYORQUE .)
 
 
 state 24
 
-    (18) operadoresPrint -> PRINTLN .
+    (16) operadoresComp -> MENORQUE .
 
-    STRING          reduce using rule 18 (operadoresPrint -> PRINTLN .)
-    NUMBER          reduce using rule 18 (operadoresPrint -> PRINTLN .)
-    ID              reduce using rule 18 (operadoresPrint -> PRINTLN .)
-    LPAREN          reduce using rule 18 (operadoresPrint -> PRINTLN .)
+    NUMBER          reduce using rule 16 (operadoresComp -> MENORQUE .)
+    ID              reduce using rule 16 (operadoresComp -> MENORQUE .)
+    LPAREN          reduce using rule 16 (operadoresComp -> MENORQUE .)
+    TRUE            reduce using rule 16 (operadoresComp -> MENORQUE .)
+    FALSE           reduce using rule 16 (operadoresComp -> MENORQUE .)
 
 
 state 25
+
+    (17) operadoresComp -> IGUAL .
+
+    NUMBER          reduce using rule 17 (operadoresComp -> IGUAL .)
+    ID              reduce using rule 17 (operadoresComp -> IGUAL .)
+    LPAREN          reduce using rule 17 (operadoresComp -> IGUAL .)
+    TRUE            reduce using rule 17 (operadoresComp -> IGUAL .)
+    FALSE           reduce using rule 17 (operadoresComp -> IGUAL .)
+
+
+state 26
+
+    (18) operadoresComp -> OR .
+
+    NUMBER          reduce using rule 18 (operadoresComp -> OR .)
+    ID              reduce using rule 18 (operadoresComp -> OR .)
+    LPAREN          reduce using rule 18 (operadoresComp -> OR .)
+    TRUE            reduce using rule 18 (operadoresComp -> OR .)
+    FALSE           reduce using rule 18 (operadoresComp -> OR .)
+
+
+state 27
+
+    (19) operadoresComp -> AND .
+
+    NUMBER          reduce using rule 19 (operadoresComp -> AND .)
+    ID              reduce using rule 19 (operadoresComp -> AND .)
+    LPAREN          reduce using rule 19 (operadoresComp -> AND .)
+    TRUE            reduce using rule 19 (operadoresComp -> AND .)
+    FALSE           reduce using rule 19 (operadoresComp -> AND .)
+
+
+state 28
+
+    (20) operadoresComp -> NOT .
+
+    NUMBER          reduce using rule 20 (operadoresComp -> NOT .)
+    ID              reduce using rule 20 (operadoresComp -> NOT .)
+    LPAREN          reduce using rule 20 (operadoresComp -> NOT .)
+    TRUE            reduce using rule 20 (operadoresComp -> NOT .)
+    FALSE           reduce using rule 20 (operadoresComp -> NOT .)
+
+
+state 29
+
+    (21) operadoresPrint -> PRINT .
+
+    STRING          reduce using rule 21 (operadoresPrint -> PRINT .)
+    NUMBER          reduce using rule 21 (operadoresPrint -> PRINT .)
+    ID              reduce using rule 21 (operadoresPrint -> PRINT .)
+    LPAREN          reduce using rule 21 (operadoresPrint -> PRINT .)
+    TRUE            reduce using rule 21 (operadoresPrint -> PRINT .)
+    FALSE           reduce using rule 21 (operadoresPrint -> PRINT .)
+
+
+state 30
+
+    (22) operadoresPrint -> PRINTLN .
+
+    STRING          reduce using rule 22 (operadoresPrint -> PRINTLN .)
+    NUMBER          reduce using rule 22 (operadoresPrint -> PRINTLN .)
+    ID              reduce using rule 22 (operadoresPrint -> PRINTLN .)
+    LPAREN          reduce using rule 22 (operadoresPrint -> PRINTLN .)
+    TRUE            reduce using rule 22 (operadoresPrint -> PRINTLN .)
+    FALSE           reduce using rule 22 (operadoresPrint -> PRINTLN .)
+
+
+state 31
 
     (1) general -> LPAREN expression RPAREN .
 
@@ -415,7 +566,7 @@ state 25
     RPAREN          reduce using rule 1 (general -> LPAREN expression RPAREN .)
 
 
-state 26
+state 32
 
     (2) general -> LPAREN comparacion RPAREN .
 
@@ -423,7 +574,7 @@ state 26
     RPAREN          reduce using rule 2 (general -> LPAREN comparacion RPAREN .)
 
 
-state 27
+state 33
 
     (3) general -> LPAREN sentenciaif RPAREN .
 
@@ -431,7 +582,7 @@ state 27
     RPAREN          reduce using rule 3 (general -> LPAREN sentenciaif RPAREN .)
 
 
-state 28
+state 34
 
     (4) general -> LPAREN asignacion RPAREN .
 
@@ -439,7 +590,7 @@ state 28
     RPAREN          reduce using rule 4 (general -> LPAREN asignacion RPAREN .)
 
 
-state 29
+state 35
 
     (5) general -> LPAREN imprimir RPAREN .
 
@@ -447,230 +598,713 @@ state 29
     RPAREN          reduce using rule 5 (general -> LPAREN imprimir RPAREN .)
 
 
-state 30
-
-    (26) sentenciado -> LPAREN DO general . RPAREN
-
-    RPAREN          shift and go to state 40
-
-
-state 31
-
-    (7) expression -> operadoresMat factor . factor
-    (19) factor -> . NUMBER
-    (20) factor -> . ID
-    (21) factor -> . LPAREN expression RPAREN
-
-    NUMBER          shift and go to state 32
-    ID              shift and go to state 33
-    LPAREN          shift and go to state 34
-
-    factor                         shift and go to state 41
-
-state 32
-
-    (19) factor -> NUMBER .
-
-    NUMBER          reduce using rule 19 (factor -> NUMBER .)
-    ID              reduce using rule 19 (factor -> NUMBER .)
-    LPAREN          reduce using rule 19 (factor -> NUMBER .)
-    RPAREN          reduce using rule 19 (factor -> NUMBER .)
-
-
-state 33
-
-    (20) factor -> ID .
-
-    NUMBER          reduce using rule 20 (factor -> ID .)
-    ID              reduce using rule 20 (factor -> ID .)
-    LPAREN          reduce using rule 20 (factor -> ID .)
-    RPAREN          reduce using rule 20 (factor -> ID .)
-
-
-state 34
-
-    (21) factor -> LPAREN . expression RPAREN
-    (7) expression -> . operadoresMat factor factor
-    (9) operadoresMat -> . PLUS
-    (10) operadoresMat -> . MINUS
-    (11) operadoresMat -> . TIMES
-    (12) operadoresMat -> . DIVIDE
-    (13) operadoresMat -> . MOD
-
-    PLUS            shift and go to state 15
-    MINUS           shift and go to state 16
-    TIMES           shift and go to state 17
-    DIVIDE          shift and go to state 18
-    MOD             shift and go to state 19
-
-    expression                     shift and go to state 42
-    operadoresMat                  shift and go to state 10
-
-state 35
-
-    (8) comparacion -> operadoresComp factor . factor
-    (19) factor -> . NUMBER
-    (20) factor -> . ID
-    (21) factor -> . LPAREN expression RPAREN
-
-    NUMBER          shift and go to state 32
-    ID              shift and go to state 33
-    LPAREN          shift and go to state 34
-
-    factor                         shift and go to state 43
-
 state 36
 
-    (27) sentenciaif -> IF LPAREN . comparacion RPAREN general
-    (28) sentenciaif -> IF LPAREN . comparacion RPAREN sentenciado sentenciado
-    (8) comparacion -> . operadoresComp factor factor
-    (14) operadoresComp -> . MAYORQUE
-    (15) operadoresComp -> . MENORQUE
-    (16) operadoresComp -> . IGUAL
+    (37) sentenciado -> LPAREN DO general . RPAREN
 
-    MAYORQUE        shift and go to state 20
-    MENORQUE        shift and go to state 21
-    IGUAL           shift and go to state 22
+    RPAREN          shift and go to state 55
 
-    comparacion                    shift and go to state 44
-    operadoresComp                 shift and go to state 11
 
 state 37
 
-    (22) asignacion -> DEF ID . factor
-    (23) asignacion -> DEF ID . STRING
-    (19) factor -> . NUMBER
-    (20) factor -> . ID
-    (21) factor -> . LPAREN expression RPAREN
+    (23) read -> LPAREN READ RPAREN .
 
-    STRING          shift and go to state 46
-    NUMBER          shift and go to state 32
-    ID              shift and go to state 33
-    LPAREN          shift and go to state 34
+    $end            reduce using rule 23 (read -> LPAREN READ RPAREN .)
+    RPAREN          reduce using rule 23 (read -> LPAREN READ RPAREN .)
 
-    factor                         shift and go to state 45
 
 state 38
 
-    (24) imprimir -> operadoresPrint factor .
+    (8) expression -> operadoresMat factor . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . ID
+    (26) factor -> . booleanos
+    (27) factor -> . LPAREN expression RPAREN
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    RPAREN          reduce using rule 24 (imprimir -> operadoresPrint factor .)
+    NUMBER          shift and go to state 39
+    ID              shift and go to state 40
+    LPAREN          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
 
+    factor                         shift and go to state 56
+    booleanos                      shift and go to state 41
 
 state 39
 
-    (25) imprimir -> operadoresPrint STRING .
+    (24) factor -> NUMBER .
 
-    RPAREN          reduce using rule 25 (imprimir -> operadoresPrint STRING .)
+    NUMBER          reduce using rule 24 (factor -> NUMBER .)
+    ID              reduce using rule 24 (factor -> NUMBER .)
+    LPAREN          reduce using rule 24 (factor -> NUMBER .)
+    TRUE            reduce using rule 24 (factor -> NUMBER .)
+    FALSE           reduce using rule 24 (factor -> NUMBER .)
+    RPAREN          reduce using rule 24 (factor -> NUMBER .)
 
 
 state 40
 
-    (26) sentenciado -> LPAREN DO general RPAREN .
+    (25) factor -> ID .
 
-    $end            reduce using rule 26 (sentenciado -> LPAREN DO general RPAREN .)
-    RPAREN          reduce using rule 26 (sentenciado -> LPAREN DO general RPAREN .)
-    LPAREN          reduce using rule 26 (sentenciado -> LPAREN DO general RPAREN .)
+    NUMBER          reduce using rule 25 (factor -> ID .)
+    ID              reduce using rule 25 (factor -> ID .)
+    LPAREN          reduce using rule 25 (factor -> ID .)
+    TRUE            reduce using rule 25 (factor -> ID .)
+    FALSE           reduce using rule 25 (factor -> ID .)
+    RPAREN          reduce using rule 25 (factor -> ID .)
 
 
 state 41
 
-    (7) expression -> operadoresMat factor factor .
+    (26) factor -> booleanos .
 
-    RPAREN          reduce using rule 7 (expression -> operadoresMat factor factor .)
+    NUMBER          reduce using rule 26 (factor -> booleanos .)
+    ID              reduce using rule 26 (factor -> booleanos .)
+    LPAREN          reduce using rule 26 (factor -> booleanos .)
+    TRUE            reduce using rule 26 (factor -> booleanos .)
+    FALSE           reduce using rule 26 (factor -> booleanos .)
+    RPAREN          reduce using rule 26 (factor -> booleanos .)
 
 
 state 42
 
-    (21) factor -> LPAREN expression . RPAREN
+    (27) factor -> LPAREN . expression RPAREN
+    (8) expression -> . operadoresMat factor factor
+    (10) operadoresMat -> . PLUS
+    (11) operadoresMat -> . MINUS
+    (12) operadoresMat -> . TIMES
+    (13) operadoresMat -> . DIVIDE
+    (14) operadoresMat -> . MOD
 
-    RPAREN          shift and go to state 47
+    PLUS            shift and go to state 18
+    MINUS           shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    MOD             shift and go to state 22
 
+    expression                     shift and go to state 57
+    operadoresMat                  shift and go to state 12
 
 state 43
 
-    (8) comparacion -> operadoresComp factor factor .
+    (32) booleanos -> TRUE .
 
-    RPAREN          reduce using rule 8 (comparacion -> operadoresComp factor factor .)
+    NUMBER          reduce using rule 32 (booleanos -> TRUE .)
+    ID              reduce using rule 32 (booleanos -> TRUE .)
+    LPAREN          reduce using rule 32 (booleanos -> TRUE .)
+    TRUE            reduce using rule 32 (booleanos -> TRUE .)
+    FALSE           reduce using rule 32 (booleanos -> TRUE .)
+    RPAREN          reduce using rule 32 (booleanos -> TRUE .)
+    STRING          reduce using rule 32 (booleanos -> TRUE .)
+    RCOR            reduce using rule 32 (booleanos -> TRUE .)
+    COMA            reduce using rule 32 (booleanos -> TRUE .)
+    RBRACE          reduce using rule 32 (booleanos -> TRUE .)
 
 
 state 44
 
-    (27) sentenciaif -> IF LPAREN comparacion . RPAREN general
-    (28) sentenciaif -> IF LPAREN comparacion . RPAREN sentenciado sentenciado
+    (33) booleanos -> FALSE .
 
-    RPAREN          shift and go to state 48
+    NUMBER          reduce using rule 33 (booleanos -> FALSE .)
+    ID              reduce using rule 33 (booleanos -> FALSE .)
+    LPAREN          reduce using rule 33 (booleanos -> FALSE .)
+    TRUE            reduce using rule 33 (booleanos -> FALSE .)
+    FALSE           reduce using rule 33 (booleanos -> FALSE .)
+    RPAREN          reduce using rule 33 (booleanos -> FALSE .)
+    STRING          reduce using rule 33 (booleanos -> FALSE .)
+    RCOR            reduce using rule 33 (booleanos -> FALSE .)
+    COMA            reduce using rule 33 (booleanos -> FALSE .)
+    RBRACE          reduce using rule 33 (booleanos -> FALSE .)
 
 
 state 45
 
-    (22) asignacion -> DEF ID factor .
+    (9) comparacion -> operadoresComp factor . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . ID
+    (26) factor -> . booleanos
+    (27) factor -> . LPAREN expression RPAREN
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    RPAREN          reduce using rule 22 (asignacion -> DEF ID factor .)
+    NUMBER          shift and go to state 39
+    ID              shift and go to state 40
+    LPAREN          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
 
+    factor                         shift and go to state 58
+    booleanos                      shift and go to state 41
 
 state 46
 
-    (23) asignacion -> DEF ID STRING .
+    (38) sentenciaif -> IF LPAREN . comparacion RPAREN general
+    (39) sentenciaif -> IF LPAREN . comparacion RPAREN sentenciado sentenciado
+    (9) comparacion -> . operadoresComp factor factor
+    (15) operadoresComp -> . MAYORQUE
+    (16) operadoresComp -> . MENORQUE
+    (17) operadoresComp -> . IGUAL
+    (18) operadoresComp -> . OR
+    (19) operadoresComp -> . AND
+    (20) operadoresComp -> . NOT
 
-    RPAREN          reduce using rule 23 (asignacion -> DEF ID STRING .)
+    MAYORQUE        shift and go to state 23
+    MENORQUE        shift and go to state 24
+    IGUAL           shift and go to state 25
+    OR              shift and go to state 26
+    AND             shift and go to state 27
+    NOT             shift and go to state 28
 
+    comparacion                    shift and go to state 59
+    operadoresComp                 shift and go to state 13
 
 state 47
 
-    (21) factor -> LPAREN expression RPAREN .
+    (28) asignacion -> DEF ID . factor
+    (29) asignacion -> DEF ID . STRING
+    (30) asignacion -> DEF ID . booleanos
+    (31) asignacion -> DEF ID . struct
+    (24) factor -> . NUMBER
+    (25) factor -> . ID
+    (26) factor -> . booleanos
+    (27) factor -> . LPAREN expression RPAREN
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
+    (40) struct -> . lista
+    (41) struct -> . vector
+    (42) struct -> . mapa
+    (43) lista -> . QUOTE LPAREN valorl RPAREN
+    (44) vector -> . LCOR valorl RCOR
+    (45) mapa -> . LBRACE repetirclave RBRACE
 
-    NUMBER          reduce using rule 21 (factor -> LPAREN expression RPAREN .)
-    ID              reduce using rule 21 (factor -> LPAREN expression RPAREN .)
-    LPAREN          reduce using rule 21 (factor -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 21 (factor -> LPAREN expression RPAREN .)
+    STRING          shift and go to state 61
+    NUMBER          shift and go to state 39
+    ID              shift and go to state 40
+    LPAREN          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    QUOTE           shift and go to state 67
+    LCOR            shift and go to state 68
+    LBRACE          shift and go to state 69
 
+    factor                         shift and go to state 60
+    booleanos                      shift and go to state 62
+    struct                         shift and go to state 63
+    lista                          shift and go to state 64
+    vector                         shift and go to state 65
+    mapa                           shift and go to state 66
 
 state 48
 
-    (27) sentenciaif -> IF LPAREN comparacion RPAREN . general
-    (28) sentenciaif -> IF LPAREN comparacion RPAREN . sentenciado sentenciado
+    (34) imprimir -> operadoresPrint factor .
+
+    RPAREN          reduce using rule 34 (imprimir -> operadoresPrint factor .)
+
+
+state 49
+
+    (35) imprimir -> operadoresPrint STRING .
+
+    RPAREN          reduce using rule 35 (imprimir -> operadoresPrint STRING .)
+
+
+state 50
+
+    (36) imprimir -> PRINTF valorl .
+    (57) valorl -> valorl . valorl
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
+
+    RPAREN          reduce using rule 36 (imprimir -> PRINTF valorl .)
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    valorl                         shift and go to state 70
+    booleanos                      shift and go to state 54
+
+state 51
+
+    (53) valorl -> NUMBER .
+
+    NUMBER          reduce using rule 53 (valorl -> NUMBER .)
+    ID              reduce using rule 53 (valorl -> NUMBER .)
+    STRING          reduce using rule 53 (valorl -> NUMBER .)
+    TRUE            reduce using rule 53 (valorl -> NUMBER .)
+    FALSE           reduce using rule 53 (valorl -> NUMBER .)
+    RPAREN          reduce using rule 53 (valorl -> NUMBER .)
+    RCOR            reduce using rule 53 (valorl -> NUMBER .)
+
+
+state 52
+
+    (54) valorl -> ID .
+
+    NUMBER          reduce using rule 54 (valorl -> ID .)
+    ID              reduce using rule 54 (valorl -> ID .)
+    STRING          reduce using rule 54 (valorl -> ID .)
+    TRUE            reduce using rule 54 (valorl -> ID .)
+    FALSE           reduce using rule 54 (valorl -> ID .)
+    RPAREN          reduce using rule 54 (valorl -> ID .)
+    RCOR            reduce using rule 54 (valorl -> ID .)
+
+
+state 53
+
+    (55) valorl -> STRING .
+
+    NUMBER          reduce using rule 55 (valorl -> STRING .)
+    ID              reduce using rule 55 (valorl -> STRING .)
+    STRING          reduce using rule 55 (valorl -> STRING .)
+    TRUE            reduce using rule 55 (valorl -> STRING .)
+    FALSE           reduce using rule 55 (valorl -> STRING .)
+    RPAREN          reduce using rule 55 (valorl -> STRING .)
+    RCOR            reduce using rule 55 (valorl -> STRING .)
+
+
+state 54
+
+    (56) valorl -> booleanos .
+
+    NUMBER          reduce using rule 56 (valorl -> booleanos .)
+    ID              reduce using rule 56 (valorl -> booleanos .)
+    STRING          reduce using rule 56 (valorl -> booleanos .)
+    TRUE            reduce using rule 56 (valorl -> booleanos .)
+    FALSE           reduce using rule 56 (valorl -> booleanos .)
+    RPAREN          reduce using rule 56 (valorl -> booleanos .)
+    RCOR            reduce using rule 56 (valorl -> booleanos .)
+
+
+state 55
+
+    (37) sentenciado -> LPAREN DO general RPAREN .
+
+    $end            reduce using rule 37 (sentenciado -> LPAREN DO general RPAREN .)
+    RPAREN          reduce using rule 37 (sentenciado -> LPAREN DO general RPAREN .)
+    LPAREN          reduce using rule 37 (sentenciado -> LPAREN DO general RPAREN .)
+
+
+state 56
+
+    (8) expression -> operadoresMat factor factor .
+
+    RPAREN          reduce using rule 8 (expression -> operadoresMat factor factor .)
+
+
+state 57
+
+    (27) factor -> LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 71
+
+
+state 58
+
+    (9) comparacion -> operadoresComp factor factor .
+
+    RPAREN          reduce using rule 9 (comparacion -> operadoresComp factor factor .)
+
+
+state 59
+
+    (38) sentenciaif -> IF LPAREN comparacion . RPAREN general
+    (39) sentenciaif -> IF LPAREN comparacion . RPAREN sentenciado sentenciado
+
+    RPAREN          shift and go to state 72
+
+
+state 60
+
+    (28) asignacion -> DEF ID factor .
+
+    RPAREN          reduce using rule 28 (asignacion -> DEF ID factor .)
+
+
+state 61
+
+    (29) asignacion -> DEF ID STRING .
+
+    RPAREN          reduce using rule 29 (asignacion -> DEF ID STRING .)
+
+
+state 62
+
+    (30) asignacion -> DEF ID booleanos .
+    (26) factor -> booleanos .
+
+  ! reduce/reduce conflict for RPAREN resolved using rule 26 (factor -> booleanos .)
+    RPAREN          reduce using rule 26 (factor -> booleanos .)
+
+  ! RPAREN          [ reduce using rule 30 (asignacion -> DEF ID booleanos .) ]
+
+
+state 63
+
+    (31) asignacion -> DEF ID struct .
+
+    RPAREN          reduce using rule 31 (asignacion -> DEF ID struct .)
+
+
+state 64
+
+    (40) struct -> lista .
+
+    RPAREN          reduce using rule 40 (struct -> lista .)
+
+
+state 65
+
+    (41) struct -> vector .
+
+    RPAREN          reduce using rule 41 (struct -> vector .)
+
+
+state 66
+
+    (42) struct -> mapa .
+
+    RPAREN          reduce using rule 42 (struct -> mapa .)
+
+
+state 67
+
+    (43) lista -> QUOTE . LPAREN valorl RPAREN
+
+    LPAREN          shift and go to state 73
+
+
+state 68
+
+    (44) vector -> LCOR . valorl RCOR
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
+
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    valorl                         shift and go to state 74
+    booleanos                      shift and go to state 54
+
+state 69
+
+    (45) mapa -> LBRACE . repetirclave RBRACE
+    (47) repetirclave -> . clavevalor
+    (48) repetirclave -> . clavevalor COMA repetirclave
+    (46) clavevalor -> . ID DDOT valor
+
+    ID              shift and go to state 77
+
+    repetirclave                   shift and go to state 75
+    clavevalor                     shift and go to state 76
+
+state 70
+
+    (57) valorl -> valorl valorl .
+    (57) valorl -> valorl . valorl
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
+
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for TRUE resolved as shift
+  ! shift/reduce conflict for FALSE resolved as shift
+    RPAREN          reduce using rule 57 (valorl -> valorl valorl .)
+    RCOR            reduce using rule 57 (valorl -> valorl valorl .)
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+  ! NUMBER          [ reduce using rule 57 (valorl -> valorl valorl .) ]
+  ! ID              [ reduce using rule 57 (valorl -> valorl valorl .) ]
+  ! STRING          [ reduce using rule 57 (valorl -> valorl valorl .) ]
+  ! TRUE            [ reduce using rule 57 (valorl -> valorl valorl .) ]
+  ! FALSE           [ reduce using rule 57 (valorl -> valorl valorl .) ]
+
+    valorl                         shift and go to state 70
+    booleanos                      shift and go to state 54
+
+state 71
+
+    (27) factor -> LPAREN expression RPAREN .
+
+    NUMBER          reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    ID              reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    TRUE            reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    FALSE           reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+
+
+state 72
+
+    (38) sentenciaif -> IF LPAREN comparacion RPAREN . general
+    (39) sentenciaif -> IF LPAREN comparacion RPAREN . sentenciado sentenciado
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN asignacion RPAREN
     (5) general -> . LPAREN imprimir RPAREN
     (6) general -> . sentenciado
-    (26) sentenciado -> . LPAREN DO general RPAREN
+    (7) general -> . read
+    (37) sentenciado -> . LPAREN DO general RPAREN
+    (23) read -> . LPAREN READ RPAREN
 
     LPAREN          shift and go to state 2
 
-    general                        shift and go to state 49
-    sentenciado                    shift and go to state 50
+    general                        shift and go to state 78
+    sentenciado                    shift and go to state 79
+    read                           shift and go to state 4
 
-state 49
+state 73
 
-    (27) sentenciaif -> IF LPAREN comparacion RPAREN general .
+    (43) lista -> QUOTE LPAREN . valorl RPAREN
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    RPAREN          reduce using rule 27 (sentenciaif -> IF LPAREN comparacion RPAREN general .)
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    valorl                         shift and go to state 80
+    booleanos                      shift and go to state 54
+
+state 74
+
+    (44) vector -> LCOR valorl . RCOR
+    (57) valorl -> valorl . valorl
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
+
+    RCOR            shift and go to state 81
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    valorl                         shift and go to state 70
+    booleanos                      shift and go to state 54
+
+state 75
+
+    (45) mapa -> LBRACE repetirclave . RBRACE
+
+    RBRACE          shift and go to state 82
 
 
-state 50
+state 76
 
-    (28) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado . sentenciado
+    (47) repetirclave -> clavevalor .
+    (48) repetirclave -> clavevalor . COMA repetirclave
+
+    RBRACE          reduce using rule 47 (repetirclave -> clavevalor .)
+    COMA            shift and go to state 83
+
+
+state 77
+
+    (46) clavevalor -> ID . DDOT valor
+
+    DDOT            shift and go to state 84
+
+
+state 78
+
+    (38) sentenciaif -> IF LPAREN comparacion RPAREN general .
+
+    RPAREN          reduce using rule 38 (sentenciaif -> IF LPAREN comparacion RPAREN general .)
+
+
+state 79
+
+    (39) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado . sentenciado
     (6) general -> sentenciado .
-    (26) sentenciado -> . LPAREN DO general RPAREN
+    (37) sentenciado -> . LPAREN DO general RPAREN
 
     RPAREN          reduce using rule 6 (general -> sentenciado .)
-    LPAREN          shift and go to state 51
+    LPAREN          shift and go to state 85
 
-    sentenciado                    shift and go to state 52
+    sentenciado                    shift and go to state 86
 
-state 51
+state 80
 
-    (26) sentenciado -> LPAREN . DO general RPAREN
+    (43) lista -> QUOTE LPAREN valorl . RPAREN
+    (57) valorl -> valorl . valorl
+    (53) valorl -> . NUMBER
+    (54) valorl -> . ID
+    (55) valorl -> . STRING
+    (56) valorl -> . booleanos
+    (57) valorl -> . valorl valorl
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
 
-    DO              shift and go to state 9
+    RPAREN          shift and go to state 87
+    NUMBER          shift and go to state 51
+    ID              shift and go to state 52
+    STRING          shift and go to state 53
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    valorl                         shift and go to state 70
+    booleanos                      shift and go to state 54
+
+state 81
+
+    (44) vector -> LCOR valorl RCOR .
+
+    RPAREN          reduce using rule 44 (vector -> LCOR valorl RCOR .)
 
 
-state 52
+state 82
 
-    (28) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .
+    (45) mapa -> LBRACE repetirclave RBRACE .
 
-    RPAREN          reduce using rule 28 (sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .)
+    RPAREN          reduce using rule 45 (mapa -> LBRACE repetirclave RBRACE .)
 
+
+state 83
+
+    (48) repetirclave -> clavevalor COMA . repetirclave
+    (47) repetirclave -> . clavevalor
+    (48) repetirclave -> . clavevalor COMA repetirclave
+    (46) clavevalor -> . ID DDOT valor
+
+    ID              shift and go to state 77
+
+    clavevalor                     shift and go to state 76
+    repetirclave                   shift and go to state 88
+
+state 84
+
+    (46) clavevalor -> ID DDOT . valor
+    (49) valor -> . NUMBER
+    (50) valor -> . ID
+    (51) valor -> . STRING
+    (52) valor -> . booleanos
+    (32) booleanos -> . TRUE
+    (33) booleanos -> . FALSE
+
+    NUMBER          shift and go to state 91
+    ID              shift and go to state 89
+    STRING          shift and go to state 92
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    valor                          shift and go to state 90
+    booleanos                      shift and go to state 93
+
+state 85
+
+    (37) sentenciado -> LPAREN . DO general RPAREN
+
+    DO              shift and go to state 10
+
+
+state 86
+
+    (39) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .
+
+    RPAREN          reduce using rule 39 (sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .)
+
+
+state 87
+
+    (43) lista -> QUOTE LPAREN valorl RPAREN .
+
+    RPAREN          reduce using rule 43 (lista -> QUOTE LPAREN valorl RPAREN .)
+
+
+state 88
+
+    (48) repetirclave -> clavevalor COMA repetirclave .
+
+    RBRACE          reduce using rule 48 (repetirclave -> clavevalor COMA repetirclave .)
+
+
+state 89
+
+    (50) valor -> ID .
+
+    COMA            reduce using rule 50 (valor -> ID .)
+    RBRACE          reduce using rule 50 (valor -> ID .)
+
+
+state 90
+
+    (46) clavevalor -> ID DDOT valor .
+
+    COMA            reduce using rule 46 (clavevalor -> ID DDOT valor .)
+    RBRACE          reduce using rule 46 (clavevalor -> ID DDOT valor .)
+
+
+state 91
+
+    (49) valor -> NUMBER .
+
+    COMA            reduce using rule 49 (valor -> NUMBER .)
+    RBRACE          reduce using rule 49 (valor -> NUMBER .)
+
+
+state 92
+
+    (51) valor -> STRING .
+
+    COMA            reduce using rule 51 (valor -> STRING .)
+    RBRACE          reduce using rule 51 (valor -> STRING .)
+
+
+state 93
+
+    (52) valor -> booleanos .
+
+    COMA            reduce using rule 52 (valor -> booleanos .)
+    RBRACE          reduce using rule 52 (valor -> booleanos .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for NUMBER in state 70 resolved as shift
+WARNING: shift/reduce conflict for ID in state 70 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 70 resolved as shift
+WARNING: shift/reduce conflict for TRUE in state 70 resolved as shift
+WARNING: shift/reduce conflict for FALSE in state 70 resolved as shift
+WARNING: reduce/reduce conflict in state 62 resolved using rule (factor -> booleanos)
+WARNING: rejected rule (asignacion -> DEF ID booleanos) in state 62
+WARNING: Rule (asignacion -> DEF ID booleanos) is never reduced
