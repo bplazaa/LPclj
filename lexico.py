@@ -79,7 +79,7 @@ def t_NUMBER(t):
     return t
 
 def t_FLOAT(t):
-    r'(\d*\.\d+)|(\d+\.\d*)'
+    r'[-+]?(\d+(\.\d*)?|\.\d+)'
     t.value = float(t.value)
     return t
 

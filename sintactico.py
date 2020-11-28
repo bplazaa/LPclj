@@ -13,6 +13,7 @@ def p_expression_general(p):
             | LPAREN asignacion RPAREN
             | LPAREN imprimir RPAREN
             | LPAREN asignacion_funcion RPAREN
+            | function_call
             | funcionstruct
             | sentenciado
             | read
@@ -48,19 +49,20 @@ def p_read(p):
 
 def p_factor_num(p):
     '''factor : NUMBER
-            |   ID
+            | ID
             | FLOAT
-            |   booleanos'''
+            | booleanos'''
  
 def p_factor_expr(p):
     'factor : LPAREN expression RPAREN'
 
 def p_asignacion(p):
     '''asignacion : DEF ID factor
-                |   DEF ID STRING
-                |   DEF ID struct
-                |   DEF ID funcionstruct
-                | DEF ID read'''
+                | DEF ID STRING
+                | DEF ID struct
+                | DEF ID funcionstruct
+                | DEF ID read
+                | DEF ID function_call'''
 
 
 def p_booleanos(p):
@@ -70,7 +72,7 @@ def p_booleanos(p):
 
 def p_imprimir(p):
     '''imprimir : operadoresPrint factor
-                |   operadoresPrint STRING
+                | operadoresPrint STRING
                 | PRINTF valorl'''
 
 def p_sentenciado(p):
@@ -78,7 +80,7 @@ def p_sentenciado(p):
 
 def p_sentenciaif(p):
     '''sentenciaif : IF LPAREN comparacion RPAREN general
-                |    IF LPAREN comparacion RPAREN sentenciado sentenciado'''
+                | IF LPAREN comparacion RPAREN sentenciado sentenciado'''
 
 #CARLOS SALAZAR
 def p_sentenciawhile(p):
@@ -88,8 +90,8 @@ def p_sentenciawhile(p):
 def p_struct(p):
     '''
       struct : lista
-            |   vector
-            |   mapa
+            | vector
+            | mapa
             | conjunto'''
 
 def p_lista(p):
@@ -112,9 +114,9 @@ def p_repetirclave(p):
                     | clavevalor COMA repetirclave'''
 def p_valor(p):
     '''valor : NUMBER
-                    |   ID
-                    |   STRING
-                    |   booleanos
+                    | ID
+                    | STRING
+                    | booleanos
                     | FLOAT'''
 
 def p_valorl(p):
@@ -162,9 +164,7 @@ def p_valor_strings(p):
     '''
 
 
-# Error rule for syntax errors
-def p_error(p):
-    print("Syntax error in input! %s" % p.value)
+
 
 
 def p_asignacion_funcion(p):
@@ -186,8 +186,31 @@ def p_valores(p):
         | ID valores
     '''
 
+def p_function_call(p):
+    '''
+        function_call : LPAREN ID RPAREN
+        | LPAREN ID argumentos RPAREN
+    '''
 
+def p_argumentos(p):
+    '''
+        argumentos : valor_funcion
+        | valor_funcion argumentos
+    '''
 
+def p_valor_funcion(p):
+    '''
+        valor_funcion : valor
+        | funcionstruct
+        | function_call
+        | struct
+        | expression
+        | comparacion
+    '''
+
+# Error rule for syntax errors
+def p_error(p):
+    print("Syntax error in input! %s" % p.value)
  # Build the parser
 parser = yacc.yacc()
  
