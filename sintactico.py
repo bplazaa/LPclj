@@ -7,14 +7,15 @@ from lexico import tokens
 
 def p_expression_general(p):
     '''general : LPAREN expression RPAREN
-            |    LPAREN comparacion RPAREN
-            |    LPAREN sentenciaif RPAREN
-            |    LPAREN sentenciawhile RPAREN
-            |    LPAREN asignacion RPAREN
-            |    LPAREN imprimir RPAREN
-            |    funcionstruct
-            |    sentenciado
-            |   read
+            | LPAREN comparacion RPAREN
+            | LPAREN sentenciaif RPAREN
+            | LPAREN sentenciawhile RPAREN
+            | LPAREN asignacion RPAREN
+            | LPAREN imprimir RPAREN
+            | LPAREN asignacion_funcion RPAREN
+            | funcionstruct
+            | sentenciado
+            | read
             | general general'''
 
 def p_expression_mat(p):
@@ -57,14 +58,15 @@ def p_factor_expr(p):
 def p_asignacion(p):
     '''asignacion : DEF ID factor
                 |   DEF ID STRING
-                |   DEF ID booleanos
                 |   DEF ID struct
-                |   DEF ID funcionstruct'''
+                |   DEF ID funcionstruct
+                | DEF ID read'''
 
 
 def p_booleanos(p):
     '''booleanos : TRUE
-                |   FALSE'''
+        | FALSE
+    '''
 
 def p_imprimir(p):
     '''imprimir : operadoresPrint factor
@@ -127,6 +129,7 @@ def p_funcionstruct(p):
     '''
         funcionstruct : conjfunction
         | LPAREN STR STRING strings RPAREN
+        | LPAREN STR ID strings RPAREN
         | LPAREN GET conjunto NUMBER RPAREN
         | LPAREN GET conjunto ID RPAREN
         | LPAREN NTH lista NUMBER RPAREN
@@ -146,16 +149,45 @@ def p_conjfunction(p):
         | LPAREN CONJ vector NUMBER RPAREN
         | LPAREN CONJ vector ID RPAREN
     '''
-# Carlos Salazar
 def p_strings(p):
     '''
-        strings : STRING
-        | STRING STRING
+        strings : valor_strings
+        | valor_strings strings
     '''
+# Carlos Salazar
+def p_valor_strings(p):
+    '''
+        valor_strings : STRING
+        | ID
+    '''
+
+
 # Error rule for syntax errors
 def p_error(p):
     print("Syntax error in input! %s" % p.value)
- 
+
+
+def p_asignacion_funcion(p):
+    '''
+        asignacion_funcion : DEFN ID LCOR RCOR general
+        | DEFN ID LCOR parametros RCOR general
+    '''
+
+
+def p_parametros(p):
+    '''
+        parametros : valores
+    '''
+
+
+def p_valores(p):
+    '''
+        valores : ID
+        | ID valores
+    '''
+
+
+
  # Build the parser
 parser = yacc.yacc()
  

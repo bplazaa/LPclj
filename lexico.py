@@ -26,7 +26,6 @@ reserved = {
     'printf': 'PRINTF',
     'print': 'PRINT',
     'println' : 'PRINTLN',
-    'read-line': 'READLINE',
     'read': 'READ',
     'mod' : 'MOD',
     'comment' : 'COMMENT'

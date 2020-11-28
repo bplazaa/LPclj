@@ -1,0 +1,6 @@
+(print "Este es el algoritmo")
+(def palabra 
+(def contador 0)
+(while (< contador longitud) (do (print "entro al while") (def contador (+ contador 1))))
+(print "agregando elementos") 
+(def lista (conj [5 8 9 7 8] 6))

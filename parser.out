@@ -3,9 +3,7 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     COMMENT
-    DEFN
     FOR
-    READLINE
     THEN
 
 Grammar
@@ -17,163 +15,175 @@ Rule 3     general -> LPAREN sentenciaif RPAREN
 Rule 4     general -> LPAREN sentenciawhile RPAREN
 Rule 5     general -> LPAREN asignacion RPAREN
 Rule 6     general -> LPAREN imprimir RPAREN
-Rule 7     general -> funcionstruct
-Rule 8     general -> sentenciado
-Rule 9     general -> read
-Rule 10    general -> general general
-Rule 11    expression -> operadoresMat factor factor
-Rule 12    comparacion -> operadoresComp factor factor
-Rule 13    operadoresMat -> PLUS
-Rule 14    operadoresMat -> MINUS
-Rule 15    operadoresMat -> TIMES
-Rule 16    operadoresMat -> DIVIDE
-Rule 17    operadoresMat -> MOD
-Rule 18    operadoresComp -> MAYORQUE
-Rule 19    operadoresComp -> MENORQUE
-Rule 20    operadoresComp -> IGUAL
-Rule 21    operadoresComp -> OR
-Rule 22    operadoresComp -> AND
-Rule 23    operadoresComp -> NOT
-Rule 24    operadoresPrint -> PRINT
-Rule 25    operadoresPrint -> PRINTLN
-Rule 26    read -> LPAREN READ RPAREN
-Rule 27    factor -> NUMBER
-Rule 28    factor -> ID
-Rule 29    factor -> FLOAT
-Rule 30    factor -> booleanos
-Rule 31    factor -> LPAREN expression RPAREN
-Rule 32    asignacion -> DEF ID factor
-Rule 33    asignacion -> DEF ID STRING
-Rule 34    asignacion -> DEF ID booleanos
+Rule 7     general -> LPAREN asignacion_funcion RPAREN
+Rule 8     general -> funcionstruct
+Rule 9     general -> sentenciado
+Rule 10    general -> read
+Rule 11    general -> general general
+Rule 12    expression -> operadoresMat factor factor
+Rule 13    comparacion -> operadoresComp factor factor
+Rule 14    operadoresMat -> PLUS
+Rule 15    operadoresMat -> MINUS
+Rule 16    operadoresMat -> TIMES
+Rule 17    operadoresMat -> DIVIDE
+Rule 18    operadoresMat -> MOD
+Rule 19    operadoresComp -> MAYORQUE
+Rule 20    operadoresComp -> MENORQUE
+Rule 21    operadoresComp -> IGUAL
+Rule 22    operadoresComp -> OR
+Rule 23    operadoresComp -> AND
+Rule 24    operadoresComp -> NOT
+Rule 25    operadoresPrint -> PRINT
+Rule 26    operadoresPrint -> PRINTLN
+Rule 27    read -> LPAREN READ RPAREN
+Rule 28    factor -> NUMBER
+Rule 29    factor -> ID
+Rule 30    factor -> FLOAT
+Rule 31    factor -> booleanos
+Rule 32    factor -> LPAREN expression RPAREN
+Rule 33    asignacion -> DEF ID factor
+Rule 34    asignacion -> DEF ID STRING
 Rule 35    asignacion -> DEF ID struct
 Rule 36    asignacion -> DEF ID funcionstruct
-Rule 37    booleanos -> TRUE
-Rule 38    booleanos -> FALSE
-Rule 39    imprimir -> operadoresPrint factor
-Rule 40    imprimir -> operadoresPrint STRING
-Rule 41    imprimir -> PRINTF valorl
-Rule 42    sentenciado -> LPAREN DO general RPAREN
-Rule 43    sentenciaif -> IF LPAREN comparacion RPAREN general
-Rule 44    sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado
-Rule 45    sentenciawhile -> WHILE LPAREN comparacion RPAREN sentenciado
-Rule 46    struct -> lista
-Rule 47    struct -> vector
-Rule 48    struct -> mapa
-Rule 49    struct -> conjunto
-Rule 50    lista -> QUOTE LPAREN valorl RPAREN
-Rule 51    vector -> LCOR valorl RCOR
-Rule 52    mapa -> LBRACE repetirclave RBRACE
-Rule 53    conjunto -> NUMERAL LBRACE valorl RBRACE
-Rule 54    clavevalor -> ID DDOT valor
-Rule 55    repetirclave -> clavevalor
-Rule 56    repetirclave -> clavevalor COMA repetirclave
-Rule 57    valor -> NUMBER
-Rule 58    valor -> ID
-Rule 59    valor -> STRING
-Rule 60    valor -> booleanos
-Rule 61    valor -> FLOAT
-Rule 62    valorl -> NUMBER
-Rule 63    valorl -> ID
-Rule 64    valorl -> STRING
-Rule 65    valorl -> booleanos
-Rule 66    valorl -> FLOAT
-Rule 67    valorl -> valorl valorl
-Rule 68    funcionstruct -> conjfunction
-Rule 69    funcionstruct -> LPAREN STR STRING strings RPAREN
-Rule 70    funcionstruct -> LPAREN GET conjunto NUMBER RPAREN
-Rule 71    funcionstruct -> LPAREN GET conjunto ID RPAREN
-Rule 72    funcionstruct -> LPAREN NTH lista NUMBER RPAREN
-Rule 73    funcionstruct -> LPAREN NTH lista ID RPAREN
-Rule 74    funcionstruct -> LPAREN POP vector RPAREN
-Rule 75    funcionstruct -> LPAREN COUNT STRING RPAREN
-Rule 76    funcionstruct -> LPAREN COUNT ID RPAREN
-Rule 77    conjfunction -> LPAREN CONJ lista NUMBER RPAREN
-Rule 78    conjfunction -> LPAREN CONJ lista ID RPAREN
-Rule 79    conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN
-Rule 80    conjfunction -> LPAREN CONJ conjunto ID RPAREN
-Rule 81    conjfunction -> LPAREN CONJ vector NUMBER RPAREN
-Rule 82    conjfunction -> LPAREN CONJ vector ID RPAREN
-Rule 83    strings -> STRING
-Rule 84    strings -> STRING STRING
+Rule 37    asignacion -> DEF ID read
+Rule 38    booleanos -> TRUE
+Rule 39    booleanos -> FALSE
+Rule 40    imprimir -> operadoresPrint factor
+Rule 41    imprimir -> operadoresPrint STRING
+Rule 42    imprimir -> PRINTF valorl
+Rule 43    sentenciado -> LPAREN DO general RPAREN
+Rule 44    sentenciaif -> IF LPAREN comparacion RPAREN general
+Rule 45    sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado
+Rule 46    sentenciawhile -> WHILE LPAREN comparacion RPAREN sentenciado
+Rule 47    struct -> lista
+Rule 48    struct -> vector
+Rule 49    struct -> mapa
+Rule 50    struct -> conjunto
+Rule 51    lista -> QUOTE LPAREN valorl RPAREN
+Rule 52    vector -> LCOR valorl RCOR
+Rule 53    mapa -> LBRACE repetirclave RBRACE
+Rule 54    conjunto -> NUMERAL LBRACE valorl RBRACE
+Rule 55    clavevalor -> ID DDOT valor
+Rule 56    repetirclave -> clavevalor
+Rule 57    repetirclave -> clavevalor COMA repetirclave
+Rule 58    valor -> NUMBER
+Rule 59    valor -> ID
+Rule 60    valor -> STRING
+Rule 61    valor -> booleanos
+Rule 62    valor -> FLOAT
+Rule 63    valorl -> NUMBER
+Rule 64    valorl -> ID
+Rule 65    valorl -> STRING
+Rule 66    valorl -> booleanos
+Rule 67    valorl -> FLOAT
+Rule 68    valorl -> valorl valorl
+Rule 69    funcionstruct -> conjfunction
+Rule 70    funcionstruct -> LPAREN STR STRING strings RPAREN
+Rule 71    funcionstruct -> LPAREN STR ID strings RPAREN
+Rule 72    funcionstruct -> LPAREN GET conjunto NUMBER RPAREN
+Rule 73    funcionstruct -> LPAREN GET conjunto ID RPAREN
+Rule 74    funcionstruct -> LPAREN NTH lista NUMBER RPAREN
+Rule 75    funcionstruct -> LPAREN NTH lista ID RPAREN
+Rule 76    funcionstruct -> LPAREN POP vector RPAREN
+Rule 77    funcionstruct -> LPAREN COUNT STRING RPAREN
+Rule 78    funcionstruct -> LPAREN COUNT ID RPAREN
+Rule 79    conjfunction -> LPAREN CONJ lista NUMBER RPAREN
+Rule 80    conjfunction -> LPAREN CONJ lista ID RPAREN
+Rule 81    conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN
+Rule 82    conjfunction -> LPAREN CONJ conjunto ID RPAREN
+Rule 83    conjfunction -> LPAREN CONJ vector NUMBER RPAREN
+Rule 84    conjfunction -> LPAREN CONJ vector ID RPAREN
+Rule 85    strings -> valor_strings
+Rule 86    strings -> valor_strings strings
+Rule 87    valor_strings -> STRING
+Rule 88    valor_strings -> ID
+Rule 89    asignacion_funcion -> DEFN ID LCOR RCOR general
+Rule 90    asignacion_funcion -> DEFN ID LCOR parametros RCOR general
+Rule 91    parametros -> valores
+Rule 92    valores -> ID
+Rule 93    valores -> ID valores
 
 Terminals, with rules where they appear
 
-AND                  : 22
-COMA                 : 56
+AND                  : 23
+COMA                 : 57
 COMMENT              : 
-CONJ                 : 77 78 79 80 81 82
-COUNT                : 75 76
-DDOT                 : 54
-DEF                  : 32 33 34 35 36
-DEFN                 : 
-DIVIDE               : 16
-DO                   : 42
-FALSE                : 38
-FLOAT                : 29 61 66
+CONJ                 : 79 80 81 82 83 84
+COUNT                : 77 78
+DDOT                 : 55
+DEF                  : 33 34 35 36 37
+DEFN                 : 89 90
+DIVIDE               : 17
+DO                   : 43
+FALSE                : 39
+FLOAT                : 30 62 67
 FOR                  : 
-GET                  : 70 71
-ID                   : 28 32 33 34 35 36 54 58 63 71 73 76 78 80 82
-IF                   : 43 44
-IGUAL                : 20
-LBRACE               : 52 53
-LCOR                 : 51
-LPAREN               : 1 2 3 4 5 6 26 31 42 43 44 45 50 69 70 71 72 73 74 75 76 77 78 79 80 81 82
-MAYORQUE             : 18
-MENORQUE             : 19
-MINUS                : 14
-MOD                  : 17
-NOT                  : 23
-NTH                  : 72 73
-NUMBER               : 27 57 62 70 72 77 79 81
-NUMERAL              : 53
-OR                   : 21
-PLUS                 : 13
-POP                  : 74
-PRINT                : 24
-PRINTF               : 41
-PRINTLN              : 25
-QUOTE                : 50
-RBRACE               : 52 53
-RCOR                 : 51
-READ                 : 26
-READLINE             : 
-RPAREN               : 1 2 3 4 5 6 26 31 42 43 44 45 50 69 70 71 72 73 74 75 76 77 78 79 80 81 82
-STR                  : 69
-STRING               : 33 40 59 64 69 75 83 84 84
+GET                  : 72 73
+ID                   : 29 33 34 35 36 37 55 59 64 71 73 75 78 80 82 84 88 89 90 92 93
+IF                   : 44 45
+IGUAL                : 21
+LBRACE               : 53 54
+LCOR                 : 52 89 90
+LPAREN               : 1 2 3 4 5 6 7 27 32 43 44 45 46 51 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84
+MAYORQUE             : 19
+MENORQUE             : 20
+MINUS                : 15
+MOD                  : 18
+NOT                  : 24
+NTH                  : 74 75
+NUMBER               : 28 58 63 72 74 79 81 83
+NUMERAL              : 54
+OR                   : 22
+PLUS                 : 14
+POP                  : 76
+PRINT                : 25
+PRINTF               : 42
+PRINTLN              : 26
+QUOTE                : 51
+RBRACE               : 53 54
+RCOR                 : 52 89 90
+READ                 : 27
+RPAREN               : 1 2 3 4 5 6 7 27 32 43 44 45 46 51 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84
+STR                  : 70 71
+STRING               : 34 41 60 65 70 77 87
 THEN                 : 
-TIMES                : 15
-TRUE                 : 37
-WHILE                : 45
+TIMES                : 16
+TRUE                 : 38
+WHILE                : 46
 error                : 
 
 Nonterminals, with rules where they appear
 
 asignacion           : 5
-booleanos            : 30 34 60 65
-clavevalor           : 55 56
-comparacion          : 2 43 44 45
-conjfunction         : 68
-conjunto             : 49 70 71 79 80
-expression           : 1 31
-factor               : 11 11 12 12 32 39
-funcionstruct        : 7 36
-general              : 10 10 42 43 0
+asignacion_funcion   : 7
+booleanos            : 31 61 66
+clavevalor           : 56 57
+comparacion          : 2 44 45 46
+conjfunction         : 69
+conjunto             : 50 72 73 81 82
+expression           : 1 32
+factor               : 12 12 13 13 33 40
+funcionstruct        : 8 36
+general              : 11 11 43 44 89 90 0
 imprimir             : 6
-lista                : 46 72 73 77 78
-mapa                 : 48
-operadoresComp       : 12
-operadoresMat        : 11
-operadoresPrint      : 39 40
-read                 : 9
-repetirclave         : 52 56
-sentenciado          : 8 44 44 45
+lista                : 47 74 75 79 80
+mapa                 : 49
+operadoresComp       : 13
+operadoresMat        : 12
+operadoresPrint      : 40 41
+parametros           : 90
+read                 : 10 37
+repetirclave         : 53 57
+sentenciado          : 9 45 45 46
 sentenciaif          : 3
 sentenciawhile       : 4
-strings              : 69
+strings              : 70 71 86
 struct               : 35
-valor                : 54
-valorl               : 41 50 51 53 67 67
-vector               : 47 74 81 82
+valor                : 55
+valor_strings        : 85 86
+valores              : 91 93
+valorl               : 42 51 52 54 68 68
+vector               : 48 76 83 84
 
 Parsing method: LALR
 
@@ -186,27 +196,29 @@ state 0
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
     LPAREN          shift and go to state 2
 
@@ -219,34 +231,36 @@ state 0
 state 1
 
     (0) S' -> general .
-    (10) general -> general . general
+    (11) general -> general . general
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
     LPAREN          shift and go to state 2
 
@@ -264,74 +278,79 @@ state 2
     (4) general -> LPAREN . sentenciawhile RPAREN
     (5) general -> LPAREN . asignacion RPAREN
     (6) general -> LPAREN . imprimir RPAREN
-    (69) funcionstruct -> LPAREN . STR STRING strings RPAREN
-    (70) funcionstruct -> LPAREN . GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> LPAREN . GET conjunto ID RPAREN
-    (72) funcionstruct -> LPAREN . NTH lista NUMBER RPAREN
-    (73) funcionstruct -> LPAREN . NTH lista ID RPAREN
-    (74) funcionstruct -> LPAREN . POP vector RPAREN
-    (75) funcionstruct -> LPAREN . COUNT STRING RPAREN
-    (76) funcionstruct -> LPAREN . COUNT ID RPAREN
-    (42) sentenciado -> LPAREN . DO general RPAREN
-    (26) read -> LPAREN . READ RPAREN
-    (77) conjfunction -> LPAREN . CONJ lista NUMBER RPAREN
-    (78) conjfunction -> LPAREN . CONJ lista ID RPAREN
-    (79) conjfunction -> LPAREN . CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> LPAREN . CONJ conjunto ID RPAREN
-    (81) conjfunction -> LPAREN . CONJ vector NUMBER RPAREN
-    (82) conjfunction -> LPAREN . CONJ vector ID RPAREN
-    (11) expression -> . operadoresMat factor factor
-    (12) comparacion -> . operadoresComp factor factor
-    (43) sentenciaif -> . IF LPAREN comparacion RPAREN general
-    (44) sentenciaif -> . IF LPAREN comparacion RPAREN sentenciado sentenciado
-    (45) sentenciawhile -> . WHILE LPAREN comparacion RPAREN sentenciado
-    (32) asignacion -> . DEF ID factor
-    (33) asignacion -> . DEF ID STRING
-    (34) asignacion -> . DEF ID booleanos
+    (7) general -> LPAREN . asignacion_funcion RPAREN
+    (70) funcionstruct -> LPAREN . STR STRING strings RPAREN
+    (71) funcionstruct -> LPAREN . STR ID strings RPAREN
+    (72) funcionstruct -> LPAREN . GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> LPAREN . GET conjunto ID RPAREN
+    (74) funcionstruct -> LPAREN . NTH lista NUMBER RPAREN
+    (75) funcionstruct -> LPAREN . NTH lista ID RPAREN
+    (76) funcionstruct -> LPAREN . POP vector RPAREN
+    (77) funcionstruct -> LPAREN . COUNT STRING RPAREN
+    (78) funcionstruct -> LPAREN . COUNT ID RPAREN
+    (43) sentenciado -> LPAREN . DO general RPAREN
+    (27) read -> LPAREN . READ RPAREN
+    (79) conjfunction -> LPAREN . CONJ lista NUMBER RPAREN
+    (80) conjfunction -> LPAREN . CONJ lista ID RPAREN
+    (81) conjfunction -> LPAREN . CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> LPAREN . CONJ conjunto ID RPAREN
+    (83) conjfunction -> LPAREN . CONJ vector NUMBER RPAREN
+    (84) conjfunction -> LPAREN . CONJ vector ID RPAREN
+    (12) expression -> . operadoresMat factor factor
+    (13) comparacion -> . operadoresComp factor factor
+    (44) sentenciaif -> . IF LPAREN comparacion RPAREN general
+    (45) sentenciaif -> . IF LPAREN comparacion RPAREN sentenciado sentenciado
+    (46) sentenciawhile -> . WHILE LPAREN comparacion RPAREN sentenciado
+    (33) asignacion -> . DEF ID factor
+    (34) asignacion -> . DEF ID STRING
     (35) asignacion -> . DEF ID struct
     (36) asignacion -> . DEF ID funcionstruct
-    (39) imprimir -> . operadoresPrint factor
-    (40) imprimir -> . operadoresPrint STRING
-    (41) imprimir -> . PRINTF valorl
-    (13) operadoresMat -> . PLUS
-    (14) operadoresMat -> . MINUS
-    (15) operadoresMat -> . TIMES
-    (16) operadoresMat -> . DIVIDE
-    (17) operadoresMat -> . MOD
-    (18) operadoresComp -> . MAYORQUE
-    (19) operadoresComp -> . MENORQUE
-    (20) operadoresComp -> . IGUAL
-    (21) operadoresComp -> . OR
-    (22) operadoresComp -> . AND
-    (23) operadoresComp -> . NOT
-    (24) operadoresPrint -> . PRINT
-    (25) operadoresPrint -> . PRINTLN
+    (37) asignacion -> . DEF ID read
+    (40) imprimir -> . operadoresPrint factor
+    (41) imprimir -> . operadoresPrint STRING
+    (42) imprimir -> . PRINTF valorl
+    (89) asignacion_funcion -> . DEFN ID LCOR RCOR general
+    (90) asignacion_funcion -> . DEFN ID LCOR parametros RCOR general
+    (14) operadoresMat -> . PLUS
+    (15) operadoresMat -> . MINUS
+    (16) operadoresMat -> . TIMES
+    (17) operadoresMat -> . DIVIDE
+    (18) operadoresMat -> . MOD
+    (19) operadoresComp -> . MAYORQUE
+    (20) operadoresComp -> . MENORQUE
+    (21) operadoresComp -> . IGUAL
+    (22) operadoresComp -> . OR
+    (23) operadoresComp -> . AND
+    (24) operadoresComp -> . NOT
+    (25) operadoresPrint -> . PRINT
+    (26) operadoresPrint -> . PRINTLN
 
-    STR             shift and go to state 14
-    GET             shift and go to state 15
-    NTH             shift and go to state 16
-    POP             shift and go to state 17
-    COUNT           shift and go to state 18
-    DO              shift and go to state 19
-    READ            shift and go to state 20
-    CONJ            shift and go to state 21
-    IF              shift and go to state 24
-    WHILE           shift and go to state 25
-    DEF             shift and go to state 26
-    PRINTF          shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    MAYORQUE        shift and go to state 34
-    MENORQUE        shift and go to state 35
-    IGUAL           shift and go to state 36
-    OR              shift and go to state 37
-    AND             shift and go to state 38
-    NOT             shift and go to state 39
-    PRINT           shift and go to state 40
-    PRINTLN         shift and go to state 41
+    STR             shift and go to state 15
+    GET             shift and go to state 16
+    NTH             shift and go to state 17
+    POP             shift and go to state 18
+    COUNT           shift and go to state 19
+    DO              shift and go to state 20
+    READ            shift and go to state 21
+    CONJ            shift and go to state 22
+    IF              shift and go to state 25
+    WHILE           shift and go to state 26
+    DEF             shift and go to state 27
+    PRINTF          shift and go to state 29
+    DEFN            shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+    MOD             shift and go to state 35
+    MAYORQUE        shift and go to state 36
+    MENORQUE        shift and go to state 37
+    IGUAL           shift and go to state 38
+    OR              shift and go to state 39
+    AND             shift and go to state 40
+    NOT             shift and go to state 41
+    PRINT           shift and go to state 42
+    PRINTLN         shift and go to state 43
 
     expression                     shift and go to state 8
     comparacion                    shift and go to state 9
@@ -339,84 +358,87 @@ state 2
     sentenciawhile                 shift and go to state 11
     asignacion                     shift and go to state 12
     imprimir                       shift and go to state 13
-    operadoresMat                  shift and go to state 22
-    operadoresComp                 shift and go to state 23
-    operadoresPrint                shift and go to state 27
+    asignacion_funcion             shift and go to state 14
+    operadoresMat                  shift and go to state 23
+    operadoresComp                 shift and go to state 24
+    operadoresPrint                shift and go to state 28
 
 state 3
 
-    (7) general -> funcionstruct .
+    (8) general -> funcionstruct .
 
-    LPAREN          reduce using rule 7 (general -> funcionstruct .)
-    $end            reduce using rule 7 (general -> funcionstruct .)
-    RPAREN          reduce using rule 7 (general -> funcionstruct .)
+    LPAREN          reduce using rule 8 (general -> funcionstruct .)
+    $end            reduce using rule 8 (general -> funcionstruct .)
+    RPAREN          reduce using rule 8 (general -> funcionstruct .)
 
 
 state 4
 
-    (8) general -> sentenciado .
+    (9) general -> sentenciado .
 
-    LPAREN          reduce using rule 8 (general -> sentenciado .)
-    $end            reduce using rule 8 (general -> sentenciado .)
-    RPAREN          reduce using rule 8 (general -> sentenciado .)
+    LPAREN          reduce using rule 9 (general -> sentenciado .)
+    $end            reduce using rule 9 (general -> sentenciado .)
+    RPAREN          reduce using rule 9 (general -> sentenciado .)
 
 
 state 5
 
-    (9) general -> read .
+    (10) general -> read .
 
-    LPAREN          reduce using rule 9 (general -> read .)
-    $end            reduce using rule 9 (general -> read .)
-    RPAREN          reduce using rule 9 (general -> read .)
+    LPAREN          reduce using rule 10 (general -> read .)
+    $end            reduce using rule 10 (general -> read .)
+    RPAREN          reduce using rule 10 (general -> read .)
 
 
 state 6
 
-    (68) funcionstruct -> conjfunction .
+    (69) funcionstruct -> conjfunction .
 
-    LPAREN          reduce using rule 68 (funcionstruct -> conjfunction .)
-    $end            reduce using rule 68 (funcionstruct -> conjfunction .)
-    RPAREN          reduce using rule 68 (funcionstruct -> conjfunction .)
+    LPAREN          reduce using rule 69 (funcionstruct -> conjfunction .)
+    $end            reduce using rule 69 (funcionstruct -> conjfunction .)
+    RPAREN          reduce using rule 69 (funcionstruct -> conjfunction .)
 
 
 state 7
 
-    (10) general -> general general .
-    (10) general -> general . general
+    (11) general -> general general .
+    (11) general -> general . general
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
   ! shift/reduce conflict for LPAREN resolved as shift
-    $end            reduce using rule 10 (general -> general general .)
-    RPAREN          reduce using rule 10 (general -> general general .)
+    $end            reduce using rule 11 (general -> general general .)
+    RPAREN          reduce using rule 11 (general -> general general .)
     LPAREN          shift and go to state 2
 
-  ! LPAREN          [ reduce using rule 10 (general -> general general .) ]
+  ! LPAREN          [ reduce using rule 11 (general -> general general .) ]
 
     general                        shift and go to state 7
     funcionstruct                  shift and go to state 3
@@ -428,427 +450,446 @@ state 8
 
     (1) general -> LPAREN expression . RPAREN
 
-    RPAREN          shift and go to state 42
+    RPAREN          shift and go to state 44
 
 
 state 9
 
     (2) general -> LPAREN comparacion . RPAREN
 
-    RPAREN          shift and go to state 43
+    RPAREN          shift and go to state 45
 
 
 state 10
 
     (3) general -> LPAREN sentenciaif . RPAREN
 
-    RPAREN          shift and go to state 44
+    RPAREN          shift and go to state 46
 
 
 state 11
 
     (4) general -> LPAREN sentenciawhile . RPAREN
 
-    RPAREN          shift and go to state 45
+    RPAREN          shift and go to state 47
 
 
 state 12
 
     (5) general -> LPAREN asignacion . RPAREN
 
-    RPAREN          shift and go to state 46
+    RPAREN          shift and go to state 48
 
 
 state 13
 
     (6) general -> LPAREN imprimir . RPAREN
 
-    RPAREN          shift and go to state 47
+    RPAREN          shift and go to state 49
 
 
 state 14
 
-    (69) funcionstruct -> LPAREN STR . STRING strings RPAREN
+    (7) general -> LPAREN asignacion_funcion . RPAREN
 
-    STRING          shift and go to state 48
+    RPAREN          shift and go to state 50
 
 
 state 15
 
-    (70) funcionstruct -> LPAREN GET . conjunto NUMBER RPAREN
-    (71) funcionstruct -> LPAREN GET . conjunto ID RPAREN
-    (53) conjunto -> . NUMERAL LBRACE valorl RBRACE
+    (70) funcionstruct -> LPAREN STR . STRING strings RPAREN
+    (71) funcionstruct -> LPAREN STR . ID strings RPAREN
 
-    NUMERAL         shift and go to state 50
+    STRING          shift and go to state 51
+    ID              shift and go to state 52
 
-    conjunto                       shift and go to state 49
 
 state 16
 
-    (72) funcionstruct -> LPAREN NTH . lista NUMBER RPAREN
-    (73) funcionstruct -> LPAREN NTH . lista ID RPAREN
-    (50) lista -> . QUOTE LPAREN valorl RPAREN
+    (72) funcionstruct -> LPAREN GET . conjunto NUMBER RPAREN
+    (73) funcionstruct -> LPAREN GET . conjunto ID RPAREN
+    (54) conjunto -> . NUMERAL LBRACE valorl RBRACE
 
-    QUOTE           shift and go to state 52
+    NUMERAL         shift and go to state 54
 
-    lista                          shift and go to state 51
+    conjunto                       shift and go to state 53
 
 state 17
 
-    (74) funcionstruct -> LPAREN POP . vector RPAREN
-    (51) vector -> . LCOR valorl RCOR
+    (74) funcionstruct -> LPAREN NTH . lista NUMBER RPAREN
+    (75) funcionstruct -> LPAREN NTH . lista ID RPAREN
+    (51) lista -> . QUOTE LPAREN valorl RPAREN
 
-    LCOR            shift and go to state 54
+    QUOTE           shift and go to state 56
 
-    vector                         shift and go to state 53
+    lista                          shift and go to state 55
 
 state 18
 
-    (75) funcionstruct -> LPAREN COUNT . STRING RPAREN
-    (76) funcionstruct -> LPAREN COUNT . ID RPAREN
+    (76) funcionstruct -> LPAREN POP . vector RPAREN
+    (52) vector -> . LCOR valorl RCOR
 
-    STRING          shift and go to state 55
-    ID              shift and go to state 56
+    LCOR            shift and go to state 58
 
+    vector                         shift and go to state 57
 
 state 19
 
-    (42) sentenciado -> LPAREN DO . general RPAREN
+    (77) funcionstruct -> LPAREN COUNT . STRING RPAREN
+    (78) funcionstruct -> LPAREN COUNT . ID RPAREN
+
+    STRING          shift and go to state 59
+    ID              shift and go to state 60
+
+
+state 20
+
+    (43) sentenciado -> LPAREN DO . general RPAREN
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
     LPAREN          shift and go to state 2
 
-    general                        shift and go to state 57
+    general                        shift and go to state 61
     funcionstruct                  shift and go to state 3
     sentenciado                    shift and go to state 4
     read                           shift and go to state 5
     conjfunction                   shift and go to state 6
 
-state 20
-
-    (26) read -> LPAREN READ . RPAREN
-
-    RPAREN          shift and go to state 58
-
-
 state 21
 
-    (77) conjfunction -> LPAREN CONJ . lista NUMBER RPAREN
-    (78) conjfunction -> LPAREN CONJ . lista ID RPAREN
-    (79) conjfunction -> LPAREN CONJ . conjunto NUMBER RPAREN
-    (80) conjfunction -> LPAREN CONJ . conjunto ID RPAREN
-    (81) conjfunction -> LPAREN CONJ . vector NUMBER RPAREN
-    (82) conjfunction -> LPAREN CONJ . vector ID RPAREN
-    (50) lista -> . QUOTE LPAREN valorl RPAREN
-    (53) conjunto -> . NUMERAL LBRACE valorl RBRACE
-    (51) vector -> . LCOR valorl RCOR
+    (27) read -> LPAREN READ . RPAREN
 
-    QUOTE           shift and go to state 52
-    NUMERAL         shift and go to state 50
-    LCOR            shift and go to state 54
+    RPAREN          shift and go to state 62
 
-    lista                          shift and go to state 59
-    conjunto                       shift and go to state 60
-    vector                         shift and go to state 61
 
 state 22
 
-    (11) expression -> operadoresMat . factor factor
-    (27) factor -> . NUMBER
-    (28) factor -> . ID
-    (29) factor -> . FLOAT
-    (30) factor -> . booleanos
-    (31) factor -> . LPAREN expression RPAREN
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (79) conjfunction -> LPAREN CONJ . lista NUMBER RPAREN
+    (80) conjfunction -> LPAREN CONJ . lista ID RPAREN
+    (81) conjfunction -> LPAREN CONJ . conjunto NUMBER RPAREN
+    (82) conjfunction -> LPAREN CONJ . conjunto ID RPAREN
+    (83) conjfunction -> LPAREN CONJ . vector NUMBER RPAREN
+    (84) conjfunction -> LPAREN CONJ . vector ID RPAREN
+    (51) lista -> . QUOTE LPAREN valorl RPAREN
+    (54) conjunto -> . NUMERAL LBRACE valorl RBRACE
+    (52) vector -> . LCOR valorl RCOR
 
-    NUMBER          shift and go to state 63
-    ID              shift and go to state 64
-    FLOAT           shift and go to state 65
-    LPAREN          shift and go to state 67
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    QUOTE           shift and go to state 56
+    NUMERAL         shift and go to state 54
+    LCOR            shift and go to state 58
 
-    factor                         shift and go to state 62
-    booleanos                      shift and go to state 66
+    lista                          shift and go to state 63
+    conjunto                       shift and go to state 64
+    vector                         shift and go to state 65
 
 state 23
 
-    (12) comparacion -> operadoresComp . factor factor
-    (27) factor -> . NUMBER
-    (28) factor -> . ID
-    (29) factor -> . FLOAT
-    (30) factor -> . booleanos
-    (31) factor -> . LPAREN expression RPAREN
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (12) expression -> operadoresMat . factor factor
+    (28) factor -> . NUMBER
+    (29) factor -> . ID
+    (30) factor -> . FLOAT
+    (31) factor -> . booleanos
+    (32) factor -> . LPAREN expression RPAREN
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    NUMBER          shift and go to state 63
-    ID              shift and go to state 64
-    FLOAT           shift and go to state 65
-    LPAREN          shift and go to state 67
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    NUMBER          shift and go to state 67
+    ID              shift and go to state 68
+    FLOAT           shift and go to state 69
+    LPAREN          shift and go to state 71
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
-    factor                         shift and go to state 70
-    booleanos                      shift and go to state 66
+    factor                         shift and go to state 66
+    booleanos                      shift and go to state 70
 
 state 24
 
-    (43) sentenciaif -> IF . LPAREN comparacion RPAREN general
-    (44) sentenciaif -> IF . LPAREN comparacion RPAREN sentenciado sentenciado
+    (13) comparacion -> operadoresComp . factor factor
+    (28) factor -> . NUMBER
+    (29) factor -> . ID
+    (30) factor -> . FLOAT
+    (31) factor -> . booleanos
+    (32) factor -> . LPAREN expression RPAREN
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
+    NUMBER          shift and go to state 67
+    ID              shift and go to state 68
+    FLOAT           shift and go to state 69
     LPAREN          shift and go to state 71
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    factor                         shift and go to state 74
+    booleanos                      shift and go to state 70
 
 state 25
 
-    (45) sentenciawhile -> WHILE . LPAREN comparacion RPAREN sentenciado
+    (44) sentenciaif -> IF . LPAREN comparacion RPAREN general
+    (45) sentenciaif -> IF . LPAREN comparacion RPAREN sentenciado sentenciado
 
-    LPAREN          shift and go to state 72
+    LPAREN          shift and go to state 75
 
 
 state 26
 
-    (32) asignacion -> DEF . ID factor
-    (33) asignacion -> DEF . ID STRING
-    (34) asignacion -> DEF . ID booleanos
-    (35) asignacion -> DEF . ID struct
-    (36) asignacion -> DEF . ID funcionstruct
+    (46) sentenciawhile -> WHILE . LPAREN comparacion RPAREN sentenciado
 
-    ID              shift and go to state 73
+    LPAREN          shift and go to state 76
 
 
 state 27
 
-    (39) imprimir -> operadoresPrint . factor
-    (40) imprimir -> operadoresPrint . STRING
-    (27) factor -> . NUMBER
-    (28) factor -> . ID
-    (29) factor -> . FLOAT
-    (30) factor -> . booleanos
-    (31) factor -> . LPAREN expression RPAREN
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (33) asignacion -> DEF . ID factor
+    (34) asignacion -> DEF . ID STRING
+    (35) asignacion -> DEF . ID struct
+    (36) asignacion -> DEF . ID funcionstruct
+    (37) asignacion -> DEF . ID read
 
-    STRING          shift and go to state 75
-    NUMBER          shift and go to state 63
-    ID              shift and go to state 64
-    FLOAT           shift and go to state 65
-    LPAREN          shift and go to state 67
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    ID              shift and go to state 77
 
-    factor                         shift and go to state 74
-    booleanos                      shift and go to state 66
 
 state 28
 
-    (41) imprimir -> PRINTF . valorl
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (40) imprimir -> operadoresPrint . factor
+    (41) imprimir -> operadoresPrint . STRING
+    (28) factor -> . NUMBER
+    (29) factor -> . ID
+    (30) factor -> . FLOAT
+    (31) factor -> . booleanos
+    (32) factor -> . LPAREN expression RPAREN
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
     STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    NUMBER          shift and go to state 67
+    ID              shift and go to state 68
+    FLOAT           shift and go to state 69
+    LPAREN          shift and go to state 71
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
-    valorl                         shift and go to state 76
-    booleanos                      shift and go to state 80
+    factor                         shift and go to state 78
+    booleanos                      shift and go to state 70
 
 state 29
 
-    (13) operadoresMat -> PLUS .
+    (42) imprimir -> PRINTF . valorl
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    NUMBER          reduce using rule 13 (operadoresMat -> PLUS .)
-    ID              reduce using rule 13 (operadoresMat -> PLUS .)
-    FLOAT           reduce using rule 13 (operadoresMat -> PLUS .)
-    LPAREN          reduce using rule 13 (operadoresMat -> PLUS .)
-    TRUE            reduce using rule 13 (operadoresMat -> PLUS .)
-    FALSE           reduce using rule 13 (operadoresMat -> PLUS .)
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    valorl                         shift and go to state 80
+    booleanos                      shift and go to state 84
 
 state 30
 
-    (14) operadoresMat -> MINUS .
+    (89) asignacion_funcion -> DEFN . ID LCOR RCOR general
+    (90) asignacion_funcion -> DEFN . ID LCOR parametros RCOR general
 
-    NUMBER          reduce using rule 14 (operadoresMat -> MINUS .)
-    ID              reduce using rule 14 (operadoresMat -> MINUS .)
-    FLOAT           reduce using rule 14 (operadoresMat -> MINUS .)
-    LPAREN          reduce using rule 14 (operadoresMat -> MINUS .)
-    TRUE            reduce using rule 14 (operadoresMat -> MINUS .)
-    FALSE           reduce using rule 14 (operadoresMat -> MINUS .)
+    ID              shift and go to state 86
 
 
 state 31
 
-    (15) operadoresMat -> TIMES .
+    (14) operadoresMat -> PLUS .
 
-    NUMBER          reduce using rule 15 (operadoresMat -> TIMES .)
-    ID              reduce using rule 15 (operadoresMat -> TIMES .)
-    FLOAT           reduce using rule 15 (operadoresMat -> TIMES .)
-    LPAREN          reduce using rule 15 (operadoresMat -> TIMES .)
-    TRUE            reduce using rule 15 (operadoresMat -> TIMES .)
-    FALSE           reduce using rule 15 (operadoresMat -> TIMES .)
+    NUMBER          reduce using rule 14 (operadoresMat -> PLUS .)
+    ID              reduce using rule 14 (operadoresMat -> PLUS .)
+    FLOAT           reduce using rule 14 (operadoresMat -> PLUS .)
+    LPAREN          reduce using rule 14 (operadoresMat -> PLUS .)
+    TRUE            reduce using rule 14 (operadoresMat -> PLUS .)
+    FALSE           reduce using rule 14 (operadoresMat -> PLUS .)
 
 
 state 32
 
-    (16) operadoresMat -> DIVIDE .
+    (15) operadoresMat -> MINUS .
 
-    NUMBER          reduce using rule 16 (operadoresMat -> DIVIDE .)
-    ID              reduce using rule 16 (operadoresMat -> DIVIDE .)
-    FLOAT           reduce using rule 16 (operadoresMat -> DIVIDE .)
-    LPAREN          reduce using rule 16 (operadoresMat -> DIVIDE .)
-    TRUE            reduce using rule 16 (operadoresMat -> DIVIDE .)
-    FALSE           reduce using rule 16 (operadoresMat -> DIVIDE .)
+    NUMBER          reduce using rule 15 (operadoresMat -> MINUS .)
+    ID              reduce using rule 15 (operadoresMat -> MINUS .)
+    FLOAT           reduce using rule 15 (operadoresMat -> MINUS .)
+    LPAREN          reduce using rule 15 (operadoresMat -> MINUS .)
+    TRUE            reduce using rule 15 (operadoresMat -> MINUS .)
+    FALSE           reduce using rule 15 (operadoresMat -> MINUS .)
 
 
 state 33
 
-    (17) operadoresMat -> MOD .
+    (16) operadoresMat -> TIMES .
 
-    NUMBER          reduce using rule 17 (operadoresMat -> MOD .)
-    ID              reduce using rule 17 (operadoresMat -> MOD .)
-    FLOAT           reduce using rule 17 (operadoresMat -> MOD .)
-    LPAREN          reduce using rule 17 (operadoresMat -> MOD .)
-    TRUE            reduce using rule 17 (operadoresMat -> MOD .)
-    FALSE           reduce using rule 17 (operadoresMat -> MOD .)
+    NUMBER          reduce using rule 16 (operadoresMat -> TIMES .)
+    ID              reduce using rule 16 (operadoresMat -> TIMES .)
+    FLOAT           reduce using rule 16 (operadoresMat -> TIMES .)
+    LPAREN          reduce using rule 16 (operadoresMat -> TIMES .)
+    TRUE            reduce using rule 16 (operadoresMat -> TIMES .)
+    FALSE           reduce using rule 16 (operadoresMat -> TIMES .)
 
 
 state 34
 
-    (18) operadoresComp -> MAYORQUE .
+    (17) operadoresMat -> DIVIDE .
 
-    NUMBER          reduce using rule 18 (operadoresComp -> MAYORQUE .)
-    ID              reduce using rule 18 (operadoresComp -> MAYORQUE .)
-    FLOAT           reduce using rule 18 (operadoresComp -> MAYORQUE .)
-    LPAREN          reduce using rule 18 (operadoresComp -> MAYORQUE .)
-    TRUE            reduce using rule 18 (operadoresComp -> MAYORQUE .)
-    FALSE           reduce using rule 18 (operadoresComp -> MAYORQUE .)
+    NUMBER          reduce using rule 17 (operadoresMat -> DIVIDE .)
+    ID              reduce using rule 17 (operadoresMat -> DIVIDE .)
+    FLOAT           reduce using rule 17 (operadoresMat -> DIVIDE .)
+    LPAREN          reduce using rule 17 (operadoresMat -> DIVIDE .)
+    TRUE            reduce using rule 17 (operadoresMat -> DIVIDE .)
+    FALSE           reduce using rule 17 (operadoresMat -> DIVIDE .)
 
 
 state 35
 
-    (19) operadoresComp -> MENORQUE .
+    (18) operadoresMat -> MOD .
 
-    NUMBER          reduce using rule 19 (operadoresComp -> MENORQUE .)
-    ID              reduce using rule 19 (operadoresComp -> MENORQUE .)
-    FLOAT           reduce using rule 19 (operadoresComp -> MENORQUE .)
-    LPAREN          reduce using rule 19 (operadoresComp -> MENORQUE .)
-    TRUE            reduce using rule 19 (operadoresComp -> MENORQUE .)
-    FALSE           reduce using rule 19 (operadoresComp -> MENORQUE .)
+    NUMBER          reduce using rule 18 (operadoresMat -> MOD .)
+    ID              reduce using rule 18 (operadoresMat -> MOD .)
+    FLOAT           reduce using rule 18 (operadoresMat -> MOD .)
+    LPAREN          reduce using rule 18 (operadoresMat -> MOD .)
+    TRUE            reduce using rule 18 (operadoresMat -> MOD .)
+    FALSE           reduce using rule 18 (operadoresMat -> MOD .)
 
 
 state 36
 
-    (20) operadoresComp -> IGUAL .
+    (19) operadoresComp -> MAYORQUE .
 
-    NUMBER          reduce using rule 20 (operadoresComp -> IGUAL .)
-    ID              reduce using rule 20 (operadoresComp -> IGUAL .)
-    FLOAT           reduce using rule 20 (operadoresComp -> IGUAL .)
-    LPAREN          reduce using rule 20 (operadoresComp -> IGUAL .)
-    TRUE            reduce using rule 20 (operadoresComp -> IGUAL .)
-    FALSE           reduce using rule 20 (operadoresComp -> IGUAL .)
+    NUMBER          reduce using rule 19 (operadoresComp -> MAYORQUE .)
+    ID              reduce using rule 19 (operadoresComp -> MAYORQUE .)
+    FLOAT           reduce using rule 19 (operadoresComp -> MAYORQUE .)
+    LPAREN          reduce using rule 19 (operadoresComp -> MAYORQUE .)
+    TRUE            reduce using rule 19 (operadoresComp -> MAYORQUE .)
+    FALSE           reduce using rule 19 (operadoresComp -> MAYORQUE .)
 
 
 state 37
 
-    (21) operadoresComp -> OR .
+    (20) operadoresComp -> MENORQUE .
 
-    NUMBER          reduce using rule 21 (operadoresComp -> OR .)
-    ID              reduce using rule 21 (operadoresComp -> OR .)
-    FLOAT           reduce using rule 21 (operadoresComp -> OR .)
-    LPAREN          reduce using rule 21 (operadoresComp -> OR .)
-    TRUE            reduce using rule 21 (operadoresComp -> OR .)
-    FALSE           reduce using rule 21 (operadoresComp -> OR .)
+    NUMBER          reduce using rule 20 (operadoresComp -> MENORQUE .)
+    ID              reduce using rule 20 (operadoresComp -> MENORQUE .)
+    FLOAT           reduce using rule 20 (operadoresComp -> MENORQUE .)
+    LPAREN          reduce using rule 20 (operadoresComp -> MENORQUE .)
+    TRUE            reduce using rule 20 (operadoresComp -> MENORQUE .)
+    FALSE           reduce using rule 20 (operadoresComp -> MENORQUE .)
 
 
 state 38
 
-    (22) operadoresComp -> AND .
+    (21) operadoresComp -> IGUAL .
 
-    NUMBER          reduce using rule 22 (operadoresComp -> AND .)
-    ID              reduce using rule 22 (operadoresComp -> AND .)
-    FLOAT           reduce using rule 22 (operadoresComp -> AND .)
-    LPAREN          reduce using rule 22 (operadoresComp -> AND .)
-    TRUE            reduce using rule 22 (operadoresComp -> AND .)
-    FALSE           reduce using rule 22 (operadoresComp -> AND .)
+    NUMBER          reduce using rule 21 (operadoresComp -> IGUAL .)
+    ID              reduce using rule 21 (operadoresComp -> IGUAL .)
+    FLOAT           reduce using rule 21 (operadoresComp -> IGUAL .)
+    LPAREN          reduce using rule 21 (operadoresComp -> IGUAL .)
+    TRUE            reduce using rule 21 (operadoresComp -> IGUAL .)
+    FALSE           reduce using rule 21 (operadoresComp -> IGUAL .)
 
 
 state 39
 
-    (23) operadoresComp -> NOT .
+    (22) operadoresComp -> OR .
 
-    NUMBER          reduce using rule 23 (operadoresComp -> NOT .)
-    ID              reduce using rule 23 (operadoresComp -> NOT .)
-    FLOAT           reduce using rule 23 (operadoresComp -> NOT .)
-    LPAREN          reduce using rule 23 (operadoresComp -> NOT .)
-    TRUE            reduce using rule 23 (operadoresComp -> NOT .)
-    FALSE           reduce using rule 23 (operadoresComp -> NOT .)
+    NUMBER          reduce using rule 22 (operadoresComp -> OR .)
+    ID              reduce using rule 22 (operadoresComp -> OR .)
+    FLOAT           reduce using rule 22 (operadoresComp -> OR .)
+    LPAREN          reduce using rule 22 (operadoresComp -> OR .)
+    TRUE            reduce using rule 22 (operadoresComp -> OR .)
+    FALSE           reduce using rule 22 (operadoresComp -> OR .)
 
 
 state 40
 
-    (24) operadoresPrint -> PRINT .
+    (23) operadoresComp -> AND .
 
-    STRING          reduce using rule 24 (operadoresPrint -> PRINT .)
-    NUMBER          reduce using rule 24 (operadoresPrint -> PRINT .)
-    ID              reduce using rule 24 (operadoresPrint -> PRINT .)
-    FLOAT           reduce using rule 24 (operadoresPrint -> PRINT .)
-    LPAREN          reduce using rule 24 (operadoresPrint -> PRINT .)
-    TRUE            reduce using rule 24 (operadoresPrint -> PRINT .)
-    FALSE           reduce using rule 24 (operadoresPrint -> PRINT .)
+    NUMBER          reduce using rule 23 (operadoresComp -> AND .)
+    ID              reduce using rule 23 (operadoresComp -> AND .)
+    FLOAT           reduce using rule 23 (operadoresComp -> AND .)
+    LPAREN          reduce using rule 23 (operadoresComp -> AND .)
+    TRUE            reduce using rule 23 (operadoresComp -> AND .)
+    FALSE           reduce using rule 23 (operadoresComp -> AND .)
 
 
 state 41
 
-    (25) operadoresPrint -> PRINTLN .
+    (24) operadoresComp -> NOT .
 
-    STRING          reduce using rule 25 (operadoresPrint -> PRINTLN .)
-    NUMBER          reduce using rule 25 (operadoresPrint -> PRINTLN .)
-    ID              reduce using rule 25 (operadoresPrint -> PRINTLN .)
-    FLOAT           reduce using rule 25 (operadoresPrint -> PRINTLN .)
-    LPAREN          reduce using rule 25 (operadoresPrint -> PRINTLN .)
-    TRUE            reduce using rule 25 (operadoresPrint -> PRINTLN .)
-    FALSE           reduce using rule 25 (operadoresPrint -> PRINTLN .)
+    NUMBER          reduce using rule 24 (operadoresComp -> NOT .)
+    ID              reduce using rule 24 (operadoresComp -> NOT .)
+    FLOAT           reduce using rule 24 (operadoresComp -> NOT .)
+    LPAREN          reduce using rule 24 (operadoresComp -> NOT .)
+    TRUE            reduce using rule 24 (operadoresComp -> NOT .)
+    FALSE           reduce using rule 24 (operadoresComp -> NOT .)
 
 
 state 42
+
+    (25) operadoresPrint -> PRINT .
+
+    STRING          reduce using rule 25 (operadoresPrint -> PRINT .)
+    NUMBER          reduce using rule 25 (operadoresPrint -> PRINT .)
+    ID              reduce using rule 25 (operadoresPrint -> PRINT .)
+    FLOAT           reduce using rule 25 (operadoresPrint -> PRINT .)
+    LPAREN          reduce using rule 25 (operadoresPrint -> PRINT .)
+    TRUE            reduce using rule 25 (operadoresPrint -> PRINT .)
+    FALSE           reduce using rule 25 (operadoresPrint -> PRINT .)
+
+
+state 43
+
+    (26) operadoresPrint -> PRINTLN .
+
+    STRING          reduce using rule 26 (operadoresPrint -> PRINTLN .)
+    NUMBER          reduce using rule 26 (operadoresPrint -> PRINTLN .)
+    ID              reduce using rule 26 (operadoresPrint -> PRINTLN .)
+    FLOAT           reduce using rule 26 (operadoresPrint -> PRINTLN .)
+    LPAREN          reduce using rule 26 (operadoresPrint -> PRINTLN .)
+    TRUE            reduce using rule 26 (operadoresPrint -> PRINTLN .)
+    FALSE           reduce using rule 26 (operadoresPrint -> PRINTLN .)
+
+
+state 44
 
     (1) general -> LPAREN expression RPAREN .
 
@@ -857,7 +898,7 @@ state 42
     RPAREN          reduce using rule 1 (general -> LPAREN expression RPAREN .)
 
 
-state 43
+state 45
 
     (2) general -> LPAREN comparacion RPAREN .
 
@@ -866,7 +907,7 @@ state 43
     RPAREN          reduce using rule 2 (general -> LPAREN comparacion RPAREN .)
 
 
-state 44
+state 46
 
     (3) general -> LPAREN sentenciaif RPAREN .
 
@@ -875,7 +916,7 @@ state 44
     RPAREN          reduce using rule 3 (general -> LPAREN sentenciaif RPAREN .)
 
 
-state 45
+state 47
 
     (4) general -> LPAREN sentenciawhile RPAREN .
 
@@ -884,7 +925,7 @@ state 45
     RPAREN          reduce using rule 4 (general -> LPAREN sentenciawhile RPAREN .)
 
 
-state 46
+state 48
 
     (5) general -> LPAREN asignacion RPAREN .
 
@@ -893,7 +934,7 @@ state 46
     RPAREN          reduce using rule 5 (general -> LPAREN asignacion RPAREN .)
 
 
-state 47
+state 49
 
     (6) general -> LPAREN imprimir RPAREN .
 
@@ -902,124 +943,153 @@ state 47
     RPAREN          reduce using rule 6 (general -> LPAREN imprimir RPAREN .)
 
 
-state 48
-
-    (69) funcionstruct -> LPAREN STR STRING . strings RPAREN
-    (83) strings -> . STRING
-    (84) strings -> . STRING STRING
-
-    STRING          shift and go to state 82
-
-    strings                        shift and go to state 83
-
-state 49
-
-    (70) funcionstruct -> LPAREN GET conjunto . NUMBER RPAREN
-    (71) funcionstruct -> LPAREN GET conjunto . ID RPAREN
-
-    NUMBER          shift and go to state 84
-    ID              shift and go to state 85
-
-
 state 50
 
-    (53) conjunto -> NUMERAL . LBRACE valorl RBRACE
+    (7) general -> LPAREN asignacion_funcion RPAREN .
 
-    LBRACE          shift and go to state 86
+    LPAREN          reduce using rule 7 (general -> LPAREN asignacion_funcion RPAREN .)
+    $end            reduce using rule 7 (general -> LPAREN asignacion_funcion RPAREN .)
+    RPAREN          reduce using rule 7 (general -> LPAREN asignacion_funcion RPAREN .)
 
 
 state 51
 
-    (72) funcionstruct -> LPAREN NTH lista . NUMBER RPAREN
-    (73) funcionstruct -> LPAREN NTH lista . ID RPAREN
+    (70) funcionstruct -> LPAREN STR STRING . strings RPAREN
+    (85) strings -> . valor_strings
+    (86) strings -> . valor_strings strings
+    (87) valor_strings -> . STRING
+    (88) valor_strings -> . ID
 
-    NUMBER          shift and go to state 87
-    ID              shift and go to state 88
+    STRING          shift and go to state 87
+    ID              shift and go to state 90
 
+    strings                        shift and go to state 88
+    valor_strings                  shift and go to state 89
 
 state 52
 
-    (50) lista -> QUOTE . LPAREN valorl RPAREN
+    (71) funcionstruct -> LPAREN STR ID . strings RPAREN
+    (85) strings -> . valor_strings
+    (86) strings -> . valor_strings strings
+    (87) valor_strings -> . STRING
+    (88) valor_strings -> . ID
 
-    LPAREN          shift and go to state 89
+    STRING          shift and go to state 87
+    ID              shift and go to state 90
 
+    strings                        shift and go to state 91
+    valor_strings                  shift and go to state 89
 
 state 53
 
-    (74) funcionstruct -> LPAREN POP vector . RPAREN
+    (72) funcionstruct -> LPAREN GET conjunto . NUMBER RPAREN
+    (73) funcionstruct -> LPAREN GET conjunto . ID RPAREN
 
-    RPAREN          shift and go to state 90
+    NUMBER          shift and go to state 92
+    ID              shift and go to state 93
 
 
 state 54
 
-    (51) vector -> LCOR . valorl RCOR
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (54) conjunto -> NUMERAL . LBRACE valorl RBRACE
 
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    LBRACE          shift and go to state 94
 
-    valorl                         shift and go to state 91
-    booleanos                      shift and go to state 80
 
 state 55
 
-    (75) funcionstruct -> LPAREN COUNT STRING . RPAREN
+    (74) funcionstruct -> LPAREN NTH lista . NUMBER RPAREN
+    (75) funcionstruct -> LPAREN NTH lista . ID RPAREN
 
-    RPAREN          shift and go to state 92
+    NUMBER          shift and go to state 95
+    ID              shift and go to state 96
 
 
 state 56
 
-    (76) funcionstruct -> LPAREN COUNT ID . RPAREN
+    (51) lista -> QUOTE . LPAREN valorl RPAREN
 
-    RPAREN          shift and go to state 93
+    LPAREN          shift and go to state 97
 
 
 state 57
 
-    (42) sentenciado -> LPAREN DO general . RPAREN
-    (10) general -> general . general
+    (76) funcionstruct -> LPAREN POP vector . RPAREN
+
+    RPAREN          shift and go to state 98
+
+
+state 58
+
+    (52) vector -> LCOR . valorl RCOR
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
+
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+
+    valorl                         shift and go to state 99
+    booleanos                      shift and go to state 84
+
+state 59
+
+    (77) funcionstruct -> LPAREN COUNT STRING . RPAREN
+
+    RPAREN          shift and go to state 100
+
+
+state 60
+
+    (78) funcionstruct -> LPAREN COUNT ID . RPAREN
+
+    RPAREN          shift and go to state 101
+
+
+state 61
+
+    (43) sentenciado -> LPAREN DO general . RPAREN
+    (11) general -> general . general
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
-    RPAREN          shift and go to state 94
+    RPAREN          shift and go to state 102
     LPAREN          shift and go to state 2
 
     general                        shift and go to state 7
@@ -1028,761 +1098,803 @@ state 57
     read                           shift and go to state 5
     conjfunction                   shift and go to state 6
 
-state 58
-
-    (26) read -> LPAREN READ RPAREN .
-
-    LPAREN          reduce using rule 26 (read -> LPAREN READ RPAREN .)
-    $end            reduce using rule 26 (read -> LPAREN READ RPAREN .)
-    RPAREN          reduce using rule 26 (read -> LPAREN READ RPAREN .)
-
-
-state 59
-
-    (77) conjfunction -> LPAREN CONJ lista . NUMBER RPAREN
-    (78) conjfunction -> LPAREN CONJ lista . ID RPAREN
-
-    NUMBER          shift and go to state 95
-    ID              shift and go to state 96
-
-
-state 60
-
-    (79) conjfunction -> LPAREN CONJ conjunto . NUMBER RPAREN
-    (80) conjfunction -> LPAREN CONJ conjunto . ID RPAREN
-
-    NUMBER          shift and go to state 97
-    ID              shift and go to state 98
-
-
-state 61
-
-    (81) conjfunction -> LPAREN CONJ vector . NUMBER RPAREN
-    (82) conjfunction -> LPAREN CONJ vector . ID RPAREN
-
-    NUMBER          shift and go to state 99
-    ID              shift and go to state 100
-
-
 state 62
 
-    (11) expression -> operadoresMat factor . factor
-    (27) factor -> . NUMBER
-    (28) factor -> . ID
-    (29) factor -> . FLOAT
-    (30) factor -> . booleanos
-    (31) factor -> . LPAREN expression RPAREN
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (27) read -> LPAREN READ RPAREN .
 
-    NUMBER          shift and go to state 63
-    ID              shift and go to state 64
-    FLOAT           shift and go to state 65
-    LPAREN          shift and go to state 67
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    LPAREN          reduce using rule 27 (read -> LPAREN READ RPAREN .)
+    $end            reduce using rule 27 (read -> LPAREN READ RPAREN .)
+    RPAREN          reduce using rule 27 (read -> LPAREN READ RPAREN .)
 
-    factor                         shift and go to state 101
-    booleanos                      shift and go to state 66
 
 state 63
 
-    (27) factor -> NUMBER .
+    (79) conjfunction -> LPAREN CONJ lista . NUMBER RPAREN
+    (80) conjfunction -> LPAREN CONJ lista . ID RPAREN
 
-    NUMBER          reduce using rule 27 (factor -> NUMBER .)
-    ID              reduce using rule 27 (factor -> NUMBER .)
-    FLOAT           reduce using rule 27 (factor -> NUMBER .)
-    LPAREN          reduce using rule 27 (factor -> NUMBER .)
-    TRUE            reduce using rule 27 (factor -> NUMBER .)
-    FALSE           reduce using rule 27 (factor -> NUMBER .)
-    RPAREN          reduce using rule 27 (factor -> NUMBER .)
+    NUMBER          shift and go to state 103
+    ID              shift and go to state 104
 
 
 state 64
 
-    (28) factor -> ID .
+    (81) conjfunction -> LPAREN CONJ conjunto . NUMBER RPAREN
+    (82) conjfunction -> LPAREN CONJ conjunto . ID RPAREN
 
-    NUMBER          reduce using rule 28 (factor -> ID .)
-    ID              reduce using rule 28 (factor -> ID .)
-    FLOAT           reduce using rule 28 (factor -> ID .)
-    LPAREN          reduce using rule 28 (factor -> ID .)
-    TRUE            reduce using rule 28 (factor -> ID .)
-    FALSE           reduce using rule 28 (factor -> ID .)
-    RPAREN          reduce using rule 28 (factor -> ID .)
+    NUMBER          shift and go to state 105
+    ID              shift and go to state 106
 
 
 state 65
 
-    (29) factor -> FLOAT .
+    (83) conjfunction -> LPAREN CONJ vector . NUMBER RPAREN
+    (84) conjfunction -> LPAREN CONJ vector . ID RPAREN
 
-    NUMBER          reduce using rule 29 (factor -> FLOAT .)
-    ID              reduce using rule 29 (factor -> FLOAT .)
-    FLOAT           reduce using rule 29 (factor -> FLOAT .)
-    LPAREN          reduce using rule 29 (factor -> FLOAT .)
-    TRUE            reduce using rule 29 (factor -> FLOAT .)
-    FALSE           reduce using rule 29 (factor -> FLOAT .)
-    RPAREN          reduce using rule 29 (factor -> FLOAT .)
+    NUMBER          shift and go to state 107
+    ID              shift and go to state 108
 
 
 state 66
 
-    (30) factor -> booleanos .
+    (12) expression -> operadoresMat factor . factor
+    (28) factor -> . NUMBER
+    (29) factor -> . ID
+    (30) factor -> . FLOAT
+    (31) factor -> . booleanos
+    (32) factor -> . LPAREN expression RPAREN
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    NUMBER          reduce using rule 30 (factor -> booleanos .)
-    ID              reduce using rule 30 (factor -> booleanos .)
-    FLOAT           reduce using rule 30 (factor -> booleanos .)
-    LPAREN          reduce using rule 30 (factor -> booleanos .)
-    TRUE            reduce using rule 30 (factor -> booleanos .)
-    FALSE           reduce using rule 30 (factor -> booleanos .)
-    RPAREN          reduce using rule 30 (factor -> booleanos .)
+    NUMBER          shift and go to state 67
+    ID              shift and go to state 68
+    FLOAT           shift and go to state 69
+    LPAREN          shift and go to state 71
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    factor                         shift and go to state 109
+    booleanos                      shift and go to state 70
 
 state 67
 
-    (31) factor -> LPAREN . expression RPAREN
-    (11) expression -> . operadoresMat factor factor
-    (13) operadoresMat -> . PLUS
-    (14) operadoresMat -> . MINUS
-    (15) operadoresMat -> . TIMES
-    (16) operadoresMat -> . DIVIDE
-    (17) operadoresMat -> . MOD
+    (28) factor -> NUMBER .
 
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
+    NUMBER          reduce using rule 28 (factor -> NUMBER .)
+    ID              reduce using rule 28 (factor -> NUMBER .)
+    FLOAT           reduce using rule 28 (factor -> NUMBER .)
+    LPAREN          reduce using rule 28 (factor -> NUMBER .)
+    TRUE            reduce using rule 28 (factor -> NUMBER .)
+    FALSE           reduce using rule 28 (factor -> NUMBER .)
+    RPAREN          reduce using rule 28 (factor -> NUMBER .)
 
-    expression                     shift and go to state 102
-    operadoresMat                  shift and go to state 22
 
 state 68
 
-    (37) booleanos -> TRUE .
+    (29) factor -> ID .
 
-    NUMBER          reduce using rule 37 (booleanos -> TRUE .)
-    ID              reduce using rule 37 (booleanos -> TRUE .)
-    FLOAT           reduce using rule 37 (booleanos -> TRUE .)
-    LPAREN          reduce using rule 37 (booleanos -> TRUE .)
-    TRUE            reduce using rule 37 (booleanos -> TRUE .)
-    FALSE           reduce using rule 37 (booleanos -> TRUE .)
-    RPAREN          reduce using rule 37 (booleanos -> TRUE .)
-    STRING          reduce using rule 37 (booleanos -> TRUE .)
-    RCOR            reduce using rule 37 (booleanos -> TRUE .)
-    RBRACE          reduce using rule 37 (booleanos -> TRUE .)
-    COMA            reduce using rule 37 (booleanos -> TRUE .)
+    NUMBER          reduce using rule 29 (factor -> ID .)
+    ID              reduce using rule 29 (factor -> ID .)
+    FLOAT           reduce using rule 29 (factor -> ID .)
+    LPAREN          reduce using rule 29 (factor -> ID .)
+    TRUE            reduce using rule 29 (factor -> ID .)
+    FALSE           reduce using rule 29 (factor -> ID .)
+    RPAREN          reduce using rule 29 (factor -> ID .)
 
 
 state 69
 
-    (38) booleanos -> FALSE .
+    (30) factor -> FLOAT .
 
-    NUMBER          reduce using rule 38 (booleanos -> FALSE .)
-    ID              reduce using rule 38 (booleanos -> FALSE .)
-    FLOAT           reduce using rule 38 (booleanos -> FALSE .)
-    LPAREN          reduce using rule 38 (booleanos -> FALSE .)
-    TRUE            reduce using rule 38 (booleanos -> FALSE .)
-    FALSE           reduce using rule 38 (booleanos -> FALSE .)
-    RPAREN          reduce using rule 38 (booleanos -> FALSE .)
-    STRING          reduce using rule 38 (booleanos -> FALSE .)
-    RCOR            reduce using rule 38 (booleanos -> FALSE .)
-    RBRACE          reduce using rule 38 (booleanos -> FALSE .)
-    COMA            reduce using rule 38 (booleanos -> FALSE .)
+    NUMBER          reduce using rule 30 (factor -> FLOAT .)
+    ID              reduce using rule 30 (factor -> FLOAT .)
+    FLOAT           reduce using rule 30 (factor -> FLOAT .)
+    LPAREN          reduce using rule 30 (factor -> FLOAT .)
+    TRUE            reduce using rule 30 (factor -> FLOAT .)
+    FALSE           reduce using rule 30 (factor -> FLOAT .)
+    RPAREN          reduce using rule 30 (factor -> FLOAT .)
 
 
 state 70
 
-    (12) comparacion -> operadoresComp factor . factor
-    (27) factor -> . NUMBER
-    (28) factor -> . ID
-    (29) factor -> . FLOAT
-    (30) factor -> . booleanos
-    (31) factor -> . LPAREN expression RPAREN
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (31) factor -> booleanos .
 
-    NUMBER          shift and go to state 63
-    ID              shift and go to state 64
-    FLOAT           shift and go to state 65
-    LPAREN          shift and go to state 67
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    NUMBER          reduce using rule 31 (factor -> booleanos .)
+    ID              reduce using rule 31 (factor -> booleanos .)
+    FLOAT           reduce using rule 31 (factor -> booleanos .)
+    LPAREN          reduce using rule 31 (factor -> booleanos .)
+    TRUE            reduce using rule 31 (factor -> booleanos .)
+    FALSE           reduce using rule 31 (factor -> booleanos .)
+    RPAREN          reduce using rule 31 (factor -> booleanos .)
 
-    factor                         shift and go to state 103
-    booleanos                      shift and go to state 66
 
 state 71
 
-    (43) sentenciaif -> IF LPAREN . comparacion RPAREN general
-    (44) sentenciaif -> IF LPAREN . comparacion RPAREN sentenciado sentenciado
-    (12) comparacion -> . operadoresComp factor factor
-    (18) operadoresComp -> . MAYORQUE
-    (19) operadoresComp -> . MENORQUE
-    (20) operadoresComp -> . IGUAL
-    (21) operadoresComp -> . OR
-    (22) operadoresComp -> . AND
-    (23) operadoresComp -> . NOT
+    (32) factor -> LPAREN . expression RPAREN
+    (12) expression -> . operadoresMat factor factor
+    (14) operadoresMat -> . PLUS
+    (15) operadoresMat -> . MINUS
+    (16) operadoresMat -> . TIMES
+    (17) operadoresMat -> . DIVIDE
+    (18) operadoresMat -> . MOD
 
-    MAYORQUE        shift and go to state 34
-    MENORQUE        shift and go to state 35
-    IGUAL           shift and go to state 36
-    OR              shift and go to state 37
-    AND             shift and go to state 38
-    NOT             shift and go to state 39
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+    MOD             shift and go to state 35
 
-    comparacion                    shift and go to state 104
-    operadoresComp                 shift and go to state 23
+    expression                     shift and go to state 110
+    operadoresMat                  shift and go to state 23
 
 state 72
 
-    (45) sentenciawhile -> WHILE LPAREN . comparacion RPAREN sentenciado
-    (12) comparacion -> . operadoresComp factor factor
-    (18) operadoresComp -> . MAYORQUE
-    (19) operadoresComp -> . MENORQUE
-    (20) operadoresComp -> . IGUAL
-    (21) operadoresComp -> . OR
-    (22) operadoresComp -> . AND
-    (23) operadoresComp -> . NOT
+    (38) booleanos -> TRUE .
 
-    MAYORQUE        shift and go to state 34
-    MENORQUE        shift and go to state 35
-    IGUAL           shift and go to state 36
-    OR              shift and go to state 37
-    AND             shift and go to state 38
-    NOT             shift and go to state 39
+    NUMBER          reduce using rule 38 (booleanos -> TRUE .)
+    ID              reduce using rule 38 (booleanos -> TRUE .)
+    FLOAT           reduce using rule 38 (booleanos -> TRUE .)
+    LPAREN          reduce using rule 38 (booleanos -> TRUE .)
+    TRUE            reduce using rule 38 (booleanos -> TRUE .)
+    FALSE           reduce using rule 38 (booleanos -> TRUE .)
+    RPAREN          reduce using rule 38 (booleanos -> TRUE .)
+    STRING          reduce using rule 38 (booleanos -> TRUE .)
+    RCOR            reduce using rule 38 (booleanos -> TRUE .)
+    RBRACE          reduce using rule 38 (booleanos -> TRUE .)
+    COMA            reduce using rule 38 (booleanos -> TRUE .)
 
-    comparacion                    shift and go to state 105
-    operadoresComp                 shift and go to state 23
 
 state 73
 
-    (32) asignacion -> DEF ID . factor
-    (33) asignacion -> DEF ID . STRING
-    (34) asignacion -> DEF ID . booleanos
-    (35) asignacion -> DEF ID . struct
-    (36) asignacion -> DEF ID . funcionstruct
-    (27) factor -> . NUMBER
-    (28) factor -> . ID
-    (29) factor -> . FLOAT
-    (30) factor -> . booleanos
-    (31) factor -> . LPAREN expression RPAREN
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
-    (46) struct -> . lista
-    (47) struct -> . vector
-    (48) struct -> . mapa
-    (49) struct -> . conjunto
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (50) lista -> . QUOTE LPAREN valorl RPAREN
-    (51) vector -> . LCOR valorl RCOR
-    (52) mapa -> . LBRACE repetirclave RBRACE
-    (53) conjunto -> . NUMERAL LBRACE valorl RBRACE
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (39) booleanos -> FALSE .
 
-    STRING          shift and go to state 107
-    NUMBER          shift and go to state 63
-    ID              shift and go to state 64
-    FLOAT           shift and go to state 65
-    LPAREN          shift and go to state 111
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
-    QUOTE           shift and go to state 52
-    LCOR            shift and go to state 54
-    LBRACE          shift and go to state 116
-    NUMERAL         shift and go to state 50
+    NUMBER          reduce using rule 39 (booleanos -> FALSE .)
+    ID              reduce using rule 39 (booleanos -> FALSE .)
+    FLOAT           reduce using rule 39 (booleanos -> FALSE .)
+    LPAREN          reduce using rule 39 (booleanos -> FALSE .)
+    TRUE            reduce using rule 39 (booleanos -> FALSE .)
+    FALSE           reduce using rule 39 (booleanos -> FALSE .)
+    RPAREN          reduce using rule 39 (booleanos -> FALSE .)
+    STRING          reduce using rule 39 (booleanos -> FALSE .)
+    RCOR            reduce using rule 39 (booleanos -> FALSE .)
+    RBRACE          reduce using rule 39 (booleanos -> FALSE .)
+    COMA            reduce using rule 39 (booleanos -> FALSE .)
 
-    factor                         shift and go to state 106
-    booleanos                      shift and go to state 108
-    struct                         shift and go to state 109
-    funcionstruct                  shift and go to state 110
-    lista                          shift and go to state 112
-    vector                         shift and go to state 113
-    mapa                           shift and go to state 114
-    conjunto                       shift and go to state 115
-    conjfunction                   shift and go to state 6
 
 state 74
 
-    (39) imprimir -> operadoresPrint factor .
+    (13) comparacion -> operadoresComp factor . factor
+    (28) factor -> . NUMBER
+    (29) factor -> . ID
+    (30) factor -> . FLOAT
+    (31) factor -> . booleanos
+    (32) factor -> . LPAREN expression RPAREN
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    RPAREN          reduce using rule 39 (imprimir -> operadoresPrint factor .)
+    NUMBER          shift and go to state 67
+    ID              shift and go to state 68
+    FLOAT           shift and go to state 69
+    LPAREN          shift and go to state 71
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    factor                         shift and go to state 111
+    booleanos                      shift and go to state 70
 
 state 75
 
-    (40) imprimir -> operadoresPrint STRING .
+    (44) sentenciaif -> IF LPAREN . comparacion RPAREN general
+    (45) sentenciaif -> IF LPAREN . comparacion RPAREN sentenciado sentenciado
+    (13) comparacion -> . operadoresComp factor factor
+    (19) operadoresComp -> . MAYORQUE
+    (20) operadoresComp -> . MENORQUE
+    (21) operadoresComp -> . IGUAL
+    (22) operadoresComp -> . OR
+    (23) operadoresComp -> . AND
+    (24) operadoresComp -> . NOT
 
-    RPAREN          reduce using rule 40 (imprimir -> operadoresPrint STRING .)
+    MAYORQUE        shift and go to state 36
+    MENORQUE        shift and go to state 37
+    IGUAL           shift and go to state 38
+    OR              shift and go to state 39
+    AND             shift and go to state 40
+    NOT             shift and go to state 41
 
+    comparacion                    shift and go to state 112
+    operadoresComp                 shift and go to state 24
 
 state 76
 
-    (41) imprimir -> PRINTF valorl .
-    (67) valorl -> valorl . valorl
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (46) sentenciawhile -> WHILE LPAREN . comparacion RPAREN sentenciado
+    (13) comparacion -> . operadoresComp factor factor
+    (19) operadoresComp -> . MAYORQUE
+    (20) operadoresComp -> . MENORQUE
+    (21) operadoresComp -> . IGUAL
+    (22) operadoresComp -> . OR
+    (23) operadoresComp -> . AND
+    (24) operadoresComp -> . NOT
 
-    RPAREN          reduce using rule 41 (imprimir -> PRINTF valorl .)
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    MAYORQUE        shift and go to state 36
+    MENORQUE        shift and go to state 37
+    IGUAL           shift and go to state 38
+    OR              shift and go to state 39
+    AND             shift and go to state 40
+    NOT             shift and go to state 41
 
-    valorl                         shift and go to state 117
-    booleanos                      shift and go to state 80
+    comparacion                    shift and go to state 113
+    operadoresComp                 shift and go to state 24
 
 state 77
 
-    (62) valorl -> NUMBER .
+    (33) asignacion -> DEF ID . factor
+    (34) asignacion -> DEF ID . STRING
+    (35) asignacion -> DEF ID . struct
+    (36) asignacion -> DEF ID . funcionstruct
+    (37) asignacion -> DEF ID . read
+    (28) factor -> . NUMBER
+    (29) factor -> . ID
+    (30) factor -> . FLOAT
+    (31) factor -> . booleanos
+    (32) factor -> . LPAREN expression RPAREN
+    (47) struct -> . lista
+    (48) struct -> . vector
+    (49) struct -> . mapa
+    (50) struct -> . conjunto
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
+    (51) lista -> . QUOTE LPAREN valorl RPAREN
+    (52) vector -> . LCOR valorl RCOR
+    (53) mapa -> . LBRACE repetirclave RBRACE
+    (54) conjunto -> . NUMERAL LBRACE valorl RBRACE
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
-    NUMBER          reduce using rule 62 (valorl -> NUMBER .)
-    ID              reduce using rule 62 (valorl -> NUMBER .)
-    STRING          reduce using rule 62 (valorl -> NUMBER .)
-    FLOAT           reduce using rule 62 (valorl -> NUMBER .)
-    TRUE            reduce using rule 62 (valorl -> NUMBER .)
-    FALSE           reduce using rule 62 (valorl -> NUMBER .)
-    RPAREN          reduce using rule 62 (valorl -> NUMBER .)
-    RCOR            reduce using rule 62 (valorl -> NUMBER .)
-    RBRACE          reduce using rule 62 (valorl -> NUMBER .)
+    STRING          shift and go to state 115
+    NUMBER          shift and go to state 67
+    ID              shift and go to state 68
+    FLOAT           shift and go to state 69
+    LPAREN          shift and go to state 119
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+    QUOTE           shift and go to state 56
+    LCOR            shift and go to state 58
+    LBRACE          shift and go to state 124
+    NUMERAL         shift and go to state 54
 
+    factor                         shift and go to state 114
+    struct                         shift and go to state 116
+    funcionstruct                  shift and go to state 117
+    read                           shift and go to state 118
+    booleanos                      shift and go to state 70
+    lista                          shift and go to state 120
+    vector                         shift and go to state 121
+    mapa                           shift and go to state 122
+    conjunto                       shift and go to state 123
+    conjfunction                   shift and go to state 6
 
 state 78
 
-    (63) valorl -> ID .
+    (40) imprimir -> operadoresPrint factor .
 
-    NUMBER          reduce using rule 63 (valorl -> ID .)
-    ID              reduce using rule 63 (valorl -> ID .)
-    STRING          reduce using rule 63 (valorl -> ID .)
-    FLOAT           reduce using rule 63 (valorl -> ID .)
-    TRUE            reduce using rule 63 (valorl -> ID .)
-    FALSE           reduce using rule 63 (valorl -> ID .)
-    RPAREN          reduce using rule 63 (valorl -> ID .)
-    RCOR            reduce using rule 63 (valorl -> ID .)
-    RBRACE          reduce using rule 63 (valorl -> ID .)
+    RPAREN          reduce using rule 40 (imprimir -> operadoresPrint factor .)
 
 
 state 79
 
-    (64) valorl -> STRING .
+    (41) imprimir -> operadoresPrint STRING .
 
-    NUMBER          reduce using rule 64 (valorl -> STRING .)
-    ID              reduce using rule 64 (valorl -> STRING .)
-    STRING          reduce using rule 64 (valorl -> STRING .)
-    FLOAT           reduce using rule 64 (valorl -> STRING .)
-    TRUE            reduce using rule 64 (valorl -> STRING .)
-    FALSE           reduce using rule 64 (valorl -> STRING .)
-    RPAREN          reduce using rule 64 (valorl -> STRING .)
-    RCOR            reduce using rule 64 (valorl -> STRING .)
-    RBRACE          reduce using rule 64 (valorl -> STRING .)
+    RPAREN          reduce using rule 41 (imprimir -> operadoresPrint STRING .)
 
 
 state 80
 
-    (65) valorl -> booleanos .
+    (42) imprimir -> PRINTF valorl .
+    (68) valorl -> valorl . valorl
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    NUMBER          reduce using rule 65 (valorl -> booleanos .)
-    ID              reduce using rule 65 (valorl -> booleanos .)
-    STRING          reduce using rule 65 (valorl -> booleanos .)
-    FLOAT           reduce using rule 65 (valorl -> booleanos .)
-    TRUE            reduce using rule 65 (valorl -> booleanos .)
-    FALSE           reduce using rule 65 (valorl -> booleanos .)
-    RPAREN          reduce using rule 65 (valorl -> booleanos .)
-    RCOR            reduce using rule 65 (valorl -> booleanos .)
-    RBRACE          reduce using rule 65 (valorl -> booleanos .)
+    RPAREN          reduce using rule 42 (imprimir -> PRINTF valorl .)
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    valorl                         shift and go to state 125
+    booleanos                      shift and go to state 84
 
 state 81
 
-    (66) valorl -> FLOAT .
+    (63) valorl -> NUMBER .
 
-    NUMBER          reduce using rule 66 (valorl -> FLOAT .)
-    ID              reduce using rule 66 (valorl -> FLOAT .)
-    STRING          reduce using rule 66 (valorl -> FLOAT .)
-    FLOAT           reduce using rule 66 (valorl -> FLOAT .)
-    TRUE            reduce using rule 66 (valorl -> FLOAT .)
-    FALSE           reduce using rule 66 (valorl -> FLOAT .)
-    RPAREN          reduce using rule 66 (valorl -> FLOAT .)
-    RCOR            reduce using rule 66 (valorl -> FLOAT .)
-    RBRACE          reduce using rule 66 (valorl -> FLOAT .)
+    NUMBER          reduce using rule 63 (valorl -> NUMBER .)
+    ID              reduce using rule 63 (valorl -> NUMBER .)
+    STRING          reduce using rule 63 (valorl -> NUMBER .)
+    FLOAT           reduce using rule 63 (valorl -> NUMBER .)
+    TRUE            reduce using rule 63 (valorl -> NUMBER .)
+    FALSE           reduce using rule 63 (valorl -> NUMBER .)
+    RPAREN          reduce using rule 63 (valorl -> NUMBER .)
+    RCOR            reduce using rule 63 (valorl -> NUMBER .)
+    RBRACE          reduce using rule 63 (valorl -> NUMBER .)
 
 
 state 82
 
-    (83) strings -> STRING .
-    (84) strings -> STRING . STRING
+    (64) valorl -> ID .
 
-    RPAREN          reduce using rule 83 (strings -> STRING .)
-    STRING          shift and go to state 118
+    NUMBER          reduce using rule 64 (valorl -> ID .)
+    ID              reduce using rule 64 (valorl -> ID .)
+    STRING          reduce using rule 64 (valorl -> ID .)
+    FLOAT           reduce using rule 64 (valorl -> ID .)
+    TRUE            reduce using rule 64 (valorl -> ID .)
+    FALSE           reduce using rule 64 (valorl -> ID .)
+    RPAREN          reduce using rule 64 (valorl -> ID .)
+    RCOR            reduce using rule 64 (valorl -> ID .)
+    RBRACE          reduce using rule 64 (valorl -> ID .)
 
 
 state 83
 
-    (69) funcionstruct -> LPAREN STR STRING strings . RPAREN
+    (65) valorl -> STRING .
 
-    RPAREN          shift and go to state 119
+    NUMBER          reduce using rule 65 (valorl -> STRING .)
+    ID              reduce using rule 65 (valorl -> STRING .)
+    STRING          reduce using rule 65 (valorl -> STRING .)
+    FLOAT           reduce using rule 65 (valorl -> STRING .)
+    TRUE            reduce using rule 65 (valorl -> STRING .)
+    FALSE           reduce using rule 65 (valorl -> STRING .)
+    RPAREN          reduce using rule 65 (valorl -> STRING .)
+    RCOR            reduce using rule 65 (valorl -> STRING .)
+    RBRACE          reduce using rule 65 (valorl -> STRING .)
 
 
 state 84
 
-    (70) funcionstruct -> LPAREN GET conjunto NUMBER . RPAREN
+    (66) valorl -> booleanos .
 
-    RPAREN          shift and go to state 120
+    NUMBER          reduce using rule 66 (valorl -> booleanos .)
+    ID              reduce using rule 66 (valorl -> booleanos .)
+    STRING          reduce using rule 66 (valorl -> booleanos .)
+    FLOAT           reduce using rule 66 (valorl -> booleanos .)
+    TRUE            reduce using rule 66 (valorl -> booleanos .)
+    FALSE           reduce using rule 66 (valorl -> booleanos .)
+    RPAREN          reduce using rule 66 (valorl -> booleanos .)
+    RCOR            reduce using rule 66 (valorl -> booleanos .)
+    RBRACE          reduce using rule 66 (valorl -> booleanos .)
 
 
 state 85
 
-    (71) funcionstruct -> LPAREN GET conjunto ID . RPAREN
+    (67) valorl -> FLOAT .
 
-    RPAREN          shift and go to state 121
+    NUMBER          reduce using rule 67 (valorl -> FLOAT .)
+    ID              reduce using rule 67 (valorl -> FLOAT .)
+    STRING          reduce using rule 67 (valorl -> FLOAT .)
+    FLOAT           reduce using rule 67 (valorl -> FLOAT .)
+    TRUE            reduce using rule 67 (valorl -> FLOAT .)
+    FALSE           reduce using rule 67 (valorl -> FLOAT .)
+    RPAREN          reduce using rule 67 (valorl -> FLOAT .)
+    RCOR            reduce using rule 67 (valorl -> FLOAT .)
+    RBRACE          reduce using rule 67 (valorl -> FLOAT .)
 
 
 state 86
 
-    (53) conjunto -> NUMERAL LBRACE . valorl RBRACE
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (89) asignacion_funcion -> DEFN ID . LCOR RCOR general
+    (90) asignacion_funcion -> DEFN ID . LCOR parametros RCOR general
 
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    LCOR            shift and go to state 126
 
-    valorl                         shift and go to state 122
-    booleanos                      shift and go to state 80
 
 state 87
 
-    (72) funcionstruct -> LPAREN NTH lista NUMBER . RPAREN
+    (87) valor_strings -> STRING .
 
-    RPAREN          shift and go to state 123
+    STRING          reduce using rule 87 (valor_strings -> STRING .)
+    ID              reduce using rule 87 (valor_strings -> STRING .)
+    RPAREN          reduce using rule 87 (valor_strings -> STRING .)
 
 
 state 88
 
-    (73) funcionstruct -> LPAREN NTH lista ID . RPAREN
-
-    RPAREN          shift and go to state 124
-
-
-state 89
-
-    (50) lista -> QUOTE LPAREN . valorl RPAREN
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
-
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
-
-    valorl                         shift and go to state 125
-    booleanos                      shift and go to state 80
-
-state 90
-
-    (74) funcionstruct -> LPAREN POP vector RPAREN .
-
-    LPAREN          reduce using rule 74 (funcionstruct -> LPAREN POP vector RPAREN .)
-    $end            reduce using rule 74 (funcionstruct -> LPAREN POP vector RPAREN .)
-    RPAREN          reduce using rule 74 (funcionstruct -> LPAREN POP vector RPAREN .)
-
-
-state 91
-
-    (51) vector -> LCOR valorl . RCOR
-    (67) valorl -> valorl . valorl
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
-
-    RCOR            shift and go to state 126
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
-
-    valorl                         shift and go to state 117
-    booleanos                      shift and go to state 80
-
-state 92
-
-    (75) funcionstruct -> LPAREN COUNT STRING RPAREN .
-
-    LPAREN          reduce using rule 75 (funcionstruct -> LPAREN COUNT STRING RPAREN .)
-    $end            reduce using rule 75 (funcionstruct -> LPAREN COUNT STRING RPAREN .)
-    RPAREN          reduce using rule 75 (funcionstruct -> LPAREN COUNT STRING RPAREN .)
-
-
-state 93
-
-    (76) funcionstruct -> LPAREN COUNT ID RPAREN .
-
-    LPAREN          reduce using rule 76 (funcionstruct -> LPAREN COUNT ID RPAREN .)
-    $end            reduce using rule 76 (funcionstruct -> LPAREN COUNT ID RPAREN .)
-    RPAREN          reduce using rule 76 (funcionstruct -> LPAREN COUNT ID RPAREN .)
-
-
-state 94
-
-    (42) sentenciado -> LPAREN DO general RPAREN .
-
-    LPAREN          reduce using rule 42 (sentenciado -> LPAREN DO general RPAREN .)
-    $end            reduce using rule 42 (sentenciado -> LPAREN DO general RPAREN .)
-    RPAREN          reduce using rule 42 (sentenciado -> LPAREN DO general RPAREN .)
-
-
-state 95
-
-    (77) conjfunction -> LPAREN CONJ lista NUMBER . RPAREN
+    (70) funcionstruct -> LPAREN STR STRING strings . RPAREN
 
     RPAREN          shift and go to state 127
 
 
-state 96
+state 89
 
-    (78) conjfunction -> LPAREN CONJ lista ID . RPAREN
+    (85) strings -> valor_strings .
+    (86) strings -> valor_strings . strings
+    (85) strings -> . valor_strings
+    (86) strings -> . valor_strings strings
+    (87) valor_strings -> . STRING
+    (88) valor_strings -> . ID
 
-    RPAREN          shift and go to state 128
+    RPAREN          reduce using rule 85 (strings -> valor_strings .)
+    STRING          shift and go to state 87
+    ID              shift and go to state 90
+
+    valor_strings                  shift and go to state 89
+    strings                        shift and go to state 128
+
+state 90
+
+    (88) valor_strings -> ID .
+
+    STRING          reduce using rule 88 (valor_strings -> ID .)
+    ID              reduce using rule 88 (valor_strings -> ID .)
+    RPAREN          reduce using rule 88 (valor_strings -> ID .)
 
 
-state 97
+state 91
 
-    (79) conjfunction -> LPAREN CONJ conjunto NUMBER . RPAREN
+    (71) funcionstruct -> LPAREN STR ID strings . RPAREN
 
     RPAREN          shift and go to state 129
 
 
-state 98
+state 92
 
-    (80) conjfunction -> LPAREN CONJ conjunto ID . RPAREN
+    (72) funcionstruct -> LPAREN GET conjunto NUMBER . RPAREN
 
     RPAREN          shift and go to state 130
 
 
-state 99
+state 93
 
-    (81) conjfunction -> LPAREN CONJ vector NUMBER . RPAREN
+    (73) funcionstruct -> LPAREN GET conjunto ID . RPAREN
 
     RPAREN          shift and go to state 131
 
 
-state 100
+state 94
 
-    (82) conjfunction -> LPAREN CONJ vector ID . RPAREN
+    (54) conjunto -> NUMERAL LBRACE . valorl RBRACE
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    RPAREN          shift and go to state 132
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    valorl                         shift and go to state 132
+    booleanos                      shift and go to state 84
 
-state 101
+state 95
 
-    (11) expression -> operadoresMat factor factor .
-
-    RPAREN          reduce using rule 11 (expression -> operadoresMat factor factor .)
-
-
-state 102
-
-    (31) factor -> LPAREN expression . RPAREN
+    (74) funcionstruct -> LPAREN NTH lista NUMBER . RPAREN
 
     RPAREN          shift and go to state 133
 
 
-state 103
+state 96
 
-    (12) comparacion -> operadoresComp factor factor .
-
-    RPAREN          reduce using rule 12 (comparacion -> operadoresComp factor factor .)
-
-
-state 104
-
-    (43) sentenciaif -> IF LPAREN comparacion . RPAREN general
-    (44) sentenciaif -> IF LPAREN comparacion . RPAREN sentenciado sentenciado
+    (75) funcionstruct -> LPAREN NTH lista ID . RPAREN
 
     RPAREN          shift and go to state 134
 
 
+state 97
+
+    (51) lista -> QUOTE LPAREN . valorl RPAREN
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
+
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+
+    valorl                         shift and go to state 135
+    booleanos                      shift and go to state 84
+
+state 98
+
+    (76) funcionstruct -> LPAREN POP vector RPAREN .
+
+    LPAREN          reduce using rule 76 (funcionstruct -> LPAREN POP vector RPAREN .)
+    $end            reduce using rule 76 (funcionstruct -> LPAREN POP vector RPAREN .)
+    RPAREN          reduce using rule 76 (funcionstruct -> LPAREN POP vector RPAREN .)
+
+
+state 99
+
+    (52) vector -> LCOR valorl . RCOR
+    (68) valorl -> valorl . valorl
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
+
+    RCOR            shift and go to state 136
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+
+    valorl                         shift and go to state 125
+    booleanos                      shift and go to state 84
+
+state 100
+
+    (77) funcionstruct -> LPAREN COUNT STRING RPAREN .
+
+    LPAREN          reduce using rule 77 (funcionstruct -> LPAREN COUNT STRING RPAREN .)
+    $end            reduce using rule 77 (funcionstruct -> LPAREN COUNT STRING RPAREN .)
+    RPAREN          reduce using rule 77 (funcionstruct -> LPAREN COUNT STRING RPAREN .)
+
+
+state 101
+
+    (78) funcionstruct -> LPAREN COUNT ID RPAREN .
+
+    LPAREN          reduce using rule 78 (funcionstruct -> LPAREN COUNT ID RPAREN .)
+    $end            reduce using rule 78 (funcionstruct -> LPAREN COUNT ID RPAREN .)
+    RPAREN          reduce using rule 78 (funcionstruct -> LPAREN COUNT ID RPAREN .)
+
+
+state 102
+
+    (43) sentenciado -> LPAREN DO general RPAREN .
+
+    LPAREN          reduce using rule 43 (sentenciado -> LPAREN DO general RPAREN .)
+    $end            reduce using rule 43 (sentenciado -> LPAREN DO general RPAREN .)
+    RPAREN          reduce using rule 43 (sentenciado -> LPAREN DO general RPAREN .)
+
+
+state 103
+
+    (79) conjfunction -> LPAREN CONJ lista NUMBER . RPAREN
+
+    RPAREN          shift and go to state 137
+
+
+state 104
+
+    (80) conjfunction -> LPAREN CONJ lista ID . RPAREN
+
+    RPAREN          shift and go to state 138
+
+
 state 105
 
-    (45) sentenciawhile -> WHILE LPAREN comparacion . RPAREN sentenciado
+    (81) conjfunction -> LPAREN CONJ conjunto NUMBER . RPAREN
 
-    RPAREN          shift and go to state 135
+    RPAREN          shift and go to state 139
 
 
 state 106
 
-    (32) asignacion -> DEF ID factor .
+    (82) conjfunction -> LPAREN CONJ conjunto ID . RPAREN
 
-    RPAREN          reduce using rule 32 (asignacion -> DEF ID factor .)
+    RPAREN          shift and go to state 140
 
 
 state 107
 
-    (33) asignacion -> DEF ID STRING .
+    (83) conjfunction -> LPAREN CONJ vector NUMBER . RPAREN
 
-    RPAREN          reduce using rule 33 (asignacion -> DEF ID STRING .)
+    RPAREN          shift and go to state 141
 
 
 state 108
 
-    (34) asignacion -> DEF ID booleanos .
-    (30) factor -> booleanos .
+    (84) conjfunction -> LPAREN CONJ vector ID . RPAREN
 
-  ! reduce/reduce conflict for RPAREN resolved using rule 30 (factor -> booleanos .)
-    RPAREN          reduce using rule 30 (factor -> booleanos .)
-
-  ! RPAREN          [ reduce using rule 34 (asignacion -> DEF ID booleanos .) ]
+    RPAREN          shift and go to state 142
 
 
 state 109
+
+    (12) expression -> operadoresMat factor factor .
+
+    RPAREN          reduce using rule 12 (expression -> operadoresMat factor factor .)
+
+
+state 110
+
+    (32) factor -> LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 143
+
+
+state 111
+
+    (13) comparacion -> operadoresComp factor factor .
+
+    RPAREN          reduce using rule 13 (comparacion -> operadoresComp factor factor .)
+
+
+state 112
+
+    (44) sentenciaif -> IF LPAREN comparacion . RPAREN general
+    (45) sentenciaif -> IF LPAREN comparacion . RPAREN sentenciado sentenciado
+
+    RPAREN          shift and go to state 144
+
+
+state 113
+
+    (46) sentenciawhile -> WHILE LPAREN comparacion . RPAREN sentenciado
+
+    RPAREN          shift and go to state 145
+
+
+state 114
+
+    (33) asignacion -> DEF ID factor .
+
+    RPAREN          reduce using rule 33 (asignacion -> DEF ID factor .)
+
+
+state 115
+
+    (34) asignacion -> DEF ID STRING .
+
+    RPAREN          reduce using rule 34 (asignacion -> DEF ID STRING .)
+
+
+state 116
 
     (35) asignacion -> DEF ID struct .
 
     RPAREN          reduce using rule 35 (asignacion -> DEF ID struct .)
 
 
-state 110
+state 117
 
     (36) asignacion -> DEF ID funcionstruct .
 
     RPAREN          reduce using rule 36 (asignacion -> DEF ID funcionstruct .)
 
 
-state 111
+state 118
 
-    (31) factor -> LPAREN . expression RPAREN
-    (69) funcionstruct -> LPAREN . STR STRING strings RPAREN
-    (70) funcionstruct -> LPAREN . GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> LPAREN . GET conjunto ID RPAREN
-    (72) funcionstruct -> LPAREN . NTH lista NUMBER RPAREN
-    (73) funcionstruct -> LPAREN . NTH lista ID RPAREN
-    (74) funcionstruct -> LPAREN . POP vector RPAREN
-    (75) funcionstruct -> LPAREN . COUNT STRING RPAREN
-    (76) funcionstruct -> LPAREN . COUNT ID RPAREN
-    (77) conjfunction -> LPAREN . CONJ lista NUMBER RPAREN
-    (78) conjfunction -> LPAREN . CONJ lista ID RPAREN
-    (79) conjfunction -> LPAREN . CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> LPAREN . CONJ conjunto ID RPAREN
-    (81) conjfunction -> LPAREN . CONJ vector NUMBER RPAREN
-    (82) conjfunction -> LPAREN . CONJ vector ID RPAREN
-    (11) expression -> . operadoresMat factor factor
-    (13) operadoresMat -> . PLUS
-    (14) operadoresMat -> . MINUS
-    (15) operadoresMat -> . TIMES
-    (16) operadoresMat -> . DIVIDE
-    (17) operadoresMat -> . MOD
+    (37) asignacion -> DEF ID read .
 
-    STR             shift and go to state 14
-    GET             shift and go to state 15
-    NTH             shift and go to state 16
-    POP             shift and go to state 17
-    COUNT           shift and go to state 18
-    CONJ            shift and go to state 21
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-
-    expression                     shift and go to state 102
-    operadoresMat                  shift and go to state 22
-
-state 112
-
-    (46) struct -> lista .
-
-    RPAREN          reduce using rule 46 (struct -> lista .)
+    RPAREN          reduce using rule 37 (asignacion -> DEF ID read .)
 
 
-state 113
+state 119
 
-    (47) struct -> vector .
+    (32) factor -> LPAREN . expression RPAREN
+    (70) funcionstruct -> LPAREN . STR STRING strings RPAREN
+    (71) funcionstruct -> LPAREN . STR ID strings RPAREN
+    (72) funcionstruct -> LPAREN . GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> LPAREN . GET conjunto ID RPAREN
+    (74) funcionstruct -> LPAREN . NTH lista NUMBER RPAREN
+    (75) funcionstruct -> LPAREN . NTH lista ID RPAREN
+    (76) funcionstruct -> LPAREN . POP vector RPAREN
+    (77) funcionstruct -> LPAREN . COUNT STRING RPAREN
+    (78) funcionstruct -> LPAREN . COUNT ID RPAREN
+    (27) read -> LPAREN . READ RPAREN
+    (79) conjfunction -> LPAREN . CONJ lista NUMBER RPAREN
+    (80) conjfunction -> LPAREN . CONJ lista ID RPAREN
+    (81) conjfunction -> LPAREN . CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> LPAREN . CONJ conjunto ID RPAREN
+    (83) conjfunction -> LPAREN . CONJ vector NUMBER RPAREN
+    (84) conjfunction -> LPAREN . CONJ vector ID RPAREN
+    (12) expression -> . operadoresMat factor factor
+    (14) operadoresMat -> . PLUS
+    (15) operadoresMat -> . MINUS
+    (16) operadoresMat -> . TIMES
+    (17) operadoresMat -> . DIVIDE
+    (18) operadoresMat -> . MOD
 
-    RPAREN          reduce using rule 47 (struct -> vector .)
+    STR             shift and go to state 15
+    GET             shift and go to state 16
+    NTH             shift and go to state 17
+    POP             shift and go to state 18
+    COUNT           shift and go to state 19
+    READ            shift and go to state 21
+    CONJ            shift and go to state 22
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+    MOD             shift and go to state 35
+
+    expression                     shift and go to state 110
+    operadoresMat                  shift and go to state 23
+
+state 120
+
+    (47) struct -> lista .
+
+    RPAREN          reduce using rule 47 (struct -> lista .)
 
 
-state 114
+state 121
 
-    (48) struct -> mapa .
+    (48) struct -> vector .
 
-    RPAREN          reduce using rule 48 (struct -> mapa .)
-
-
-state 115
-
-    (49) struct -> conjunto .
-
-    RPAREN          reduce using rule 49 (struct -> conjunto .)
+    RPAREN          reduce using rule 48 (struct -> vector .)
 
 
-state 116
+state 122
 
-    (52) mapa -> LBRACE . repetirclave RBRACE
-    (55) repetirclave -> . clavevalor
-    (56) repetirclave -> . clavevalor COMA repetirclave
-    (54) clavevalor -> . ID DDOT valor
+    (49) struct -> mapa .
 
-    ID              shift and go to state 138
+    RPAREN          reduce using rule 49 (struct -> mapa .)
 
-    repetirclave                   shift and go to state 136
-    clavevalor                     shift and go to state 137
 
-state 117
+state 123
 
-    (67) valorl -> valorl valorl .
-    (67) valorl -> valorl . valorl
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
+    (50) struct -> conjunto .
+
+    RPAREN          reduce using rule 50 (struct -> conjunto .)
+
+
+state 124
+
+    (53) mapa -> LBRACE . repetirclave RBRACE
+    (56) repetirclave -> . clavevalor
+    (57) repetirclave -> . clavevalor COMA repetirclave
+    (55) clavevalor -> . ID DDOT valor
+
+    ID              shift and go to state 148
+
+    repetirclave                   shift and go to state 146
+    clavevalor                     shift and go to state 147
+
+state 125
+
+    (68) valorl -> valorl valorl .
+    (68) valorl -> valorl . valorl
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
   ! shift/reduce conflict for NUMBER resolved as shift
   ! shift/reduce conflict for ID resolved as shift
@@ -1790,293 +1902,385 @@ state 117
   ! shift/reduce conflict for FLOAT resolved as shift
   ! shift/reduce conflict for TRUE resolved as shift
   ! shift/reduce conflict for FALSE resolved as shift
-    RPAREN          reduce using rule 67 (valorl -> valorl valorl .)
-    RCOR            reduce using rule 67 (valorl -> valorl valorl .)
-    RBRACE          reduce using rule 67 (valorl -> valorl valorl .)
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
+    RPAREN          reduce using rule 68 (valorl -> valorl valorl .)
+    RCOR            reduce using rule 68 (valorl -> valorl valorl .)
+    RBRACE          reduce using rule 68 (valorl -> valorl valorl .)
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
-  ! NUMBER          [ reduce using rule 67 (valorl -> valorl valorl .) ]
-  ! ID              [ reduce using rule 67 (valorl -> valorl valorl .) ]
-  ! STRING          [ reduce using rule 67 (valorl -> valorl valorl .) ]
-  ! FLOAT           [ reduce using rule 67 (valorl -> valorl valorl .) ]
-  ! TRUE            [ reduce using rule 67 (valorl -> valorl valorl .) ]
-  ! FALSE           [ reduce using rule 67 (valorl -> valorl valorl .) ]
+  ! NUMBER          [ reduce using rule 68 (valorl -> valorl valorl .) ]
+  ! ID              [ reduce using rule 68 (valorl -> valorl valorl .) ]
+  ! STRING          [ reduce using rule 68 (valorl -> valorl valorl .) ]
+  ! FLOAT           [ reduce using rule 68 (valorl -> valorl valorl .) ]
+  ! TRUE            [ reduce using rule 68 (valorl -> valorl valorl .) ]
+  ! FALSE           [ reduce using rule 68 (valorl -> valorl valorl .) ]
 
-    valorl                         shift and go to state 117
-    booleanos                      shift and go to state 80
-
-state 118
-
-    (84) strings -> STRING STRING .
-
-    RPAREN          reduce using rule 84 (strings -> STRING STRING .)
-
-
-state 119
-
-    (69) funcionstruct -> LPAREN STR STRING strings RPAREN .
-
-    LPAREN          reduce using rule 69 (funcionstruct -> LPAREN STR STRING strings RPAREN .)
-    $end            reduce using rule 69 (funcionstruct -> LPAREN STR STRING strings RPAREN .)
-    RPAREN          reduce using rule 69 (funcionstruct -> LPAREN STR STRING strings RPAREN .)
-
-
-state 120
-
-    (70) funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .
-
-    LPAREN          reduce using rule 70 (funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .)
-    $end            reduce using rule 70 (funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .)
-    RPAREN          reduce using rule 70 (funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .)
-
-
-state 121
-
-    (71) funcionstruct -> LPAREN GET conjunto ID RPAREN .
-
-    LPAREN          reduce using rule 71 (funcionstruct -> LPAREN GET conjunto ID RPAREN .)
-    $end            reduce using rule 71 (funcionstruct -> LPAREN GET conjunto ID RPAREN .)
-    RPAREN          reduce using rule 71 (funcionstruct -> LPAREN GET conjunto ID RPAREN .)
-
-
-state 122
-
-    (53) conjunto -> NUMERAL LBRACE valorl . RBRACE
-    (67) valorl -> valorl . valorl
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
-
-    RBRACE          shift and go to state 139
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
-
-    valorl                         shift and go to state 117
-    booleanos                      shift and go to state 80
-
-state 123
-
-    (72) funcionstruct -> LPAREN NTH lista NUMBER RPAREN .
-
-    LPAREN          reduce using rule 72 (funcionstruct -> LPAREN NTH lista NUMBER RPAREN .)
-    $end            reduce using rule 72 (funcionstruct -> LPAREN NTH lista NUMBER RPAREN .)
-    RPAREN          reduce using rule 72 (funcionstruct -> LPAREN NTH lista NUMBER RPAREN .)
-
-
-state 124
-
-    (73) funcionstruct -> LPAREN NTH lista ID RPAREN .
-
-    LPAREN          reduce using rule 73 (funcionstruct -> LPAREN NTH lista ID RPAREN .)
-    $end            reduce using rule 73 (funcionstruct -> LPAREN NTH lista ID RPAREN .)
-    RPAREN          reduce using rule 73 (funcionstruct -> LPAREN NTH lista ID RPAREN .)
-
-
-state 125
-
-    (50) lista -> QUOTE LPAREN valorl . RPAREN
-    (67) valorl -> valorl . valorl
-    (62) valorl -> . NUMBER
-    (63) valorl -> . ID
-    (64) valorl -> . STRING
-    (65) valorl -> . booleanos
-    (66) valorl -> . FLOAT
-    (67) valorl -> . valorl valorl
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
-
-    RPAREN          shift and go to state 140
-    NUMBER          shift and go to state 77
-    ID              shift and go to state 78
-    STRING          shift and go to state 79
-    FLOAT           shift and go to state 81
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
-
-    valorl                         shift and go to state 117
-    booleanos                      shift and go to state 80
+    valorl                         shift and go to state 125
+    booleanos                      shift and go to state 84
 
 state 126
 
-    (51) vector -> LCOR valorl RCOR .
+    (89) asignacion_funcion -> DEFN ID LCOR . RCOR general
+    (90) asignacion_funcion -> DEFN ID LCOR . parametros RCOR general
+    (91) parametros -> . valores
+    (92) valores -> . ID
+    (93) valores -> . ID valores
 
-    RPAREN          reduce using rule 51 (vector -> LCOR valorl RCOR .)
-    NUMBER          reduce using rule 51 (vector -> LCOR valorl RCOR .)
-    ID              reduce using rule 51 (vector -> LCOR valorl RCOR .)
+    RCOR            shift and go to state 150
+    ID              shift and go to state 149
 
+    parametros                     shift and go to state 151
+    valores                        shift and go to state 152
 
 state 127
 
-    (77) conjfunction -> LPAREN CONJ lista NUMBER RPAREN .
+    (70) funcionstruct -> LPAREN STR STRING strings RPAREN .
 
-    LPAREN          reduce using rule 77 (conjfunction -> LPAREN CONJ lista NUMBER RPAREN .)
-    $end            reduce using rule 77 (conjfunction -> LPAREN CONJ lista NUMBER RPAREN .)
-    RPAREN          reduce using rule 77 (conjfunction -> LPAREN CONJ lista NUMBER RPAREN .)
+    LPAREN          reduce using rule 70 (funcionstruct -> LPAREN STR STRING strings RPAREN .)
+    $end            reduce using rule 70 (funcionstruct -> LPAREN STR STRING strings RPAREN .)
+    RPAREN          reduce using rule 70 (funcionstruct -> LPAREN STR STRING strings RPAREN .)
 
 
 state 128
 
-    (78) conjfunction -> LPAREN CONJ lista ID RPAREN .
+    (86) strings -> valor_strings strings .
 
-    LPAREN          reduce using rule 78 (conjfunction -> LPAREN CONJ lista ID RPAREN .)
-    $end            reduce using rule 78 (conjfunction -> LPAREN CONJ lista ID RPAREN .)
-    RPAREN          reduce using rule 78 (conjfunction -> LPAREN CONJ lista ID RPAREN .)
+    RPAREN          reduce using rule 86 (strings -> valor_strings strings .)
 
 
 state 129
 
-    (79) conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .
+    (71) funcionstruct -> LPAREN STR ID strings RPAREN .
 
-    LPAREN          reduce using rule 79 (conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .)
-    $end            reduce using rule 79 (conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .)
-    RPAREN          reduce using rule 79 (conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .)
+    LPAREN          reduce using rule 71 (funcionstruct -> LPAREN STR ID strings RPAREN .)
+    $end            reduce using rule 71 (funcionstruct -> LPAREN STR ID strings RPAREN .)
+    RPAREN          reduce using rule 71 (funcionstruct -> LPAREN STR ID strings RPAREN .)
 
 
 state 130
 
-    (80) conjfunction -> LPAREN CONJ conjunto ID RPAREN .
+    (72) funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .
 
-    LPAREN          reduce using rule 80 (conjfunction -> LPAREN CONJ conjunto ID RPAREN .)
-    $end            reduce using rule 80 (conjfunction -> LPAREN CONJ conjunto ID RPAREN .)
-    RPAREN          reduce using rule 80 (conjfunction -> LPAREN CONJ conjunto ID RPAREN .)
+    LPAREN          reduce using rule 72 (funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .)
+    $end            reduce using rule 72 (funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .)
+    RPAREN          reduce using rule 72 (funcionstruct -> LPAREN GET conjunto NUMBER RPAREN .)
 
 
 state 131
 
-    (81) conjfunction -> LPAREN CONJ vector NUMBER RPAREN .
+    (73) funcionstruct -> LPAREN GET conjunto ID RPAREN .
 
-    LPAREN          reduce using rule 81 (conjfunction -> LPAREN CONJ vector NUMBER RPAREN .)
-    $end            reduce using rule 81 (conjfunction -> LPAREN CONJ vector NUMBER RPAREN .)
-    RPAREN          reduce using rule 81 (conjfunction -> LPAREN CONJ vector NUMBER RPAREN .)
+    LPAREN          reduce using rule 73 (funcionstruct -> LPAREN GET conjunto ID RPAREN .)
+    $end            reduce using rule 73 (funcionstruct -> LPAREN GET conjunto ID RPAREN .)
+    RPAREN          reduce using rule 73 (funcionstruct -> LPAREN GET conjunto ID RPAREN .)
 
 
 state 132
 
-    (82) conjfunction -> LPAREN CONJ vector ID RPAREN .
+    (54) conjunto -> NUMERAL LBRACE valorl . RBRACE
+    (68) valorl -> valorl . valorl
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
 
-    LPAREN          reduce using rule 82 (conjfunction -> LPAREN CONJ vector ID RPAREN .)
-    $end            reduce using rule 82 (conjfunction -> LPAREN CONJ vector ID RPAREN .)
-    RPAREN          reduce using rule 82 (conjfunction -> LPAREN CONJ vector ID RPAREN .)
+    RBRACE          shift and go to state 153
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
 
+    valorl                         shift and go to state 125
+    booleanos                      shift and go to state 84
 
 state 133
 
-    (31) factor -> LPAREN expression RPAREN .
+    (74) funcionstruct -> LPAREN NTH lista NUMBER RPAREN .
 
-    NUMBER          reduce using rule 31 (factor -> LPAREN expression RPAREN .)
-    ID              reduce using rule 31 (factor -> LPAREN expression RPAREN .)
-    FLOAT           reduce using rule 31 (factor -> LPAREN expression RPAREN .)
-    LPAREN          reduce using rule 31 (factor -> LPAREN expression RPAREN .)
-    TRUE            reduce using rule 31 (factor -> LPAREN expression RPAREN .)
-    FALSE           reduce using rule 31 (factor -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 31 (factor -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 74 (funcionstruct -> LPAREN NTH lista NUMBER RPAREN .)
+    $end            reduce using rule 74 (funcionstruct -> LPAREN NTH lista NUMBER RPAREN .)
+    RPAREN          reduce using rule 74 (funcionstruct -> LPAREN NTH lista NUMBER RPAREN .)
 
 
 state 134
 
-    (43) sentenciaif -> IF LPAREN comparacion RPAREN . general
-    (44) sentenciaif -> IF LPAREN comparacion RPAREN . sentenciado sentenciado
+    (75) funcionstruct -> LPAREN NTH lista ID RPAREN .
+
+    LPAREN          reduce using rule 75 (funcionstruct -> LPAREN NTH lista ID RPAREN .)
+    $end            reduce using rule 75 (funcionstruct -> LPAREN NTH lista ID RPAREN .)
+    RPAREN          reduce using rule 75 (funcionstruct -> LPAREN NTH lista ID RPAREN .)
+
+
+state 135
+
+    (51) lista -> QUOTE LPAREN valorl . RPAREN
+    (68) valorl -> valorl . valorl
+    (63) valorl -> . NUMBER
+    (64) valorl -> . ID
+    (65) valorl -> . STRING
+    (66) valorl -> . booleanos
+    (67) valorl -> . FLOAT
+    (68) valorl -> . valorl valorl
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
+
+    RPAREN          shift and go to state 154
+    NUMBER          shift and go to state 81
+    ID              shift and go to state 82
+    STRING          shift and go to state 83
+    FLOAT           shift and go to state 85
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+
+    valorl                         shift and go to state 125
+    booleanos                      shift and go to state 84
+
+state 136
+
+    (52) vector -> LCOR valorl RCOR .
+
+    RPAREN          reduce using rule 52 (vector -> LCOR valorl RCOR .)
+    NUMBER          reduce using rule 52 (vector -> LCOR valorl RCOR .)
+    ID              reduce using rule 52 (vector -> LCOR valorl RCOR .)
+
+
+state 137
+
+    (79) conjfunction -> LPAREN CONJ lista NUMBER RPAREN .
+
+    LPAREN          reduce using rule 79 (conjfunction -> LPAREN CONJ lista NUMBER RPAREN .)
+    $end            reduce using rule 79 (conjfunction -> LPAREN CONJ lista NUMBER RPAREN .)
+    RPAREN          reduce using rule 79 (conjfunction -> LPAREN CONJ lista NUMBER RPAREN .)
+
+
+state 138
+
+    (80) conjfunction -> LPAREN CONJ lista ID RPAREN .
+
+    LPAREN          reduce using rule 80 (conjfunction -> LPAREN CONJ lista ID RPAREN .)
+    $end            reduce using rule 80 (conjfunction -> LPAREN CONJ lista ID RPAREN .)
+    RPAREN          reduce using rule 80 (conjfunction -> LPAREN CONJ lista ID RPAREN .)
+
+
+state 139
+
+    (81) conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .
+
+    LPAREN          reduce using rule 81 (conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .)
+    $end            reduce using rule 81 (conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .)
+    RPAREN          reduce using rule 81 (conjfunction -> LPAREN CONJ conjunto NUMBER RPAREN .)
+
+
+state 140
+
+    (82) conjfunction -> LPAREN CONJ conjunto ID RPAREN .
+
+    LPAREN          reduce using rule 82 (conjfunction -> LPAREN CONJ conjunto ID RPAREN .)
+    $end            reduce using rule 82 (conjfunction -> LPAREN CONJ conjunto ID RPAREN .)
+    RPAREN          reduce using rule 82 (conjfunction -> LPAREN CONJ conjunto ID RPAREN .)
+
+
+state 141
+
+    (83) conjfunction -> LPAREN CONJ vector NUMBER RPAREN .
+
+    LPAREN          reduce using rule 83 (conjfunction -> LPAREN CONJ vector NUMBER RPAREN .)
+    $end            reduce using rule 83 (conjfunction -> LPAREN CONJ vector NUMBER RPAREN .)
+    RPAREN          reduce using rule 83 (conjfunction -> LPAREN CONJ vector NUMBER RPAREN .)
+
+
+state 142
+
+    (84) conjfunction -> LPAREN CONJ vector ID RPAREN .
+
+    LPAREN          reduce using rule 84 (conjfunction -> LPAREN CONJ vector ID RPAREN .)
+    $end            reduce using rule 84 (conjfunction -> LPAREN CONJ vector ID RPAREN .)
+    RPAREN          reduce using rule 84 (conjfunction -> LPAREN CONJ vector ID RPAREN .)
+
+
+state 143
+
+    (32) factor -> LPAREN expression RPAREN .
+
+    NUMBER          reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+    ID              reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+    FLOAT           reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+    TRUE            reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+    FALSE           reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 32 (factor -> LPAREN expression RPAREN .)
+
+
+state 144
+
+    (44) sentenciaif -> IF LPAREN comparacion RPAREN . general
+    (45) sentenciaif -> IF LPAREN comparacion RPAREN . sentenciado sentenciado
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
-    LPAREN          shift and go to state 141
+    LPAREN          shift and go to state 155
 
-    general                        shift and go to state 142
-    sentenciado                    shift and go to state 143
+    general                        shift and go to state 156
+    sentenciado                    shift and go to state 157
     funcionstruct                  shift and go to state 3
     read                           shift and go to state 5
     conjfunction                   shift and go to state 6
 
-state 135
+state 145
 
-    (45) sentenciawhile -> WHILE LPAREN comparacion RPAREN . sentenciado
-    (42) sentenciado -> . LPAREN DO general RPAREN
+    (46) sentenciawhile -> WHILE LPAREN comparacion RPAREN . sentenciado
+    (43) sentenciado -> . LPAREN DO general RPAREN
 
-    LPAREN          shift and go to state 144
+    LPAREN          shift and go to state 158
 
-    sentenciado                    shift and go to state 145
+    sentenciado                    shift and go to state 159
 
-state 136
+state 146
 
-    (52) mapa -> LBRACE repetirclave . RBRACE
+    (53) mapa -> LBRACE repetirclave . RBRACE
 
-    RBRACE          shift and go to state 146
-
-
-state 137
-
-    (55) repetirclave -> clavevalor .
-    (56) repetirclave -> clavevalor . COMA repetirclave
-
-    RBRACE          reduce using rule 55 (repetirclave -> clavevalor .)
-    COMA            shift and go to state 147
+    RBRACE          shift and go to state 160
 
 
-state 138
+state 147
 
-    (54) clavevalor -> ID . DDOT valor
+    (56) repetirclave -> clavevalor .
+    (57) repetirclave -> clavevalor . COMA repetirclave
 
-    DDOT            shift and go to state 148
-
-
-state 139
-
-    (53) conjunto -> NUMERAL LBRACE valorl RBRACE .
-
-    NUMBER          reduce using rule 53 (conjunto -> NUMERAL LBRACE valorl RBRACE .)
-    ID              reduce using rule 53 (conjunto -> NUMERAL LBRACE valorl RBRACE .)
-    RPAREN          reduce using rule 53 (conjunto -> NUMERAL LBRACE valorl RBRACE .)
+    RBRACE          reduce using rule 56 (repetirclave -> clavevalor .)
+    COMA            shift and go to state 161
 
 
-state 140
+state 148
 
-    (50) lista -> QUOTE LPAREN valorl RPAREN .
+    (55) clavevalor -> ID . DDOT valor
 
-    NUMBER          reduce using rule 50 (lista -> QUOTE LPAREN valorl RPAREN .)
-    ID              reduce using rule 50 (lista -> QUOTE LPAREN valorl RPAREN .)
-    RPAREN          reduce using rule 50 (lista -> QUOTE LPAREN valorl RPAREN .)
+    DDOT            shift and go to state 162
 
 
-state 141
+state 149
+
+    (92) valores -> ID .
+    (93) valores -> ID . valores
+    (92) valores -> . ID
+    (93) valores -> . ID valores
+
+    RCOR            reduce using rule 92 (valores -> ID .)
+    ID              shift and go to state 149
+
+    valores                        shift and go to state 163
+
+state 150
+
+    (89) asignacion_funcion -> DEFN ID LCOR RCOR . general
+    (1) general -> . LPAREN expression RPAREN
+    (2) general -> . LPAREN comparacion RPAREN
+    (3) general -> . LPAREN sentenciaif RPAREN
+    (4) general -> . LPAREN sentenciawhile RPAREN
+    (5) general -> . LPAREN asignacion RPAREN
+    (6) general -> . LPAREN imprimir RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
+
+    LPAREN          shift and go to state 2
+
+    general                        shift and go to state 164
+    funcionstruct                  shift and go to state 3
+    sentenciado                    shift and go to state 4
+    read                           shift and go to state 5
+    conjfunction                   shift and go to state 6
+
+state 151
+
+    (90) asignacion_funcion -> DEFN ID LCOR parametros . RCOR general
+
+    RCOR            shift and go to state 165
+
+
+state 152
+
+    (91) parametros -> valores .
+
+    RCOR            reduce using rule 91 (parametros -> valores .)
+
+
+state 153
+
+    (54) conjunto -> NUMERAL LBRACE valorl RBRACE .
+
+    NUMBER          reduce using rule 54 (conjunto -> NUMERAL LBRACE valorl RBRACE .)
+    ID              reduce using rule 54 (conjunto -> NUMERAL LBRACE valorl RBRACE .)
+    RPAREN          reduce using rule 54 (conjunto -> NUMERAL LBRACE valorl RBRACE .)
+
+
+state 154
+
+    (51) lista -> QUOTE LPAREN valorl RPAREN .
+
+    NUMBER          reduce using rule 51 (lista -> QUOTE LPAREN valorl RPAREN .)
+    ID              reduce using rule 51 (lista -> QUOTE LPAREN valorl RPAREN .)
+    RPAREN          reduce using rule 51 (lista -> QUOTE LPAREN valorl RPAREN .)
+
+
+state 155
 
     (1) general -> LPAREN . expression RPAREN
     (2) general -> LPAREN . comparacion RPAREN
@@ -2084,74 +2288,79 @@ state 141
     (4) general -> LPAREN . sentenciawhile RPAREN
     (5) general -> LPAREN . asignacion RPAREN
     (6) general -> LPAREN . imprimir RPAREN
-    (42) sentenciado -> LPAREN . DO general RPAREN
-    (69) funcionstruct -> LPAREN . STR STRING strings RPAREN
-    (70) funcionstruct -> LPAREN . GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> LPAREN . GET conjunto ID RPAREN
-    (72) funcionstruct -> LPAREN . NTH lista NUMBER RPAREN
-    (73) funcionstruct -> LPAREN . NTH lista ID RPAREN
-    (74) funcionstruct -> LPAREN . POP vector RPAREN
-    (75) funcionstruct -> LPAREN . COUNT STRING RPAREN
-    (76) funcionstruct -> LPAREN . COUNT ID RPAREN
-    (26) read -> LPAREN . READ RPAREN
-    (77) conjfunction -> LPAREN . CONJ lista NUMBER RPAREN
-    (78) conjfunction -> LPAREN . CONJ lista ID RPAREN
-    (79) conjfunction -> LPAREN . CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> LPAREN . CONJ conjunto ID RPAREN
-    (81) conjfunction -> LPAREN . CONJ vector NUMBER RPAREN
-    (82) conjfunction -> LPAREN . CONJ vector ID RPAREN
-    (11) expression -> . operadoresMat factor factor
-    (12) comparacion -> . operadoresComp factor factor
-    (43) sentenciaif -> . IF LPAREN comparacion RPAREN general
-    (44) sentenciaif -> . IF LPAREN comparacion RPAREN sentenciado sentenciado
-    (45) sentenciawhile -> . WHILE LPAREN comparacion RPAREN sentenciado
-    (32) asignacion -> . DEF ID factor
-    (33) asignacion -> . DEF ID STRING
-    (34) asignacion -> . DEF ID booleanos
+    (7) general -> LPAREN . asignacion_funcion RPAREN
+    (43) sentenciado -> LPAREN . DO general RPAREN
+    (70) funcionstruct -> LPAREN . STR STRING strings RPAREN
+    (71) funcionstruct -> LPAREN . STR ID strings RPAREN
+    (72) funcionstruct -> LPAREN . GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> LPAREN . GET conjunto ID RPAREN
+    (74) funcionstruct -> LPAREN . NTH lista NUMBER RPAREN
+    (75) funcionstruct -> LPAREN . NTH lista ID RPAREN
+    (76) funcionstruct -> LPAREN . POP vector RPAREN
+    (77) funcionstruct -> LPAREN . COUNT STRING RPAREN
+    (78) funcionstruct -> LPAREN . COUNT ID RPAREN
+    (27) read -> LPAREN . READ RPAREN
+    (79) conjfunction -> LPAREN . CONJ lista NUMBER RPAREN
+    (80) conjfunction -> LPAREN . CONJ lista ID RPAREN
+    (81) conjfunction -> LPAREN . CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> LPAREN . CONJ conjunto ID RPAREN
+    (83) conjfunction -> LPAREN . CONJ vector NUMBER RPAREN
+    (84) conjfunction -> LPAREN . CONJ vector ID RPAREN
+    (12) expression -> . operadoresMat factor factor
+    (13) comparacion -> . operadoresComp factor factor
+    (44) sentenciaif -> . IF LPAREN comparacion RPAREN general
+    (45) sentenciaif -> . IF LPAREN comparacion RPAREN sentenciado sentenciado
+    (46) sentenciawhile -> . WHILE LPAREN comparacion RPAREN sentenciado
+    (33) asignacion -> . DEF ID factor
+    (34) asignacion -> . DEF ID STRING
     (35) asignacion -> . DEF ID struct
     (36) asignacion -> . DEF ID funcionstruct
-    (39) imprimir -> . operadoresPrint factor
-    (40) imprimir -> . operadoresPrint STRING
-    (41) imprimir -> . PRINTF valorl
-    (13) operadoresMat -> . PLUS
-    (14) operadoresMat -> . MINUS
-    (15) operadoresMat -> . TIMES
-    (16) operadoresMat -> . DIVIDE
-    (17) operadoresMat -> . MOD
-    (18) operadoresComp -> . MAYORQUE
-    (19) operadoresComp -> . MENORQUE
-    (20) operadoresComp -> . IGUAL
-    (21) operadoresComp -> . OR
-    (22) operadoresComp -> . AND
-    (23) operadoresComp -> . NOT
-    (24) operadoresPrint -> . PRINT
-    (25) operadoresPrint -> . PRINTLN
+    (37) asignacion -> . DEF ID read
+    (40) imprimir -> . operadoresPrint factor
+    (41) imprimir -> . operadoresPrint STRING
+    (42) imprimir -> . PRINTF valorl
+    (89) asignacion_funcion -> . DEFN ID LCOR RCOR general
+    (90) asignacion_funcion -> . DEFN ID LCOR parametros RCOR general
+    (14) operadoresMat -> . PLUS
+    (15) operadoresMat -> . MINUS
+    (16) operadoresMat -> . TIMES
+    (17) operadoresMat -> . DIVIDE
+    (18) operadoresMat -> . MOD
+    (19) operadoresComp -> . MAYORQUE
+    (20) operadoresComp -> . MENORQUE
+    (21) operadoresComp -> . IGUAL
+    (22) operadoresComp -> . OR
+    (23) operadoresComp -> . AND
+    (24) operadoresComp -> . NOT
+    (25) operadoresPrint -> . PRINT
+    (26) operadoresPrint -> . PRINTLN
 
-    DO              shift and go to state 19
-    STR             shift and go to state 14
-    GET             shift and go to state 15
-    NTH             shift and go to state 16
-    POP             shift and go to state 17
-    COUNT           shift and go to state 18
-    READ            shift and go to state 20
-    CONJ            shift and go to state 21
-    IF              shift and go to state 24
-    WHILE           shift and go to state 25
-    DEF             shift and go to state 26
-    PRINTF          shift and go to state 28
-    PLUS            shift and go to state 29
-    MINUS           shift and go to state 30
-    TIMES           shift and go to state 31
-    DIVIDE          shift and go to state 32
-    MOD             shift and go to state 33
-    MAYORQUE        shift and go to state 34
-    MENORQUE        shift and go to state 35
-    IGUAL           shift and go to state 36
-    OR              shift and go to state 37
-    AND             shift and go to state 38
-    NOT             shift and go to state 39
-    PRINT           shift and go to state 40
-    PRINTLN         shift and go to state 41
+    DO              shift and go to state 20
+    STR             shift and go to state 15
+    GET             shift and go to state 16
+    NTH             shift and go to state 17
+    POP             shift and go to state 18
+    COUNT           shift and go to state 19
+    READ            shift and go to state 21
+    CONJ            shift and go to state 22
+    IF              shift and go to state 25
+    WHILE           shift and go to state 26
+    DEF             shift and go to state 27
+    PRINTF          shift and go to state 29
+    DEFN            shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+    MOD             shift and go to state 35
+    MAYORQUE        shift and go to state 36
+    MENORQUE        shift and go to state 37
+    IGUAL           shift and go to state 38
+    OR              shift and go to state 39
+    AND             shift and go to state 40
+    NOT             shift and go to state 41
+    PRINT           shift and go to state 42
+    PRINTLN         shift and go to state 43
 
     expression                     shift and go to state 8
     comparacion                    shift and go to state 9
@@ -2159,43 +2368,46 @@ state 141
     sentenciawhile                 shift and go to state 11
     asignacion                     shift and go to state 12
     imprimir                       shift and go to state 13
-    operadoresMat                  shift and go to state 22
-    operadoresComp                 shift and go to state 23
-    operadoresPrint                shift and go to state 27
+    asignacion_funcion             shift and go to state 14
+    operadoresMat                  shift and go to state 23
+    operadoresComp                 shift and go to state 24
+    operadoresPrint                shift and go to state 28
 
-state 142
+state 156
 
-    (43) sentenciaif -> IF LPAREN comparacion RPAREN general .
-    (10) general -> general . general
+    (44) sentenciaif -> IF LPAREN comparacion RPAREN general .
+    (11) general -> general . general
     (1) general -> . LPAREN expression RPAREN
     (2) general -> . LPAREN comparacion RPAREN
     (3) general -> . LPAREN sentenciaif RPAREN
     (4) general -> . LPAREN sentenciawhile RPAREN
     (5) general -> . LPAREN asignacion RPAREN
     (6) general -> . LPAREN imprimir RPAREN
-    (7) general -> . funcionstruct
-    (8) general -> . sentenciado
-    (9) general -> . read
-    (10) general -> . general general
-    (68) funcionstruct -> . conjfunction
-    (69) funcionstruct -> . LPAREN STR STRING strings RPAREN
-    (70) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
-    (71) funcionstruct -> . LPAREN GET conjunto ID RPAREN
-    (72) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
-    (73) funcionstruct -> . LPAREN NTH lista ID RPAREN
-    (74) funcionstruct -> . LPAREN POP vector RPAREN
-    (75) funcionstruct -> . LPAREN COUNT STRING RPAREN
-    (76) funcionstruct -> . LPAREN COUNT ID RPAREN
-    (42) sentenciado -> . LPAREN DO general RPAREN
-    (26) read -> . LPAREN READ RPAREN
-    (77) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
-    (78) conjfunction -> . LPAREN CONJ lista ID RPAREN
-    (79) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
-    (80) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
-    (81) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
-    (82) conjfunction -> . LPAREN CONJ vector ID RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
-    RPAREN          reduce using rule 43 (sentenciaif -> IF LPAREN comparacion RPAREN general .)
+    RPAREN          reduce using rule 44 (sentenciaif -> IF LPAREN comparacion RPAREN general .)
     LPAREN          shift and go to state 2
 
     general                        shift and go to state 7
@@ -2204,146 +2416,277 @@ state 142
     read                           shift and go to state 5
     conjfunction                   shift and go to state 6
 
-state 143
+state 157
 
-    (44) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado . sentenciado
-    (8) general -> sentenciado .
-    (42) sentenciado -> . LPAREN DO general RPAREN
+    (45) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado . sentenciado
+    (9) general -> sentenciado .
+    (43) sentenciado -> . LPAREN DO general RPAREN
 
   ! shift/reduce conflict for LPAREN resolved as shift
-    RPAREN          reduce using rule 8 (general -> sentenciado .)
-    LPAREN          shift and go to state 144
+    RPAREN          reduce using rule 9 (general -> sentenciado .)
+    LPAREN          shift and go to state 158
 
-  ! LPAREN          [ reduce using rule 8 (general -> sentenciado .) ]
+  ! LPAREN          [ reduce using rule 9 (general -> sentenciado .) ]
 
-    sentenciado                    shift and go to state 149
+    sentenciado                    shift and go to state 166
 
-state 144
+state 158
 
-    (42) sentenciado -> LPAREN . DO general RPAREN
+    (43) sentenciado -> LPAREN . DO general RPAREN
 
-    DO              shift and go to state 19
-
-
-state 145
-
-    (45) sentenciawhile -> WHILE LPAREN comparacion RPAREN sentenciado .
-
-    RPAREN          reduce using rule 45 (sentenciawhile -> WHILE LPAREN comparacion RPAREN sentenciado .)
+    DO              shift and go to state 20
 
 
-state 146
+state 159
 
-    (52) mapa -> LBRACE repetirclave RBRACE .
+    (46) sentenciawhile -> WHILE LPAREN comparacion RPAREN sentenciado .
 
-    RPAREN          reduce using rule 52 (mapa -> LBRACE repetirclave RBRACE .)
-
-
-state 147
-
-    (56) repetirclave -> clavevalor COMA . repetirclave
-    (55) repetirclave -> . clavevalor
-    (56) repetirclave -> . clavevalor COMA repetirclave
-    (54) clavevalor -> . ID DDOT valor
-
-    ID              shift and go to state 138
-
-    clavevalor                     shift and go to state 137
-    repetirclave                   shift and go to state 150
-
-state 148
-
-    (54) clavevalor -> ID DDOT . valor
-    (57) valor -> . NUMBER
-    (58) valor -> . ID
-    (59) valor -> . STRING
-    (60) valor -> . booleanos
-    (61) valor -> . FLOAT
-    (37) booleanos -> . TRUE
-    (38) booleanos -> . FALSE
-
-    NUMBER          shift and go to state 153
-    ID              shift and go to state 151
-    STRING          shift and go to state 154
-    FLOAT           shift and go to state 156
-    TRUE            shift and go to state 68
-    FALSE           shift and go to state 69
-
-    valor                          shift and go to state 152
-    booleanos                      shift and go to state 155
-
-state 149
-
-    (44) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .
-
-    RPAREN          reduce using rule 44 (sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .)
+    RPAREN          reduce using rule 46 (sentenciawhile -> WHILE LPAREN comparacion RPAREN sentenciado .)
 
 
-state 150
+state 160
 
-    (56) repetirclave -> clavevalor COMA repetirclave .
+    (53) mapa -> LBRACE repetirclave RBRACE .
 
-    RBRACE          reduce using rule 56 (repetirclave -> clavevalor COMA repetirclave .)
-
-
-state 151
-
-    (58) valor -> ID .
-
-    COMA            reduce using rule 58 (valor -> ID .)
-    RBRACE          reduce using rule 58 (valor -> ID .)
+    RPAREN          reduce using rule 53 (mapa -> LBRACE repetirclave RBRACE .)
 
 
-state 152
+state 161
 
-    (54) clavevalor -> ID DDOT valor .
+    (57) repetirclave -> clavevalor COMA . repetirclave
+    (56) repetirclave -> . clavevalor
+    (57) repetirclave -> . clavevalor COMA repetirclave
+    (55) clavevalor -> . ID DDOT valor
 
-    COMA            reduce using rule 54 (clavevalor -> ID DDOT valor .)
-    RBRACE          reduce using rule 54 (clavevalor -> ID DDOT valor .)
+    ID              shift and go to state 148
+
+    clavevalor                     shift and go to state 147
+    repetirclave                   shift and go to state 167
+
+state 162
+
+    (55) clavevalor -> ID DDOT . valor
+    (58) valor -> . NUMBER
+    (59) valor -> . ID
+    (60) valor -> . STRING
+    (61) valor -> . booleanos
+    (62) valor -> . FLOAT
+    (38) booleanos -> . TRUE
+    (39) booleanos -> . FALSE
+
+    NUMBER          shift and go to state 170
+    ID              shift and go to state 168
+    STRING          shift and go to state 171
+    FLOAT           shift and go to state 173
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+
+    valor                          shift and go to state 169
+    booleanos                      shift and go to state 172
+
+state 163
+
+    (93) valores -> ID valores .
+
+    RCOR            reduce using rule 93 (valores -> ID valores .)
 
 
-state 153
+state 164
 
-    (57) valor -> NUMBER .
+    (89) asignacion_funcion -> DEFN ID LCOR RCOR general .
+    (11) general -> general . general
+    (1) general -> . LPAREN expression RPAREN
+    (2) general -> . LPAREN comparacion RPAREN
+    (3) general -> . LPAREN sentenciaif RPAREN
+    (4) general -> . LPAREN sentenciawhile RPAREN
+    (5) general -> . LPAREN asignacion RPAREN
+    (6) general -> . LPAREN imprimir RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
 
-    COMA            reduce using rule 57 (valor -> NUMBER .)
-    RBRACE          reduce using rule 57 (valor -> NUMBER .)
+    RPAREN          reduce using rule 89 (asignacion_funcion -> DEFN ID LCOR RCOR general .)
+    LPAREN          shift and go to state 2
+
+    general                        shift and go to state 7
+    funcionstruct                  shift and go to state 3
+    sentenciado                    shift and go to state 4
+    read                           shift and go to state 5
+    conjfunction                   shift and go to state 6
+
+state 165
+
+    (90) asignacion_funcion -> DEFN ID LCOR parametros RCOR . general
+    (1) general -> . LPAREN expression RPAREN
+    (2) general -> . LPAREN comparacion RPAREN
+    (3) general -> . LPAREN sentenciaif RPAREN
+    (4) general -> . LPAREN sentenciawhile RPAREN
+    (5) general -> . LPAREN asignacion RPAREN
+    (6) general -> . LPAREN imprimir RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
+
+    LPAREN          shift and go to state 2
+
+    general                        shift and go to state 174
+    funcionstruct                  shift and go to state 3
+    sentenciado                    shift and go to state 4
+    read                           shift and go to state 5
+    conjfunction                   shift and go to state 6
+
+state 166
+
+    (45) sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .
+
+    RPAREN          reduce using rule 45 (sentenciaif -> IF LPAREN comparacion RPAREN sentenciado sentenciado .)
 
 
-state 154
+state 167
 
-    (59) valor -> STRING .
+    (57) repetirclave -> clavevalor COMA repetirclave .
 
-    COMA            reduce using rule 59 (valor -> STRING .)
-    RBRACE          reduce using rule 59 (valor -> STRING .)
-
-
-state 155
-
-    (60) valor -> booleanos .
-
-    COMA            reduce using rule 60 (valor -> booleanos .)
-    RBRACE          reduce using rule 60 (valor -> booleanos .)
+    RBRACE          reduce using rule 57 (repetirclave -> clavevalor COMA repetirclave .)
 
 
-state 156
+state 168
 
-    (61) valor -> FLOAT .
+    (59) valor -> ID .
 
-    COMA            reduce using rule 61 (valor -> FLOAT .)
-    RBRACE          reduce using rule 61 (valor -> FLOAT .)
+    COMA            reduce using rule 59 (valor -> ID .)
+    RBRACE          reduce using rule 59 (valor -> ID .)
 
+
+state 169
+
+    (55) clavevalor -> ID DDOT valor .
+
+    COMA            reduce using rule 55 (clavevalor -> ID DDOT valor .)
+    RBRACE          reduce using rule 55 (clavevalor -> ID DDOT valor .)
+
+
+state 170
+
+    (58) valor -> NUMBER .
+
+    COMA            reduce using rule 58 (valor -> NUMBER .)
+    RBRACE          reduce using rule 58 (valor -> NUMBER .)
+
+
+state 171
+
+    (60) valor -> STRING .
+
+    COMA            reduce using rule 60 (valor -> STRING .)
+    RBRACE          reduce using rule 60 (valor -> STRING .)
+
+
+state 172
+
+    (61) valor -> booleanos .
+
+    COMA            reduce using rule 61 (valor -> booleanos .)
+    RBRACE          reduce using rule 61 (valor -> booleanos .)
+
+
+state 173
+
+    (62) valor -> FLOAT .
+
+    COMA            reduce using rule 62 (valor -> FLOAT .)
+    RBRACE          reduce using rule 62 (valor -> FLOAT .)
+
+
+state 174
+
+    (90) asignacion_funcion -> DEFN ID LCOR parametros RCOR general .
+    (11) general -> general . general
+    (1) general -> . LPAREN expression RPAREN
+    (2) general -> . LPAREN comparacion RPAREN
+    (3) general -> . LPAREN sentenciaif RPAREN
+    (4) general -> . LPAREN sentenciawhile RPAREN
+    (5) general -> . LPAREN asignacion RPAREN
+    (6) general -> . LPAREN imprimir RPAREN
+    (7) general -> . LPAREN asignacion_funcion RPAREN
+    (8) general -> . funcionstruct
+    (9) general -> . sentenciado
+    (10) general -> . read
+    (11) general -> . general general
+    (69) funcionstruct -> . conjfunction
+    (70) funcionstruct -> . LPAREN STR STRING strings RPAREN
+    (71) funcionstruct -> . LPAREN STR ID strings RPAREN
+    (72) funcionstruct -> . LPAREN GET conjunto NUMBER RPAREN
+    (73) funcionstruct -> . LPAREN GET conjunto ID RPAREN
+    (74) funcionstruct -> . LPAREN NTH lista NUMBER RPAREN
+    (75) funcionstruct -> . LPAREN NTH lista ID RPAREN
+    (76) funcionstruct -> . LPAREN POP vector RPAREN
+    (77) funcionstruct -> . LPAREN COUNT STRING RPAREN
+    (78) funcionstruct -> . LPAREN COUNT ID RPAREN
+    (43) sentenciado -> . LPAREN DO general RPAREN
+    (27) read -> . LPAREN READ RPAREN
+    (79) conjfunction -> . LPAREN CONJ lista NUMBER RPAREN
+    (80) conjfunction -> . LPAREN CONJ lista ID RPAREN
+    (81) conjfunction -> . LPAREN CONJ conjunto NUMBER RPAREN
+    (82) conjfunction -> . LPAREN CONJ conjunto ID RPAREN
+    (83) conjfunction -> . LPAREN CONJ vector NUMBER RPAREN
+    (84) conjfunction -> . LPAREN CONJ vector ID RPAREN
+
+    RPAREN          reduce using rule 90 (asignacion_funcion -> DEFN ID LCOR parametros RCOR general .)
+    LPAREN          shift and go to state 2
+
+    general                        shift and go to state 7
+    funcionstruct                  shift and go to state 3
+    sentenciado                    shift and go to state 4
+    read                           shift and go to state 5
+    conjfunction                   shift and go to state 6
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for LPAREN in state 7 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 117 resolved as shift
-WARNING: shift/reduce conflict for ID in state 117 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 117 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 117 resolved as shift
-WARNING: shift/reduce conflict for TRUE in state 117 resolved as shift
-WARNING: shift/reduce conflict for FALSE in state 117 resolved as shift
-WARNING: shift/reduce conflict for LPAREN in state 143 resolved as shift
-WARNING: reduce/reduce conflict in state 108 resolved using rule (factor -> booleanos)
-WARNING: rejected rule (asignacion -> DEF ID booleanos) in state 108
-WARNING: Rule (asignacion -> DEF ID booleanos) is never reduced
+WARNING: shift/reduce conflict for NUMBER in state 125 resolved as shift
+WARNING: shift/reduce conflict for ID in state 125 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 125 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 125 resolved as shift
+WARNING: shift/reduce conflict for TRUE in state 125 resolved as shift
+WARNING: shift/reduce conflict for FALSE in state 125 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 157 resolved as shift
