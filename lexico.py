@@ -73,15 +73,19 @@ t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 t_DDOT = r':'
 t_NUMERAL = r'\#'
+
+def t_FLOAT(t):
+    r'[-+]?(\d+(\.\d*)|\.\d+)'
+    t.value = float(t.value)
+    return t
+
+
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)    
     return t
 
-def t_FLOAT(t):
-    r'[-+]?(\d+(\.\d*)?|\.\d+)'
-    t.value = float(t.value)
-    return t
+
 
 def t_newline(t):
     r'\n+'
@@ -108,7 +112,7 @@ def t_error(t):
 lexer = lex.lex()
  
 
-'''
+
 archivo = open("codigo.txt", 'r',  encoding="utf-8")
 
 contenido = archivo.read()
@@ -124,4 +128,3 @@ while True:
     if not tok: 
         break      # No more input
     print(tok)
-'''
