@@ -245,6 +245,8 @@ parser = yacc.yacc()
 
 
 def verParser(string):
+    global exp_nombre
+    exp_nombre = ""
     try:
         cadena = string #input('')
         result = parser.parse(cadena)
