@@ -135,13 +135,15 @@ while True:
 def verLexer(data):
     lexer = lex.lex()
     lexer.input(data)
-
+    result = ""
     while True:
         tok= lexer.token()
         if not tok:
 
             break
         print(tok)
+        result += "\n" + str(tok)
+    return result
 
 
 

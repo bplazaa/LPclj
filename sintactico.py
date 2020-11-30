@@ -5,6 +5,8 @@ import ply.yacc as yacc
 
 from lexico import tokens
 
+exp_nombre = ""
+
 def p_expression_general(p):
     '''general : LPAREN expression RPAREN
             | LPAREN comparacion RPAREN
@@ -18,12 +20,18 @@ def p_expression_general(p):
             | sentenciado
             | read
             | general general'''
+    global exp_nombre
+    p[0] = exp_nombre
 
-def p_expression_mat(p):
+def p_expression_mat(p):    
     'expression : operadoresMat factor factor '
+    global exp_nombre
+    exp_nombre += "\n expresion matematica"
 
 def p_comparacion(p):
     'comparacion : operadoresComp factor factor '
+    global exp_nombre
+    exp_nombre += "\n expresion comparativa"
 
 def p_operadoresMat(p):
     '''operadoresMat : PLUS
@@ -46,6 +54,8 @@ def p_operadoresPrint(p):
 
 def p_read(p):
     '''read : LPAREN READ RPAREN'''
+    global exp_nombre
+    exp_nombre += "\n expresion read"
 
 def p_factor_num(p):
     '''factor : NUMBER
@@ -63,6 +73,8 @@ def p_asignacion(p):
                 | DEF ID funcionstruct
                 | DEF ID read
                 | DEF ID function_call'''
+    global exp_nombre
+    exp_nombre += "\n expresion de asignacion"
 
 
 def p_booleanos(p):
@@ -74,25 +86,36 @@ def p_imprimir(p):
     '''imprimir : operadoresPrint factor
                 | operadoresPrint STRING
                 | PRINTF valorl'''
+    global exp_nombre
+    exp_nombre += "\n expresion de imprimir"
 
 def p_sentenciado(p):
     'sentenciado : LPAREN DO general RPAREN'
+    global exp_nombre
+    exp_nombre += "\n expresion sentencia DO"
 
 def p_sentenciaif(p):
     '''sentenciaif : IF LPAREN comparacion RPAREN general
                 | IF LPAREN comparacion RPAREN sentenciado sentenciado'''
+    global exp_nombre
+    exp_nombre += "\n expresion sentencia IF"
 
 #CARLOS SALAZAR
 def p_sentenciawhile(p):
     '''
         sentenciawhile : WHILE LPAREN comparacion RPAREN sentenciado
     '''
+    global exp_nombre
+    exp_nombre += "\n expresion sentencia WHILE"
+
 def p_struct(p):
     '''
       struct : lista
             | vector
             | mapa
             | conjunto'''
+    global exp_nombre
+    exp_nombre += "\n sentencia STRUCT"
 
 def p_lista(p):
     'lista : QUOTE LPAREN valorl RPAREN'
@@ -140,6 +163,8 @@ def p_funcionstruct(p):
         | LPAREN COUNT STRING RPAREN
         | LPAREN COUNT ID RPAREN
     '''
+    global exp_nombre
+    exp_nombre += "\n expresion funcion STRUCT"
 
 # Carlos Salazar
 def p_conjfunction(p):
@@ -172,6 +197,8 @@ def p_asignacion_funcion(p):
         asignacion_funcion : DEFN ID LCOR RCOR general
         | DEFN ID LCOR parametros RCOR general
     '''
+    global exp_nombre
+    exp_nombre += "\n expresion asignacion Funcion"
 
 
 def p_parametros(p):
@@ -191,6 +218,8 @@ def p_function_call(p):
         function_call : LPAREN ID RPAREN
         | LPAREN ID argumentos RPAREN
     '''
+    global exp_nombre
+    exp_nombre += "\n expresion funcion call"
 
 def p_argumentos(p):
     '''
@@ -214,23 +243,17 @@ def p_error(p):
  # Build the parser
 parser = yacc.yacc()
 
-'''
-while True:
-   try:
-       s = input('calc > ')
-   except EOFError:
-       break
-   if not s: continue
-   result = parser.parse(s)
-'''
-def verParser(string):
-#    while True:
-    try:
-        cadena = string#input('')
 
+def verParser(string):
+    try:
+        cadena = string #input('')
+        result = parser.parse(cadena)
+        print(str(result))
+        if result:
+            return result
     except EOFError:
         print (EOFError)
-    result = parser.parse(cadena)
+  
 
 
 

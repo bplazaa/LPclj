@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QPlainTextEdit
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout
 #from PyQt5.QtGui import QAp
 
 from lexico import verLexer
@@ -20,11 +20,12 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
 
         self.window = QWidget(self)
-        self.setWindowTitle("Proyecto Grupo 1")
-        self.window.setGeometry(100, 75, 400, 280)
+        self.setWindowTitle("Proyecto Clojure 1")
+        self.window.setGeometry(100, 75, 600, 450)
         self.layout = QGridLayout(self)
         self.line = QPlainTextEdit(self)
-        self.view = QPlainTextEdit(self)
+        self.viewLex = QPlainTextEdit(self)
+        self.viewPar = QPlainTextEdit(self)
         self.button = QPushButton("Limpiar")
 
         self.button1= QPushButton("Ver Lexer")
@@ -35,7 +36,15 @@ class MainWindow(QMainWindow):
         self.panelV.addWidget(self.button1)
         self.panelV.addWidget(self.button2)
 
-        self.label = QLabel("Somos el Grupo 1\n Bienvenidos")
+        self.label = QLabel("\t\t     Somos el Grupo Clojure 1\n \t\t\t Bienvenidos\n\n")
+
+        self.label.setFont(QFont("Times", 16, QFont.Bold))
+
+        self.tokens = QHBoxLayout(self)
+        self.tokens.addWidget(self.viewLex)
+        self.tokens.addWidget(self.viewPar)
+
+
 
         self.button.clicked.connect(self.clickMethodLimpiar)
         #self.view.setReadOnly(True)
@@ -43,18 +52,19 @@ class MainWindow(QMainWindow):
         self.layout.addWidget(self.line, 1, 0)
         self.layout.addWidget(self.button, 1, 1)
         self.layout.addLayout(self.panelV,2,1)
-        self.layout.addWidget(self.view, 2, 0)
+        #self.layout.addWidget(self.viewLex,2,0)
+        self.layout.addLayout(self.tokens,2,0)
         self.button.resize(200, 32)
         self.window.setLayout(self.layout)
 
-    def clickMethod(self):#inserta palabra  copia
-        self.view.insertPlainText(self.line.toPlainText()+"\n")
 
     def clickMethodLexer(self):  # ver lexer
-        self.view.setPlainText(verLexer(self.line.toPlainText()))
+        self.viewLex.insertPlainText("Tokens del Lexico")
+        self.viewLex.insertPlainText(verLexer(self.line.toPlainText()))
 
     def clickMethodParser(self):  # ver parser
-        self.view.insertPlainText(verParser(self.line.toPlainText()))
+        self.viewPar.insertPlainText("Reglas de Parsing")
+        self.viewPar.insertPlainText(verParser(self.line.toPlainText()))
 
     def clickMethodLimpiar(self):#borrar
         self.view.insertPlainText(self.line.clear())
@@ -64,5 +74,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     mainWin = MainWindow()
     mainWin.show()
-    mainWin.resize(600, 500)
+    mainWin.resize(800, 600)
     sys.exit( app.exec_() )
