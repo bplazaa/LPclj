@@ -213,7 +213,8 @@ def p_error(p):
     print("Syntax error in input! %s" % p.value)
  # Build the parser
 parser = yacc.yacc()
- 
+
+'''
 while True:
    try:
        s = input('calc > ')
@@ -221,5 +222,15 @@ while True:
        break
    if not s: continue
    result = parser.parse(s)
+'''
+def verParser(string):
+#    while True:
+    try:
+        cadena = string#input('')
 
- 
+    except EOFError:
+        print (EOFError)
+    result = parser.parse(cadena)
+
+
+
