@@ -59,15 +59,19 @@ class MainWindow(QMainWindow):
 
 
     def clickMethodLexer(self):  # ver lexer
-        self.viewLex.insertPlainText("Tokens del Lexico")
+        self.viewLex.clear()
+        self.viewLex.insertPlainText("Tokens del Lexico\n*******")
         self.viewLex.insertPlainText(verLexer(self.line.toPlainText()))
 
     def clickMethodParser(self):  # ver parser
-        self.viewPar.insertPlainText("Reglas de Parsing")
+        self.viewPar.clear()
+        self.viewPar.insertPlainText("Reglas de Parsing\n*******")
         self.viewPar.insertPlainText(verParser(self.line.toPlainText()))
 
     def clickMethodLimpiar(self):#borrar
-        self.view.insertPlainText(self.line.clear())
+        self.line.clear()
+        self.viewLex.clear()
+        self.viewPar.clear()
 
 
 if __name__ == "__main__":
