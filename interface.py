@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
 
     def clickMethodLexer(self):  # ver lexer
         self.viewLex.clear()
-        self.viewLex.insertPlainText("Tokens del Lexico\n*******")
+        self.viewLex.insertPlainText("LPAREN expression RPARENTokens del Lexico\n*******")
         self.viewLex.insertPlainText(verLexer(self.line.toPlainText()))
 
     def clickMethodParser(self):  # ver parser
