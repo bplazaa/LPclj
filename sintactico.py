@@ -239,7 +239,10 @@ def p_valor_funcion(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    print("Syntax error in input! %s" % p.value)
+    if p:
+        print("Error sintactico en la entrada %s" % p.value)
+    else:
+        print("Error sintactico en la entrada")
  # Build the parser
 parser = yacc.yacc()
 
@@ -250,12 +253,14 @@ def verParser(string):
     try:
         cadena = string #input('')
         result = parser.parse(cadena)
-        print(str(result))
+        print("RESULTADO" + str(result))
         if result:
             return result
+        else:
+            return "\n Error sintactico en la entrada"
     except EOFError:
         print (EOFError)
+
+
   
-
-
 

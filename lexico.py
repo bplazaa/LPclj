@@ -4,6 +4,8 @@
 
 import ply.lex as lex
 
+result = ""
+
 reserved = {
     'if' : 'IF',
     'when' : 'THEN',
@@ -106,40 +108,19 @@ def t_STRING(t):
 t_ignore  = ' \t'
  
 def t_error(t):
+    global result
     print("Illegal character '%s'" % t.value[0])
-    t.lexer.skip(1)
-
-'''
-lexer = lex.lex()
- 
-
-
-archivo = open("codigo.txt", 'r',  encoding="utf-8")
-
-contenido = archivo.read()
-
-archivo.close()
-
- # Give the lexer some input
-lexer.input(contenido)
-
- # Tokenize
-while True:
-    tok = lexer.token()
-    if not tok: 
-        break      # No more input
-    print(tok)
-'''
-
+    result += "\n Caracter no reconocido" + t.value[0]
+    t.lexer.skip(1)   
 
 def verLexer(data):
+    global result
     lexer = lex.lex()
     lexer.input(data)
     result = ""
     while True:
         tok= lexer.token()
         if not tok:
-
             break
         print(tok)
         result += "\n" + str(tok)

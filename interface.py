@@ -30,11 +30,14 @@ class MainWindow(QMainWindow):
 
         self.button1= QPushButton("Ver Lexer")
         self.button2= QPushButton("Ver Parser")
+        self.button3= QPushButton("Lexer + Parser")
         self.button1.clicked.connect(self.clickMethodLexer)
         self.button2.clicked.connect(self.clickMethodParser)
+        self.button3.clicked.connect(self.clickMethodFull)
         self.panelV= QVBoxLayout(self)
         self.panelV.addWidget(self.button1)
         self.panelV.addWidget(self.button2)
+        self.panelV.addWidget(self.button3)
 
         self.label = QLabel("\t\t     Somos el Grupo Clojure 1\n \t\t\t Bienvenidos\n\n")
 
@@ -52,7 +55,6 @@ class MainWindow(QMainWindow):
         self.layout.addWidget(self.line, 1, 0)
         self.layout.addWidget(self.button, 1, 1)
         self.layout.addLayout(self.panelV,2,1)
-        #self.layout.addWidget(self.viewLex,2,0)
         self.layout.addLayout(self.tokens,2,0)
         self.button.resize(200, 32)
         self.window.setLayout(self.layout)
@@ -66,12 +68,22 @@ class MainWindow(QMainWindow):
     def clickMethodParser(self):  # ver parser
         self.viewPar.clear()
         self.viewPar.insertPlainText("Reglas de Parsing\n*******")
-        self.viewPar.insertPlainText(verParser(self.line.toPlainText()))
+        mensaje = verLexer(self.line.toPlainText())
+        if(mensaje.__contains__("no reconocido")):
+            self.viewPar.insertPlainText("\n Error en el lexico, no es posible continuar.")
+        else:
+            self.viewPar.insertPlainText(verParser(self.line.toPlainText()))
+        
+    
+    def clickMethodFull(self):  # ver lexer
+        self.clickMethodLexer()
+        self.clickMethodParser()
 
     def clickMethodLimpiar(self):#borrar
         self.line.clear()
         self.viewLex.clear()
         self.viewPar.clear()
+
 
 
 if __name__ == "__main__":
