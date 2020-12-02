@@ -68,11 +68,18 @@ class MainWindow(QMainWindow):
     def clickMethodParser(self):  # ver parser
         self.viewPar.clear()
         self.viewPar.insertPlainText("Reglas de Parsing\n*******")
-        mensaje = verLexer(self.line.toPlainText())
-        if(mensaje.__contains__("no reconocido")):
+        mensajeLex = verLexer(self.line.toPlainText())
+        if(mensajeLex.__contains__("no reconocido")):
             self.viewPar.insertPlainText("\n Error en el lexico, no es posible continuar.")
         else:
-            self.viewPar.insertPlainText(verParser(self.line.toPlainText()))
+            mensajePar = verParser(self.line.toPlainText())
+            
+            #if(mensajePar.__contains__("Error")):
+            #    self.viewPar.insertPlainText("\n Error sintáctico en la entrada")
+            #else:
+            #    self.viewPar.insertPlainText(mensajePar)
+            self.viewPar.insertPlainText(mensajePar)
+
         
     
     def clickMethodFull(self):  # ver lexer
