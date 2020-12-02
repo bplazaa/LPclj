@@ -24,10 +24,15 @@ def p_expression_general(p):
     p[0] = exp_nombre
 
 def p_expression_mat(p):    
-    'expression : operadoresMat factor factor '
+    'expression : operadoresMat factores'
     global exp_nombre
     exp_nombre += "\n expresion matematica"
 
+def p_factores(p):
+    '''
+        factores : factor factor
+        | factor factores
+    '''
 def p_comparacion(p):
     'comparacion : operadoresComp factor factor '
     global exp_nombre
@@ -64,7 +69,8 @@ def p_factor_num(p):
             | booleanos'''
  
 def p_factor_expr(p):
-    'factor : LPAREN expression RPAREN'
+    '''factor : LPAREN expression RPAREN
+    '''
 
 def p_asignacion(p):
     '''asignacion : DEF ID factor
